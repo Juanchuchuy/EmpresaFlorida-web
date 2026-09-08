@@ -1,59 +1,59 @@
 {
   "linea": "Florida x Posse",
-  "sentido": "Tuc → Florida x Posse",
+  "sentido": "Terminal → Florida x Posse",
   "actualizado": "Marzo 2026",
   "horarios": [
     {
       "hora": "5:25",
-      "recorrido": "Tuc/Posse/Fila Orilla"
+      "recorrido": "Terminal/Posse/Fila Orilla"
     },
     {
       "hora": "6:00",
-      "recorrido": "Tuc/Florida/W Posse/Colonia 4L"
+      "recorrido": "Terminal/Florida/W Posse/Colonia 4L"
     },
     {
       "hora": "6:30",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "7:00",
-      "recorrido": "Tuc/Florida/W Posse/Fortín"
+      "recorrido": "Terminal/Florida/W Posse/Fortín"
     },
     {
       "hora": "7:30",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "8:15",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "8:30",
-      "recorrido": "Tuc/W Posse/Fila del Medio/Dispensario"
+      "recorrido": "Terminal/W Posse/Fila del Medio/Dispensario"
     },
     {
       "hora": "9:00",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "9:30",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "10:00",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "10:30",
-      "recorrido": "Tuc/Florida/W Posse/hasta Longo"
+      "recorrido": "Terminal/Florida/W Posse/hasta Longo"
     },
     {
       "hora": "10:30",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "11:00",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "11:10",
@@ -61,95 +61,95 @@
     },
     {
       "hora": "11:15",
-      "recorrido": "Tuc/Florida/W Posse/Fortín"
+      "recorrido": "Terminal/Florida/W Posse/Fortín"
     },
     {
       "hora": "11:35",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "11:45",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "12:10",
-      "recorrido": "Tuc/Posse/Fila de la Orilla/Dispensario"
+      "recorrido": "Terminal/Posse/Fila de la Orilla/Dispensario"
     },
     {
       "hora": "12:20",
-      "recorrido": "Tuc/Posse/Fila del Medio/Florida/Bº La Cancha"
+      "recorrido": "Terminal/Posse/Fila del Medio/Florida/Bº La Cancha"
     },
     {
       "hora": "12:30",
-      "recorrido": "Tuc/Florida/W Posse/Fortín"
+      "recorrido": "Terminal/Florida/W Posse/Fortín"
     },
     {
       "hora": "13:00",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "13:00",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "13:00",
-      "recorrido": "Tuc/W Posse/Fila del Medio"
+      "recorrido": "Terminal/W Posse/Fila del Medio"
     },
     {
       "hora": "13:30",
-      "recorrido": "Tuc/Florida/W Posse/Dumix"
+      "recorrido": "Terminal/Florida/W Posse/Dumix"
     },
     {
       "hora": "14:05",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "14:30",
-      "recorrido": "Tuc/Florida/W Posse/Dumix"
+      "recorrido": "Terminal/Florida/W Posse/Dumix"
     },
     {
       "hora": "14:45",
-      "recorrido": "Tuc/Florida/W Posse/Fortín"
+      "recorrido": "Terminal/Florida/W Posse/Fortín"
     },
     {
       "hora": "15:00",
-      "recorrido": "Tuc/Florida/W Posse/Fortín"
+      "recorrido": "Terminal/Florida/W Posse/Fortín"
     },
     {
       "hora": "15:00",
-      "recorrido": "Tuc/W Posse/Fila del Medio"
+      "recorrido": "Terminal/W Posse/Fila del Medio"
     },
     {
       "hora": "15:00",
-      "recorrido": "Tuc/W Posse/Fila del Medio"
+      "recorrido": "Terminal/W Posse/Fila del Medio"
     },
     {
       "hora": "16:00",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "16:30",
-      "recorrido": "Tuc/W Posse/Fila del Medio"
+      "recorrido": "Terminal/W Posse/Fila del Medio"
     },
     {
       "hora": "17:00",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "17:25",
-      "recorrido": "Tuc/W Posse/Fila de la Orilla"
+      "recorrido": "Terminal/W Posse/Fila de la Orilla"
     },
     {
       "hora": "17:30",
-      "recorrido": "Tuc/Florida/W Posse/Fortín"
+      "recorrido": "Terminal/Florida/W Posse/Fortín"
     },
     {
       "hora": "18:00",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "18:30",
-      "recorrido": "Tuc/Florida/W Posse/Fortín"
+      "recorrido": "Terminal/Florida/W Posse/Fortín"
     },
     {
       "hora": "18:40",
@@ -157,11 +157,11 @@
     },
     {
       "hora": "19:10",
-      "recorrido": "Tuc/Florida/Posse/Bº Cancha/Col 4L"
+      "recorrido": "Terminal/Florida/Posse/Bº Cancha/Col 4L"
     },
     {
       "hora": "19:30",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "19:40",
@@ -169,47 +169,47 @@
     },
     {
       "hora": "20:00",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "20:00",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "20:20",
-      "recorrido": "Tuc/Posse/Fila del Medio"
+      "recorrido": "Terminal/Posse/Fila del Medio"
     },
     {
       "hora": "20:30",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "21:00",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "21:20",
-      "recorrido": "Tuc/Posse/Fila del Medio"
+      "recorrido": "Terminal/Posse/Fila del Medio"
     },
     {
       "hora": "21:30",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "22:00",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "22:30",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     },
     {
       "hora": "23:30",
-      "recorrido": "Tuc/Florida/W Posse/Fortín/Bº La Cancha/Col 4L"
+      "recorrido": "Terminal/Florida/W Posse/Fortín/Bº La Cancha/Col 4L"
     },
     {
       "hora": "0:30",
-      "recorrido": "Tuc/Florida/W Posse/Bº La Cancha"
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
     }
   ]
 }

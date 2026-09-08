@@ -1,83 +1,83 @@
 {
   "linea": "W Posse",
-  "sentido": "W Posse → Tuc",
+  "sentido": "W Posse → Terminal",
   "actualizado": "Marzo 2026",
   "horarios": [
     {
       "hora": "6:00",
-      "recorrido": "Dispensario/Fila de la Orilla/Tuc"
+      "recorrido": "Dispensario/Fila de la Orilla/Terminal"
     },
     {
       "hora": "6:05",
-      "recorrido": "Dispensario/Fila del Medio/Tuc"
+      "recorrido": "Dispensario/Fila del Medio/Terminal"
     },
     {
       "hora": "6:30",
-      "recorrido": "Bosque/Fila del Medio/Tuc"
+      "recorrido": "Bosque/Fila del Medio/Terminal"
     },
     {
       "hora": "7:08",
-      "recorrido": "Dispensario/Fila de la Orilla/Tuc"
+      "recorrido": "Dispensario/Fila de la Orilla/Terminal"
     },
     {
       "hora": "7:08",
-      "recorrido": "Bosque/Fila del Medio/Tuc"
+      "recorrido": "Bosque/Fila del Medio/Terminal"
     },
     {
       "hora": "7:40",
-      "recorrido": "Bosque/Fila del Medio/Tuc"
+      "recorrido": "Bosque/Fila del Medio/Terminal"
     },
     {
       "hora": "8:10",
-      "recorrido": "Dispensario/Fila de la Orilla/Tuc"
+      "recorrido": "Dispensario/Fila de la Orilla/Terminal"
     },
     {
       "hora": "8:10",
-      "recorrido": "Bosque/Fila del Medio/Tuc"
+      "recorrido": "Bosque/Fila del Medio/Terminal"
     },
     {
       "hora": "9:10",
-      "recorrido": "Dispensario/Fila de la Orilla/Tuc"
+      "recorrido": "Dispensario/Fila de la Orilla/Terminal"
     },
     {
       "hora": "9:10",
-      "recorrido": "Dispensario/Fila del Medio/Tuc"
+      "recorrido": "Dispensario/Fila del Medio/Terminal"
     },
     {
       "hora": "10:10",
-      "recorrido": "Dispensario/Fila del Medio/Tuc"
+      "recorrido": "Dispensario/Fila del Medio/Terminal"
     },
     {
       "hora": "13:00",
-      "recorrido": "Dispensario/Fila del Medio/Tuc"
+      "recorrido": "Dispensario/Fila del Medio/Terminal"
     },
     {
       "hora": "15:00",
-      "recorrido": "Dispensario/Bosque/Fila del Medio/Tuc"
+      "recorrido": "Dispensario/Bosque/Fila del Medio/Terminal"
     },
     {
       "hora": "16:00",
-      "recorrido": "W Posse/Fila de la Orilla/Tuc"
+      "recorrido": "W Posse/Fila de la Orilla/Terminal"
     },
     {
       "hora": "16:10",
-      "recorrido": "W Posse/Fila del Medio/Tuc"
+      "recorrido": "W Posse/Fila del Medio/Terminal"
     },
     {
       "hora": "17:00",
-      "recorrido": "W Posse/Fila de la Orilla/Tuc"
+      "recorrido": "W Posse/Fila de la Orilla/Terminal"
     },
     {
       "hora": "17:10",
-      "recorrido": "W Posse/Fila del Medio/Tuc"
+      "recorrido": "W Posse/Fila del Medio/Terminal"
     },
     {
       "hora": "18:10",
-      "recorrido": "Dispensario/Fila de la Orilla/Tuc"
+      "recorrido": "Dispensario/Fila de la Orilla/Terminal"
     },
     {
       "hora": "19:10",
-      "recorrido": "Dispensario/Fila de la Orilla/Tuc"
+      "recorrido": "Dispensario/Fila de la Orilla/Terminal"
     }
   ]
 }

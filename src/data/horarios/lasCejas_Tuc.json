@@ -1,51 +1,51 @@
 {
   "linea": "Las Cejas",
-  "sentido": "Las Cejas → Tuc",
+  "sentido": "Las Cejas → Terminal",
   "actualizado": "Marzo 2026",
   "horarios": [
     {
       "hora": "4:20",
-      "recorrido": "7 de Abril/Cejas/Tuc"
+      "recorrido": "7 de Abril/Cejas/Terminal"
     },
     {
       "hora": "5:00",
-      "recorrido": "Cejas/Ralos/Tuc"
+      "recorrido": "Cejas/Ralos/Terminal"
     },
     {
       "hora": "6:20",
-      "recorrido": "Cejas/Ralos/Tuc"
+      "recorrido": "Cejas/Ralos/Terminal"
     },
     {
       "hora": "7:50",
-      "recorrido": "Cejas/Ralos/Tuc"
+      "recorrido": "Cejas/Ralos/Terminal"
     },
     {
       "hora": "11:20",
-      "recorrido": "7 de Abril/Garmendia/Cejas/Tuc"
+      "recorrido": "7 de Abril/Garmendia/Cejas/Terminal"
     },
     {
       "hora": "12:10",
-      "recorrido": "Cejas/Ralos/Tuc"
+      "recorrido": "Cejas/Ralos/Terminal"
     },
     {
       "hora": "12:30",
-      "recorrido": "7 de Abril/Garmendia/Cejas/Tuc"
+      "recorrido": "7 de Abril/Garmendia/Cejas/Terminal"
     },
     {
       "hora": "15:40",
-      "recorrido": "Cejas/Ralos/Tuc"
+      "recorrido": "Cejas/Ralos/Terminal"
     },
     {
       "hora": "16:30",
-      "recorrido": "7 de Abril/Cejas/Ralos/Tuc"
+      "recorrido": "7 de Abril/Cejas/Ralos/Terminal"
     },
     {
       "hora": "18:10",
-      "recorrido": "7 de Abril/Cejas/Ralos/Tuc"
+      "recorrido": "7 de Abril/Cejas/Ralos/Terminal"
     },
     {
       "hora": "19:50",
-      "recorrido": "Cejas/Ralos/Tuc"
+      "recorrido": "Cejas/Ralos/Terminal"
     }
   ]
 }

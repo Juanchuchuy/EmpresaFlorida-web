@@ -4,6 +4,11 @@ import { getProximoHorario } from '../utils/horarios'
 import { acortarRecorrido } from '../utils/texto'
 import './CardSection.css'
 
+
+//Icons
+import { ArrowLeftRight, ChevronRight,Clock } from 'lucide-react';
+
+
 const CardSection = () => {
   // Guarda, por línea, qué sentido está mostrando la card: 'ida' (hacia Tuc)
   // o 'vuelta' (desde Tuc). Arranca en 'ida' porque es el caso más común:
@@ -48,16 +53,34 @@ const CardSection = () => {
               alt={`Cartel de la línea ${linea.nombre}`}
               className="card-image"
             />
+            <button
+              type="button"
+              className="card-button"
+              onClick={() => handleVerHorarios(linea.id)}
+            >
+              Ver horarios completos
+            </button>
 
             <div className="card-info">
               {proximo ? (
                 <>
-                  <p className="card-recorrido" title={proximo.recorrido}>
-                    {acortarRecorrido(proximo.recorrido)}
-                  </p>
+                  
+                  <hr />
+                  
                   <p className="card-hora">
-                    {proximo.esDeManiana ? 'Mañana' : 'Próximo'}{' '}
-                    <strong>{proximo.hora}</strong>
+                    {proximo.esDeManiana ? 'Mañana' : (
+
+                        <p className='card-movil'>PRÓXIMO SERVICIO</p>
+
+                    )}
+
+                    <strong><Clock color='red' />{proximo.hora} </strong>
+                    
+                  </p>
+                  <p className="card-recorrido" title={proximo.recorrido}>
+                    {<>
+                        {acortarRecorrido(proximo.recorrido)}
+                    </>}
                   </p>
                 </>
               ) : (
@@ -72,17 +95,8 @@ const CardSection = () => {
                   className="card-toggle"
                   onClick={() => toggleSentido(linea.id)}
                 >
-                  <svg className="card-toggle-icon" viewBox="0 0 20 20" aria-hidden="true">
-                    <path
-                      d="M4 7h10.5M14.5 7 11 3.5M16 13H5.5M5.5 13 9 16.5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  Cambiar a: {sentido === 'ida' ? 'salida desde Tuc' : 'salida hacia Tuc'}
+                  <ArrowLeftRight></ArrowLeftRight>
+                  Cambiar sentido
                 </button>
               ) : (
                 <span className="card-toggle card-toggle--disabled">
@@ -91,13 +105,7 @@ const CardSection = () => {
               )}
             </div>
 
-            <button
-              type="button"
-              className="card-button"
-              onClick={() => handleVerHorarios(linea.id)}
-            >
-              Ver horarios completos
-            </button>
+            
           </article>
         )
       })}

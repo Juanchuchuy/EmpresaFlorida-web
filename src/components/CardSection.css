@@ -3,9 +3,8 @@
   --card-border: #dcdcdc;
   --card-text: #3a3a3a;
   --card-text-strong: #1a1a1a;
-  --card-blue: #1e3a6e;
-  --card-blue-dark: #142950;
-  --card-red: #c1272d;
+  --card-blue: #c1272d;
+  --card-blue-dark: #ad2125;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -19,13 +18,23 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
   padding: 16px;
+  transition: all 0.3s ease;
   border: 1px solid var(--card-border);
   border-radius: 10px;
-  background: var(--card-bg);
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: azure;
+  font-family: "Montserrat",sans-serif;
+}
+
+
+
+.card:hover{
+
+  transform: translateY(-1px);
+  filter: drop-shadow(4px 4px 8px rgba(88, 88, 88, 0.26));
+
 }
 
 .card-image {
@@ -35,6 +44,7 @@
   display: block;
   background: #000;
   object-fit: contain;
+  cursor: pointer;
 }
 
 @media (max-width: 640px) {
@@ -44,14 +54,26 @@
 }
 
 .card-info {
+
   text-align: left;
-  min-height: 44px;
+  min-height: auto;
+  cursor: default;
+}
+.card-info strong{
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+
 }
 
 .card-recorrido {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
   overflow: hidden;
   margin: 0 0 4px;
-  font-size: 14px;
+  
   line-height: 1.35;
   color: var(--card-text);
 }
@@ -59,12 +81,24 @@
 .card-hora {
   margin: 0;
   font-size: 15px;
-  color: var(--card-text);
+  margin-bottom: 8px;
 }
+.card-movil{
 
+  color: #94a3b89f;
+  font-family: "Geist", sans-serif;
+  font-size: 0.7em;
+  font-weight: 600;
+
+}
 .card-hora strong {
-  font-size: 18px;
-  color: var(--card-text-strong);
+  font-size: 20px;
+  outline: none;
+  color: red;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  
 }
 
 .card-sin-datos {
@@ -86,7 +120,7 @@
   align-items: center;
   gap: 6px;
   font: inherit;
-  font-size: 13px;
+  font-size: 15px;
   padding: 5px 10px 5px 8px;
   border-radius: 999px;
   border: 1px solid var(--card-border);
@@ -125,6 +159,7 @@
 
 .card-button {
   align-self: flex-start;
+  width: 100%;
   font: inherit;
   padding: 8px 16px;
   border-radius: 6px;
@@ -132,17 +167,23 @@
   color: #fff;
   background: var(--card-blue);
   cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition: background-color 0.3s, border-color 0.3s,transform 0.6s;
 }
 
 .card-button:hover {
   background: var(--card-blue-dark);
   border-color: var(--card-red);
 }
+.card-button:hover{
+
+  transform: translateY(-0.8px);
+
+}
 
 .card-button:focus-visible {
   outline: 2px solid var(--card-blue);
   outline-offset: 2px;
+  
 }
 
 @media (max-width: 1024px) {

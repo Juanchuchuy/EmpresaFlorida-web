@@ -1,183 +1,183 @@
 {
   "linea": "Los Ralos",
-  "sentido": "Los Ralos → Tuc",
+  "sentido": "Los Ralos → Terminal",
   "actualizado": "Marzo 2026",
   "horarios": [
     {
       "hora": "4:40",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     },
     {
       "hora": "4:40",
-      "recorrido": "Ralos/Villa Tercera/Delfín Gallo/Tuc"
+      "recorrido": "Ralos/Villa Tercera/Delfín Gallo/Terminal"
     },
     {
       "hora": "5:20",
-      "recorrido": "Villa Tercera/Ralos/Tuc"
+      "recorrido": "Villa Tercera/Ralos/Terminal"
     },
     {
       "hora": "5:25",
-      "recorrido": "Mayo/Ralos/Tuc"
+      "recorrido": "Mayo/Ralos/Terminal"
     },
     {
       "hora": "5:55",
-      "recorrido": "Lolita Sur/Cerco 2/Ralos/Tuc"
+      "recorrido": "Lolita Sur/Cerco 2/Ralos/Terminal"
     },
     {
       "hora": "6:08",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     },
     {
       "hora": "6:10",
-      "recorrido": "Villa Tercera/Secundaria/Tuc"
+      "recorrido": "Villa Tercera/Secundaria/Terminal"
     },
     {
       "hora": "6:15",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     },
     {
       "hora": "6:25",
-      "recorrido": "Alabama/Mayo/Ralos/Tuc"
+      "recorrido": "Alabama/Mayo/Ralos/Terminal"
     },
     {
       "hora": "6:40",
-      "recorrido": "Lolita/Cerco 2/Ralos/Tuc"
+      "recorrido": "Lolita/Cerco 2/Ralos/Terminal"
     },
     {
       "hora": "6:40",
-      "recorrido": "Villa Tercera/Secundaria/Tuc"
+      "recorrido": "Villa Tercera/Secundaria/Terminal"
     },
     {
       "hora": "6:50",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     },
     {
       "hora": "6:50",
-      "recorrido": "Vía/Bº Trigal/Tuc"
+      "recorrido": "Vía/Bº Trigal/Terminal"
     },
     {
       "hora": "7:25",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     },
     {
       "hora": "7:30",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     },
     {
       "hora": "7:30",
-      "recorrido": "Lolita Sur/Ralos/Tuc"
+      "recorrido": "Lolita Sur/Ralos/Terminal"
     },
     {
       "hora": "7:50",
-      "recorrido": "La Marta/Mayo/Ralos/Tuc"
+      "recorrido": "La Marta/Mayo/Ralos/Terminal"
     },
     {
       "hora": "8:20",
-      "recorrido": "Ralos/Bº Trigal/Tuc"
+      "recorrido": "Ralos/Bº Trigal/Terminal"
     },
     {
       "hora": "8:20",
-      "recorrido": "La Marta/Mayo/Ralos/Tuc"
+      "recorrido": "La Marta/Mayo/Ralos/Terminal"
     },
     {
       "hora": "9:10",
-      "recorrido": "Mayo/Ralos/Tuc"
+      "recorrido": "Mayo/Ralos/Terminal"
     },
     {
       "hora": "9:25",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     },
     {
       "hora": "10:20",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     },
     {
       "hora": "10:20",
-      "recorrido": "Ralos/Villa Tercera/Tuc"
+      "recorrido": "Ralos/Villa Tercera/Terminal"
     },
     {
       "hora": "11:10",
-      "recorrido": "Alabama/Mayo/Ralos/Tuc"
+      "recorrido": "Alabama/Mayo/Ralos/Terminal"
     },
     {
       "hora": "12:00",
-      "recorrido": "Lolita/Ralos/Tuc"
+      "recorrido": "Lolita/Ralos/Terminal"
     },
     {
       "hora": "12:15",
-      "recorrido": "Mayo/Ralos/Tucumán"
+      "recorrido": "Mayo/Ralos/Terminalumán"
     },
     {
       "hora": "12:55",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     },
     {
       "hora": "13:00",
-      "recorrido": "Lolita/Villa Tercera/Ralos/Tuc"
+      "recorrido": "Lolita/Villa Tercera/Ralos/Terminal"
     },
     {
       "hora": "13:10",
-      "recorrido": "Alabama/Mayo/Ralos/Tuc"
+      "recorrido": "Alabama/Mayo/Ralos/Terminal"
     },
     {
       "hora": "14:05",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     },
     {
       "hora": "14:10",
-      "recorrido": "Ralos/Villa Tercera/Tuc"
+      "recorrido": "Ralos/Villa Tercera/Terminal"
     },
     {
       "hora": "15:00",
-      "recorrido": "Lolita/Ralos/Bº Trigal/Tuc"
+      "recorrido": "Lolita/Ralos/Bº Trigal/Terminal"
     },
     {
       "hora": "15:30",
-      "recorrido": "Ralos/Villa Tercera/Tuc"
+      "recorrido": "Ralos/Villa Tercera/Terminal"
     },
     {
       "hora": "16:25",
-      "recorrido": "Ralos/Villa Tercera/Tuc"
+      "recorrido": "Ralos/Villa Tercera/Terminal"
     },
     {
       "hora": "16:30",
-      "recorrido": "Mayo/Ralos/Tuc"
+      "recorrido": "Mayo/Ralos/Terminal"
     },
     {
       "hora": "17:15",
-      "recorrido": "Alabama/Mayo/Ralos/Tuc"
+      "recorrido": "Alabama/Mayo/Ralos/Terminal"
     },
     {
       "hora": "17:20",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     },
     {
       "hora": "18:10",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     },
     {
       "hora": "18:20",
-      "recorrido": "Ralos/Villa Tercera/Tuc"
+      "recorrido": "Ralos/Villa Tercera/Terminal"
     },
     {
       "hora": "19:00",
-      "recorrido": "Alabama/Mayo/Ralos/Tuc"
+      "recorrido": "Alabama/Mayo/Ralos/Terminal"
     },
     {
       "hora": "20:00",
-      "recorrido": "Lolita Sur/Ralos/Tuc"
+      "recorrido": "Lolita Sur/Ralos/Terminal"
     },
     {
       "hora": "21:10",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     },
     {
       "hora": "21:30",
-      "recorrido": "Mayo/Ralos/Tuc"
+      "recorrido": "Mayo/Ralos/Terminal"
     },
     {
       "hora": "22:20",
-      "recorrido": "Ralos/Tuc"
+      "recorrido": "Ralos/Terminal"
     }
   ]
 }

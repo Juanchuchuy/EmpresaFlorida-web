@@ -1,0 +1,33 @@
+.app-header {
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: #3b61b3;
+
+}
+.menu-logo{
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+
+
+}
+
+.menu-logo-img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.menu-logo-title {
+  font-size: 22px;
+  margin: 0;
+  color: white;
+}
