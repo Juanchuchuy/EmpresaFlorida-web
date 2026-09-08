@@ -1,0 +1,183 @@
+{
+  "linea": "Los Ralos",
+  "sentido": "Tuc → Los Ralos",
+  "actualizado": "Marzo 2026",
+  "horarios": [
+    {
+      "hora": "6:00",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "6:30",
+      "recorrido": "Tuc/Ralos/Lolita"
+    },
+    {
+      "hora": "7:00",
+      "recorrido": "Tuc/Ralos/Mayo/La Marta"
+    },
+    {
+      "hora": "8:00",
+      "recorrido": "Tuc/Ralos/Mayo"
+    },
+    {
+      "hora": "8:30",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "9:15",
+      "recorrido": "Tuc/Ralos/Villa Tercera"
+    },
+    {
+      "hora": "9:30",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "10:00",
+      "recorrido": "Tuc/Ralos/Mayo/Alabama"
+    },
+    {
+      "hora": "10:40",
+      "recorrido": "Tuc/Ralos/Lolita"
+    },
+    {
+      "hora": "11:15",
+      "recorrido": "Tuc/Ralos/Mayo"
+    },
+    {
+      "hora": "11:30",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "11:45",
+      "recorrido": "Tuc/Ralos/Villa Tercera/Lolita"
+    },
+    {
+      "hora": "12:10",
+      "recorrido": "Tuc/Ralos/Mayo/Alabama"
+    },
+    {
+      "hora": "12:20",
+      "recorrido": "Banda/Ralos"
+    },
+    {
+      "hora": "12:30",
+      "recorrido": "Tuc/Ralos/Villa Tercera/Bº Trigal"
+    },
+    {
+      "hora": "13:00",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "13:00",
+      "recorrido": "Tuc/Ralos/Villa Tercera"
+    },
+    {
+      "hora": "13:30",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "13:45",
+      "recorrido": "Tuc/Ralos/Villa Tercera/Lolita"
+    },
+    {
+      "hora": "14:00",
+      "recorrido": "Tuc/Ralos/Bº Trigal"
+    },
+    {
+      "hora": "14:30",
+      "recorrido": "Tuc/Ralos/Villa Tercera"
+    },
+    {
+      "hora": "15:00",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "15:15",
+      "recorrido": "Tuc/Ralos/Villa Tercera"
+    },
+    {
+      "hora": "15:30",
+      "recorrido": "Tuc/Ralos/Mayo"
+    },
+    {
+      "hora": "16:00",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "16:15",
+      "recorrido": "Tuc/Ralos/Mayo/Alabama"
+    },
+    {
+      "hora": "16:30",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "16:50",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "17:10",
+      "recorrido": "Tuc/Ralos/Villa Tercera"
+    },
+    {
+      "hora": "17:30",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "17:55",
+      "recorrido": "Tuc/Ralos/Villa Tercera"
+    },
+    {
+      "hora": "18:00",
+      "recorrido": "Tuc/Ralos/Mayo/Alabama"
+    },
+    {
+      "hora": "18:30",
+      "recorrido": "Tuc/Ralos/Villa Tercera"
+    },
+    {
+      "hora": "18:55",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "19:00",
+      "recorrido": "Tuc/Ralos/Lolita"
+    },
+    {
+      "hora": "19:30",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "19:30",
+      "recorrido": "Tuc/Ralos/Villa Tercera/Bº Trigal"
+    },
+    {
+      "hora": "20:00",
+      "recorrido": "Tuc/Ralos"
+    },
+    {
+      "hora": "20:20",
+      "recorrido": "Tuc/Ralos/Villa Tercera"
+    },
+    {
+      "hora": "20:30",
+      "recorrido": "Tuc/Ralos/Mayo/Alabama"
+    },
+    {
+      "hora": "21:00",
+      "recorrido": "Tuc/Ralos/Villa Tercera/Bº Trigal"
+    },
+    {
+      "hora": "22:30",
+      "recorrido": "Tuc/Ralos/Villa Tercera"
+    },
+    {
+      "hora": "22:30",
+      "recorrido": "Tuc/Ralos/Villa Tercera/Barrio Trigal"
+    },
+    {
+      "hora": "23:30",
+      "recorrido": "Tuc/Ralos/Villa Tercera/Barrio Trigal"
+    }
+  ]
+}

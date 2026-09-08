@@ -1,0 +1,51 @@
+{
+  "linea": "Las Cejas",
+  "sentido": "Las Cejas → Tuc",
+  "actualizado": "Marzo 2026",
+  "horarios": [
+    {
+      "hora": "4:20",
+      "recorrido": "7 de Abril/Cejas/Tuc"
+    },
+    {
+      "hora": "5:00",
+      "recorrido": "Cejas/Ralos/Tuc"
+    },
+    {
+      "hora": "6:20",
+      "recorrido": "Cejas/Ralos/Tuc"
+    },
+    {
+      "hora": "7:50",
+      "recorrido": "Cejas/Ralos/Tuc"
+    },
+    {
+      "hora": "11:20",
+      "recorrido": "7 de Abril/Garmendia/Cejas/Tuc"
+    },
+    {
+      "hora": "12:10",
+      "recorrido": "Cejas/Ralos/Tuc"
+    },
+    {
+      "hora": "12:30",
+      "recorrido": "7 de Abril/Garmendia/Cejas/Tuc"
+    },
+    {
+      "hora": "15:40",
+      "recorrido": "Cejas/Ralos/Tuc"
+    },
+    {
+      "hora": "16:30",
+      "recorrido": "7 de Abril/Cejas/Ralos/Tuc"
+    },
+    {
+      "hora": "18:10",
+      "recorrido": "7 de Abril/Cejas/Ralos/Tuc"
+    },
+    {
+      "hora": "19:50",
+      "recorrido": "Cejas/Ralos/Tuc"
+    }
+  ]
+}

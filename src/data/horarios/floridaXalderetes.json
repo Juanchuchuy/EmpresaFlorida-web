@@ -1,0 +1,159 @@
+{
+  "linea": "Florida x Alderetes",
+  "sentido": "Tuc → Florida x Alderetes",
+  "actualizado": "Marzo 2026",
+  "horarios": [
+    {
+      "hora": "5:25",
+      "recorrido": "Tuc/Catalina/Autopista/Alderetes/Florida/Bº La Cancha"
+    },
+    {
+      "hora": "6:20",
+      "recorrido": "Tuc/Coronel Suárez/Alternativa/Florida/Fonda/Col 4L/Colonia 10/Colonia 4 Florida/Plaza Finca Mayo/La Marta"
+    },
+    {
+      "hora": "6:25",
+      "recorrido": "Tuc/Banda/Alderetes/Florida/Fortín/Colonia 2,3,4,5/Finca Mayo/Escuela"
+    },
+    {
+      "hora": "7:15",
+      "recorrido": "Tuc/Banda/Alderetes/Florida/Longo/Fonda/Col 4L/Col 10/Col 4 Florida/Finca Mayo/La Marta"
+    },
+    {
+      "hora": "8:00",
+      "recorrido": "Tuc/Catalina/Autopista/Alderetes/Florida/Longo/Fonda/Col 4L"
+    },
+    {
+      "hora": "8:35",
+      "recorrido": "Tuc/Banda/Alderetes/Florida/Fortín"
+    },
+    {
+      "hora": "9:00",
+      "recorrido": "Tuc/Catalina/Autopista/Florida/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "9:45",
+      "recorrido": "Tuc/Banda/Alderetes/Florida/Fortín"
+    },
+    {
+      "hora": "10:45",
+      "recorrido": "Tuc/Catalina/Autopista/Florida/Fortín"
+    },
+    {
+      "hora": "11:15",
+      "recorrido": "Tuc/Catalina/Autopista/Florida/Bº La Cancha/Col 4L/Cruce Mayo/La Marta"
+    },
+    {
+      "hora": "11:40",
+      "recorrido": "Tuc/Banda/Alderetes/Florida/Fortín/Colonia 2,3,4,5/Finca Mayo"
+    },
+    {
+      "hora": "12:10",
+      "recorrido": "Colegio Rivadavia/Escolar/Colonia 4L/Bº La Cancha/Florida"
+    },
+    {
+      "hora": "12:15",
+      "recorrido": "Tuc/Catalina/Alternativa/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "12:40",
+      "recorrido": "Cruz Papel (Alderetes)/Florida/Col 4L"
+    },
+    {
+      "hora": "12:45",
+      "recorrido": "Tuc/Catalina/Autopista/Alderetes/Florida/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "13:15",
+      "recorrido": "Tuc/Banda/Alderetes/Florida/Bº La Cancha/Colonia 4L"
+    },
+    {
+      "hora": "13:30",
+      "recorrido": "Tuc/Catalina/Alternativa/Florida/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "13:30",
+      "recorrido": "Tuc/Catalina/Autopista/Alderetes/Florida/Bº La Cancha/Col 4L/Finca Mayo/La Marta"
+    },
+    {
+      "hora": "13:45",
+      "recorrido": "Tuc/Banda/Alderetes/Florida/Fortín/Colonia 3 Florida"
+    },
+    {
+      "hora": "14:00",
+      "recorrido": "Tuc/Banda/Alderetes/Florida/Fortín/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "14:50",
+      "recorrido": "Tuc/Banda/Alderetes/Florida/Fortín/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "15:50",
+      "recorrido": "Tuc/Coronel Suárez/Alternativa/Florida/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "15:50",
+      "recorrido": "Tuc/Banda/Alderetes/Florida/Fortín/Colonia 2,3 y 4 Florida"
+    },
+    {
+      "hora": "16:50",
+      "recorrido": "Tuc/Coronel Suárez/Alternativa/Florida/Fonda/Col 4L"
+    },
+    {
+      "hora": "16:50",
+      "recorrido": "Tuc/Banda/Alderetes/Florida/Fortín"
+    },
+    {
+      "hora": "17:45",
+      "recorrido": "Tuc/Coronel Suárez/Alternativa/ingreso x Col 4L/Bº La Cancha/Florida"
+    },
+    {
+      "hora": "17:45",
+      "recorrido": "Tuc/Banda/Alderetes/Colegio Rivadavia/Florida/Bº Cancha/Col 3L/Cruce Mayo/La Marta"
+    },
+    {
+      "hora": "18:30",
+      "recorrido": "Tuc/Coronel Suárez/Alternativa/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "19:00",
+      "recorrido": "Tuc/Coronel Suárez/Alternativa/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "19:10",
+      "recorrido": "Chango Más (Banda)/Alderetes/Florida/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "19:45",
+      "recorrido": "Tuc/Coronel Suárez/Alternativa/Florida/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "19:45",
+      "recorrido": "Tuc/Banda/Alderetes/Florida/Fortín/Col 2,3,4 y 5 Florida/Mayo"
+    },
+    {
+      "hora": "20:30",
+      "recorrido": "Tuc/Banda/Alderetes/Florida/Fortín"
+    },
+    {
+      "hora": "21:00",
+      "recorrido": "Tuc/Coronel Suárez/Autopista/Alderetes/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "21:30",
+      "recorrido": "Tuc/Coronel Suárez/Alderetes/Florida/Fortín/Col 4L"
+    },
+    {
+      "hora": "22:00",
+      "recorrido": "Tuc/Coronel Suárez/Alternativa/Florida/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "22:30",
+      "recorrido": "Tuc/Coronel Suárez/Autopista/Florida/Fortín/Col 4L"
+    },
+    {
+      "hora": "23:30",
+      "recorrido": "Tuc/Coronel Suárez/Autopista/Florida/Fortín/Col 4L"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "linea": "W Posse",
+  "sentido": "Tuc → W Posse",
+  "actualizado": "Marzo 2026",
+  "horarios": [
+    {
+      "hora": "5:30",
+      "recorrido": "Tuc/Fila de la Orilla/W Posse/Bosque/Dispensario"
+    },
+    {
+      "hora": "8:30",
+      "recorrido": "Tuc/Fila del Medio/Bosque/Dispensario"
+    },
+    {
+      "hora": "12:15",
+      "recorrido": "Tuc/Fila del Medio/Bosque/Dispensario"
+    },
+    {
+      "hora": "13:30",
+      "recorrido": "Tuc/Fila del Medio/Bosque/Dispensario"
+    },
+    {
+      "hora": "15:00",
+      "recorrido": "Tuc/Fila del Medio/Bosque/Dispensario"
+    },
+    {
+      "hora": "15:30",
+      "recorrido": "Tuc/Fila del Medio/Bosque/Dispensario"
+    },
+    {
+      "hora": "16:30",
+      "recorrido": "Tuc/Fila del Medio/Bosque/Dispensario"
+    },
+    {
+      "hora": "18:20",
+      "recorrido": "Tuc/Fila de la Orilla/Dispensario"
+    },
+    {
+      "hora": "18:55",
+      "recorrido": "Tuc/Fila del Medio/Bosque/Dispensario"
+    },
+    {
+      "hora": "20:20",
+      "recorrido": "Tuc/Fila del Medio/Bosque/Dispensario"
+    },
+    {
+      "hora": "21:20",
+      "recorrido": "Tuc/Fila del Medio/Bosque/Dispensario"
+    }
+  ]
+}
