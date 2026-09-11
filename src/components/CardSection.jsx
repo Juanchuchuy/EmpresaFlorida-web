@@ -67,16 +67,16 @@ const CardSection = () => {
                   
                   <hr />
                   
-                  <p className="card-hora">
+                  <span className="card-hora">
                     {proximo.esDeManiana ? 'Mañana' : (
-
-                        <p className='card-movil'>PRÓXIMO SERVICIO</p>
+                      
+                        <h3 className='card-movil'>PRÓXIMO SERVICIO</h3>
+                       
 
                     )}
-
                     <strong><Clock color='red' />{proximo.hora} </strong>
                     
-                  </p>
+                  </span>
                   <p className="card-recorrido" title={proximo.recorrido}>
                     {<>
                         {acortarRecorrido(proximo.recorrido)}

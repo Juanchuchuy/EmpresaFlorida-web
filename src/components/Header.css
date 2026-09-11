@@ -2,13 +2,17 @@
 
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  gap: 40%;
   padding: 20px;
   margin: 0 auto;
+  font-family: 'Montserrat',sans-serif;
+  filter: drop-shadow(5px 0px 7px black);
   background-color: #3b61b3;
 
+
 }
-.menu-logo{
+.logo{
 
   display: flex;
   flex-direction: row;
@@ -18,7 +22,7 @@
 
 }
 
-.menu-logo-img {
+.logo-img {
   width: 56px;
   height: 56px;
   object-fit: contain;
@@ -26,8 +30,87 @@
   flex-shrink: 0;
 }
 
-.menu-logo-title {
+.logo-title {
   font-size: 22px;
   margin: 0;
-  color: white;
+  color: #d7e9e9;
+
 }
+.nav-menu{
+
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  color: #d7e9e9;
+  font-size: large;
+
+}
+.menu-item{
+
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.menu-item-border{
+
+  width: 0;
+  transition: all 0.5s;
+}
+.menu-item:hover .menu-item-border{
+
+  width: 100%;
+
+}
+.menu-button{
+
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+
+}
+.Arrow-button-normal{
+  transition: all 0.5s;
+  transform: rotate(0deg);
+  
+}
+.Arrow-button-down{
+  
+  transition: all 0.5s;
+  transform: rotate(90deg);
+
+}
+.none{
+  
+  height: 0;
+  opacity: 0;
+  position: fixed;
+  transition: all 0s;
+}
+
+
+.block{
+  opacity: 1;
+  height: auto;
+  position: absolute;
+  margin-top: 7px;
+  background-color: red;
+  z-index: 1;
+  border-radius: 5px;
+  padding: 15px;
+  filter: drop-shadow(2px 2px 5px black);
+  font-family: 'Montserrat',sans-serif;
+  font-weight: 700;
+  transition:  opacity 0.7s, height 0.4s;
+  
+
+}
+.block li{
+
+  cursor: pointer;
+
+}
+
