@@ -7,3 +7,7 @@ body{
     font-family: '"Open Sans", sans-serif';
 
 }
+
+@import "tailwindcss";
+
+@plugin "daisyui";
