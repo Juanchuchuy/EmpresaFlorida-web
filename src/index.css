@@ -3,11 +3,8 @@ body{
     margin: 0;
     padding: 0;
     min-height: auto;
-    background-color: rgb(215, 233, 233);
-    font-family: '"Open Sans", sans-serif';
-
+    background-color: aliceblue;
 }
 
 @import "tailwindcss";
 
-@plugin "daisyui";
