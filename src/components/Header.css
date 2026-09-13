@@ -1,16 +1,12 @@
 .app-header {
-
+  width: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 40%;
-  padding: 20px;
-  margin: 0 auto;
-  font-family: 'Montserrat',sans-serif;
-  filter: drop-shadow(5px 0px 7px black);
-  background-color: #3b61b3;
-
-
+  justify-content: space-between;
+  padding: 16px 40px;
+  background-color: #fffffffa;
+  box-shadow: 4px 0px 10px black;
+  font-family: 'Montserrat', sans-serif;
 }
 .logo{
 
@@ -33,19 +29,21 @@
 .logo-title {
   font-size: 22px;
   margin: 0;
-  color: #d7e9e9;
+  color: #0D0F1E;
 
 }
 .nav-menu{
 
   display: flex;
   flex-direction: row;
-  gap: 15px;
-  color: #d7e9e9;
-  font-size: large;
+  align-items: center;
+  gap: 24px;
+  color: #475569;
+  font-size: 15px;
 
 }
 .menu-item{
+  position: relative;
 
   cursor: pointer;
 
@@ -55,62 +53,91 @@
   justify-content: center;
 
 }
+.menu-item a{
+  color: inherit;
+  text-decoration: none;
+}
+.menu-item a.active{
+  color: #ED1B24;
+}
 .menu-item-border{
-
+  border: none;
+  height: 2px;
   width: 0;
-  transition: all 0.5s;
+  background-color: #ED1B24;
+  transition: all 0.25s;
 }
 .menu-item:hover .menu-item-border{
 
   width: 100%;
 
 }
+.menu-item-button{
+  position: relative;
+}
 .menu-button{
-
   cursor: pointer;
   display: flex;
   flex-direction: row;
-
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: #475569;
+  font-size: 15px;
+  font-family: inherit;
 }
 .Arrow-button-normal{
-  transition: all 0.5s;
+  transition: transform 0.25s;
   transform: rotate(0deg);
+  width: 16px;
+  height: 16px;
   
 }
 .Arrow-button-down{
   
-  transition: all 0.5s;
+  transition: transform 0.25s;
   transform: rotate(90deg);
+  width: 16px;
+  height: 16px;
 
 }
-.none{
-  
-  height: 0;
-  opacity: 0;
-  position: fixed;
-  transition: all 0s;
-}
 
-
-.block{
-  opacity: 1;
-  height: auto;
+/* Dropdown de líneas: siempre position:absolute, se anima con
+   opacity/visibility en vez de display:none para que la transición
+   sea suave y no salte entre "fixed" y "absolute". pointer-events:none
+   evita clickear items invisibles mientras está cerrado. */
+   
+.dropdown-menu{
   position: absolute;
+  top: 100%;
+  right: 0;
   margin-top: 7px;
-  background-color: red;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
   z-index: 1;
-  border-radius: 5px;
-  padding: 15px;
-  filter: drop-shadow(2px 2px 5px black);
-  font-family: 'Montserrat',sans-serif;
-  font-weight: 700;
-  transition:  opacity 0.7s, height 0.4s;
-  
-
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 180px;
+  background-color: #ffffff;
+  border: 1px solid #ED1B24;
+  box-shadow: 2px 4px 12px rgba(13, 15, 30, 0.15);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
 }
-.block li{
-
+.dropdown-menu-open{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.dropdown-menu li{
+  list-style: none;
+  padding: 6px 4px;
   cursor: pointer;
-
+  color: #0D0F1E;
 }
-
+.dropdown-menu li:hover{
+  color: #ED1B24;
+}

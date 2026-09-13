@@ -1,24 +1,30 @@
 import React from 'react'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import './Header.css'
 import logo from '../assets/img/Logo.jpg'
 import { ChevronRight } from 'lucide-react';
-import { use } from 'react';
 
 const Header = () => {
 
-  const [display,setDisplay] = useState('none');
-  const [arrow,setArrow] = useState('normal')
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [arrow, setArrow] = useState('normal')
+  // Guarda el id del setTimeout de cierre para poder cancelarlo si el
+  // mouse vuelve a entrar antes de que se cumpla el delay. Sin esto,
+  // entrar y salir rápido podía dejar varios timeouts compitiendo entre sí.
+  const closeTimeoutRef = useRef(null)
 
-  const showMenu = (e) => {
+  const handleMenuEnter = () => {
+    clearTimeout(closeTimeoutRef.current)
+    setIsMenuOpen(true)
+    setArrow('down')
+  }
 
-    display === 'none' ? setTimeout(() => {
-      setDisplay('block')
-      setArrow('down')
-    }, 0)  : setTimeout(() => {
-      setDisplay('none');
-      setArrow('normal');
-    }, 1500) 
+  const handleMenuLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsMenuOpen(false)
+      setArrow('normal')
+    }, 250)
   }
 
 
@@ -37,25 +43,29 @@ const Header = () => {
         </div>
         <nav>
           <ul className='nav-menu'>
-            <li className='menu-item' ><a>Inicio</a><hr className='menu-item-border'/></li>
+            <li className='menu-item' >
+              <NavLink to="/" end className={({ isActive }) => isActive ? 'active' : undefined}>Inicio</NavLink>
+              <hr className='menu-item-border'/>
+            </li>
+            {/* Abonos, Tarifas y Puntos de recarga todavía no tienen página/Route propia */}
             <li className='menu-item' ><a>Abonos</a><hr className='menu-item-border'/></li>
             <li className='menu-item' ><a>Tarifas</a><hr className='menu-item-border'/></li>
             <li className='menu-item' >
               <a>Puntos de recarga</a><hr className='menu-item-border'/></li>
-            <li className='menu-item-button'>
-              <button className='menu-button'
-                        onMouseEnter={e => showMenu(e)}
-              >Horarios <ChevronRight className={`Arrow-button-${arrow}`} /></button>
-              <ul className={display}
-                  onMouseLeave={e => showMenu(e)}
-              
-              >
-                <li>Florida por Posse</li>
-                <li>Florida por Alderetes</li>
-                <li>Florida por Alternativa</li>
-                <li>W.Posse</li>
-                <li>Las cejas</li>
-                <li>Los Ralos</li>
+            <li className='menu-item-button'
+                onMouseEnter={handleMenuEnter}
+                onMouseLeave={handleMenuLeave}
+            >
+              <button className='menu-button'>
+                Horarios <ChevronRight className={`Arrow-button-${arrow}`} />
+              </button>
+              <ul className={`dropdown-menu ${isMenuOpen ? 'dropdown-menu-open' : ''}`}>
+                <li><NavLink to="/horarios/florida-posse">Florida por Posse</NavLink></li>
+                <li><NavLink to="/horarios/florida-alderetes">Florida por Alderetes</NavLink></li>
+                <li><NavLink to="/horarios/florida-alternativa">Florida por Alternativa</NavLink></li>
+                <li><NavLink to="/horarios/w-posse">W.Posse</NavLink></li>
+                <li><NavLink to="/horarios/las-cejas">Las cejas</NavLink></li>
+                <li><NavLink to="/horarios/los-ralos">Los Ralos</NavLink></li>
               </ul>
             </li>
           </ul>

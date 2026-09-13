@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { lineas } from '../data/lineas'
 import { getProximoHorario } from '../utils/horarios'
 import { acortarRecorrido } from '../utils/texto'
@@ -10,6 +11,10 @@ import { ArrowLeftRight, ChevronRight,Clock } from 'lucide-react';
 
 
 const CardSection = () => {
+  // useNavigate nos da una función para cambiar de URL desde código,
+  // a diferencia de NavLink que lo hace por click directo del usuario.
+  const navigate = useNavigate()
+
   // Guarda, por línea, qué sentido está mostrando la card: 'ida' (hacia Tuc)
   // o 'vuelta' (desde Tuc). Arranca en 'ida' porque es el caso más común:
   // alguien en su barrio que quiere saber cuándo sale el próximo hacia capital.
@@ -34,8 +39,7 @@ const CardSection = () => {
   }
 
   const handleVerHorarios = (lineaId) => {
-    // TODO: redireccionar a la vista de horarios completos de la línea
-    console.log('Ver horarios completos de:', lineaId)
+    navigate(`/horarios/${lineaId}`)
   }
 
   return (
@@ -66,9 +70,13 @@ const CardSection = () => {
                 <>
                   
                   <hr />
-                  
+                  <br/>
                   <span className="card-hora">
-                    {proximo.esDeManiana ? 'Mañana' : (
+                    {proximo.esDeManiana ? (
+
+                        <h3 className='card-movil'>MAÑANA</h3>
+
+                    ) : (
                       
                         <h3 className='card-movil'>PRÓXIMO SERVICIO</h3>
                        

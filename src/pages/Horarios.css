@@ -1,0 +1,173 @@
+.horarios-page {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.horarios-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.horarios-kicker {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ED1B24;
+}
+
+.horarios-titulo {
+  margin: 0;
+  font-weight: 900;
+  font-size: 36px;
+  color: #0D0F1E;
+}
+
+.horarios-subtitulo {
+  margin: 0;
+  font-size: 14px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.horarios-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.horarios-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #ED1B24;
+  background-color: #ffffff;
+  color: #ED1B24;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.horarios-toggle:hover:not(:disabled) {
+  background-color: #ED1B241a;
+}
+.horarios-toggle:disabled {
+  border-color: #e2e8f0;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.horarios-proximo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  font-weight: 500;
+}
+.horarios-proximo-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #475569;
+}
+.horarios-proximo-hora {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;
+  color: #0D0F1E;
+}
+.horarios-proximo-hora svg {
+  color: #2D308D;
+}
+
+.horarios-tabla {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.horarios-tabla-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background-color: #D7E9E9;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #475569;
+}
+
+.horarios-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-top: 1px solid #e2e8f0;
+  transition: opacity 0.2s;
+}
+
+.horarios-fila-hora {
+  font-weight: 700;
+  color: #0D0F1E;
+  min-width: 70px;
+}
+
+.horarios-fila-recorrido {
+  color: #475569;
+  font-size: 14px;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.horarios-fila--pasada {
+  opacity: 0.4;
+}
+
+.horarios-fila--proxima {
+  background-color: #ED1B240d;
+  border-left: 4px solid #ED1B24;
+  padding-left: 16px;
+}
+.horarios-fila--proxima .horarios-fila-hora {
+  color: #ED1B24;
+}
+
+.horarios-sin-datos {
+  text-align: center;
+  color: #475569;
+  padding: 24px;
+}
+
+.horarios-volver {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #0D0F1E;
+  font-weight: 600;
+  cursor: pointer;
+}
+.horarios-volver:hover {
+  border-color: #ED1B24;
+  color: #ED1B24;
+}
