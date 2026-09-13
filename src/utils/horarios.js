@@ -5,7 +5,7 @@
 // se considera parte de la noche anterior, no del día que recién empieza.
 const INICIO_DIA_SERVICIO = 3 * 60 // 3:00 en minutos
 
-const aOrdenDelDia = (hora) => {
+export const aOrdenDelDia = (hora) => {
   const [h, m] = hora.split(':').map(Number)
   let minutos = h * 60 + m
   if (h < 3) minutos += 24 * 60 // "madruga" -> va al final del día anterior
