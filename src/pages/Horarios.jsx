@@ -63,8 +63,8 @@ const Horarios = () => {
   return (
     <section className="horarios-page">
       <div className="horarios-hero">
-        <p className="horarios-kicker">Horarios para ir a la terminal</p>
         <h1 className="horarios-titulo">{linea.nombre}</h1>
+        <p className="horarios-kicker">{datos.sentido[0] === 'T' ? 'Desde Terminal' : 'Hacia Terminal'}</p>
         {datos && (
           <p className="horarios-subtitulo">
             {datos.sentido} · Actualizado {datos.actualizado}
