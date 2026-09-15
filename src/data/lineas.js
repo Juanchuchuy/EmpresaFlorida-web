@@ -21,13 +21,7 @@ import floridaAlderetesVuelta from './horarios/floridaXalderetes.json'
 // Las líneas sin JSON todavía (Florida x Alternativa, 4 de Mayo) quedan en null
 // y la card lo va a mostrar como "horario no disponible".
 export const lineas = [
-  {
-    id: 'florida-alternativa',
-    nombre: 'Florida x Alternativa',
-    imagen: floridaAlternativa,
-    ida: null,
-    vuelta: null,
-  },
+  
   {
     id: 'florida-posse',
     nombre: 'Florida x Posse',
