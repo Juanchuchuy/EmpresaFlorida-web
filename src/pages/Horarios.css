@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .horarios-hero {
@@ -27,6 +26,7 @@
 
 .horarios-titulo {
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
   font-size: 36px;
   color: #0D0F1E;
@@ -34,118 +34,187 @@
 
 .horarios-subtitulo {
   margin: 0;
+  font-family: 'Montserrat',sans-serif;
+  font-weight: 600;
   font-size: 14px;
   color: #475569;
-  font-weight: 600;
 }
 
-.horarios-toggle-row {
+.horarios-proximo-destacado {
+  align-self: center;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background-color: #ED1B240d;
+  border: 1px solid #ED1B2433;
 }
-
-.horarios-toggle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: 8px;
-  border: 1px solid #ED1B24;
-  background-color: #ffffff;
-  color: #ED1B24;
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-.horarios-toggle:hover:not(:disabled) {
-  background-color: #ED1B241a;
-}
-.horarios-toggle:disabled {
-  border-color: #e2e8f0;
-  color: #94a3b8;
-  cursor: not-allowed;
-}
-
-.horarios-proximo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
-  font-weight: 500;
-}
-.horarios-proximo-label {
-  font-size: 11px;
+.proximo-destacado-label {
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
   color: #475569;
 }
-.horarios-proximo-hora {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 18px;
-  color: #0D0F1E;
-}
-.horarios-proximo-hora svg {
-  color: #2D308D;
+.proximo-destacado-hora {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #ED1B24;
 }
 
 .horarios-tabla {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(13, 15, 30, 0.05);
   overflow: hidden;
 }
 
 .horarios-tabla-header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
-  background-color: #D7E9E9;
-  font-size: 11px;
-  text-transform: uppercase;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 24px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.horarios-tabla-titulo {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
+  font-size: 18px;
+  color: #0D0F1E;
+}
+
+.horarios-tabla-subtitulo {
+  margin: 4px 0 0;
+  font-size: 13px;
   color: #475569;
+}
+
+.horarios-tabla-acciones {
+  display: flex;
+  gap: 10px;
+}
+
+.horarios-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #475569;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.horarios-pill:hover:not(:disabled) {
+  border-color: #ED1B24;
+  color: #ED1B24;
+}
+.horarios-pill:disabled {
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.horarios-columnas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
 }
 
 .horarios-fila {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 14px 20px;
-  border-top: 1px solid #e2e8f0;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 2px solid #2127cf;
   transition: opacity 0.2s;
 }
+.horarios-fila:last-child {
+  border-bottom: none;
+}
 
-.horarios-fila-hora {
-  font-weight: 700;
+.col-recorrido {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 40%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
   color: #0D0F1E;
-  min-width: 70px;
+}
+.fila-barra {
+  width: 6px;
+  height: 22px;
+  border-radius: 4px;
+  background-color: #ED1B24;
+  flex-shrink: 0;
 }
 
-.horarios-fila-recorrido {
+.col-destino {
+  width: 25%;
+  font-size: 15px;
   color: #475569;
-  font-size: 14px;
-  text-align: right;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
-.horarios-fila--pasada {
-  opacity: 0.4;
+.col-hora {
+  width: 15%;
+  font-weight: 700;
+  font-size: 15px;
+  color: #0D0F1E;
+}
+
+.col-estado {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 20%;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+}
+.estado-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+.estado-dot--paso {
+  background-color: #94a3b8;
+}
+.estado-dot--proximo {
+  background-color: #ED1B24;
+}
+.estado-dot--programado {
+  background-color: #2D308D;
 }
 
 .horarios-fila--proxima {
   background-color: #ED1B240d;
-  border-left: 4px solid #ED1B24;
-  padding-left: 16px;
 }
-.horarios-fila--proxima .horarios-fila-hora {
+.horarios-fila--proxima .fila-barra {
+  background-color: #ED1B24;
+}
+.horarios-fila--proxima .col-estado {
   color: #ED1B24;
+  font-weight: 600;
 }
 
 .horarios-sin-datos {
@@ -170,4 +239,77 @@
 .horarios-volver:hover {
   border-color: #ED1B24;
   color: #ED1B24;
+}
+
+/* Responsive: por debajo de este ancho la tabla de 4 columnas no entra
+   cómoda, así que cada fila pasa a apilarse como una mini-card, con el
+   nombre de cada columna mostrado arriba del valor (usando el
+   data-label que puso Horarios.jsx en cada celda). */
+@media (max-width: 720px) {
+  .horarios-page {
+    padding: 24px 16px 48px;
+    gap: 20px;
+  }
+
+  .horarios-titulo {
+    font-size: 26px;
+  }
+
+  .horarios-tabla-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .horarios-tabla-acciones {
+    width: 100%;
+  }
+
+  .horarios-pill {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .horarios-columnas {
+    display: none;
+  }
+
+  .horarios-fila {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .col-recorrido,
+  .col-destino,
+  .col-hora,
+  .col-estado {
+    width: 100%;
+  }
+
+  .col-recorrido {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .col-recorrido .fila-barra {
+    display: none;
+  }
+
+  .col-destino,
+  .col-hora {
+    display: block;
+  }
+
+  .col-recorrido::before,
+  .col-destino::before,
+  .col-hora::before,
+  .col-estado::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 2px;
+  }
 }

@@ -4,10 +4,11 @@ import { lineas } from '../data/lineas'
 import { paradasPorLinea } from '../data/paradas'
 import { aOrdenDelDia, acortarRecorrido, getProximoHorario } from '../utils/horarios'
 import ParadasCarousel from '../components/ParadasCarousel'
+
 import './Horarios.css'
 
 // Icons
-import { ArrowLeft, ArrowLeftRight, Clock } from 'lucide-react'
+import { ArrowLeft, ArrowLeftRight, SlidersHorizontal, ArrowRightFromLine } from 'lucide-react'
 
 const Horarios = () => {
   // useParams lee los "segmentos dinámicos" definidos en la Route,
@@ -43,11 +44,10 @@ const Horarios = () => {
   const listaHorarios = datos?.horarios ?? []
   const puedeCambiarSentido = Boolean(linea.ida && linea.vuelta)
   const ordenAhora = aOrdenDelDia(`${ahora.getHours()}:${ahora.getMinutes()}`)
+  // El campo "sentido" viene como "Florida x Posse → Terminal": el destino
+  // real de este viaje es lo que queda después de la flecha.
+  const destino = datos?.sentido?.split('→')[1]?.trim() ?? linea.nombre
 
-  // Si ya tenemos las paradas reales de esta línea (con fotos), las
-  // usamos siempre que se muestre la página, sin importar el sentido.
-  // Si no, armamos una lista mínima a partir del recorrido corto del
-  // próximo horario, como veníamos haciendo antes.
   const paradasCuradas = paradasPorLinea[lineaId]
   const paradas = paradasCuradas
     ? paradasCuradas
@@ -55,85 +55,129 @@ const Horarios = () => {
       ? proximo.recorrido.split('/').map((p) => ({ nombre: p.trim() }))
       : []
 
-  // Marca como "próxima" la primera fila que todavía no pasó (y solo si
-  // el próximo servicio es hoy; si ya es de mañana, ninguna fila de la
-  // lista de hoy debería quedar resaltada).
-  let yaMarcoProxima = false
+  // Recorremos la lista una sola vez llevando la cuenta de cuántas filas
+  // "futuras" ya vimos, para poder ir apagando la opacidad a medida que
+  // nos alejamos del próximo servicio (igual que en el diseño de Figma,
+  // pero acá el criterio es real: cuánto falta según el reloj, no un
+  // estado de GPS inventado).
+  let indiceFuturo = -1
 
   return (
     <section className="horarios-page">
       <div className="horarios-hero">
         <h1 className="horarios-titulo">{linea.nombre}</h1>
-        <p className="horarios-kicker">{datos.sentido[0] === 'T' ? 'Desde Terminal' : 'Hacia Terminal'}</p>
         {datos && (
-          <p className="horarios-subtitulo">
-            {datos.sentido} · Actualizado {datos.actualizado}
-          </p>
+          <>
+            <p className="horarios-kicker">
+              {datos.sentido[0] === 'T' ? 'Desde Terminal' : 'Hacia Terminal'}
+            </p>
+            <p className="horarios-subtitulo">
+              {datos.sentido} · Actualizado {datos.actualizado}
+            </p>
+          </>
         )}
       </div>
 
-      <div className="horarios-toggle-row">
-        <button
-          type="button"
-          className="horarios-toggle"
-          disabled={!puedeCambiarSentido}
-          onClick={() => setSentido((s) => (s === 'ida' ? 'vuelta' : 'ida'))}
-        >
-          <ArrowLeftRight size={16} />
-          {sentido === 'ida' ? 'Ver vuelta (desde Terminal)' : 'Ver ida (hacia Terminal)'}
-        </button>
-
-        {proximo && (
-          <div className="horarios-proximo">
-            <span className="horarios-proximo-label">Próximo servicio</span>
-            <strong className="horarios-proximo-hora">
-              <Clock size={16} />
-              {proximo.hora} {proximo.esDeManiana ? '(mañana)' : ''}
-            </strong>
-          </div>
-        )}
-      </div>
+      {proximo && (
+        <div className="horarios-proximo-destacado">
+          <span className="proximo-destacado-label">Próximo servicio</span>
+          <strong className="proximo-destacado-hora">
+            {proximo.hora}
+            {proximo.esDeManiana ? ' · mañana' : ''}
+          </strong>
+        </div>
+      )}
 
       <ParadasCarousel
         paradas={paradas}
         titulo={paradasCuradas ? 'Recorrido completo' : 'Recorrido del próximo servicio'}
       />
 
-      {listaHorarios.length === 0 ? (
-        <p className="horarios-sin-datos">
-          Todavía no tenemos el cronograma cargado para este sentido.
-        </p>
-      ) : (
-        <div className="horarios-tabla">
-          <div className="horarios-tabla-header">
-            <span>Hora</span>
-            <span>Recorrido</span>
+      <div className="horarios-tabla">
+        <div className="horarios-tabla-header">
+          <div>
+            <p className="horarios-tabla-titulo">Próximas Salidas</p>
+            <p className="horarios-tabla-subtitulo">
+              Estado según el horario cargado, no es ubicación en vivo
+            </p>
           </div>
-          {listaHorarios.map((item, idx) => {
-            const yaPaso = aOrdenDelDia(item.hora) < ordenAhora
-            const esProxima = !yaPaso && !proximo?.esDeManiana && !yaMarcoProxima
-            if (esProxima) yaMarcoProxima = true
-
-            return (
-              <div
-                key={`${item.hora}-${idx}`}
-                className={[
-                  'horarios-fila',
-                  yaPaso && 'horarios-fila--pasada',
-                  esProxima && 'horarios-fila--proxima',
-                ]
-                  .filter(Boolean)
-                  .join(' ')}
-              >
-                <span className="horarios-fila-hora">{item.hora}</span>
-                <span className="horarios-fila-recorrido" title={item.recorrido}>
-                  {acortarRecorrido(item.recorrido)}
-                </span>
-              </div>
-            )
-          })}
+          <div className="horarios-tabla-acciones">
+            <button type="button" className="horarios-pill" onClick={() => navigate('/')}>
+              <SlidersHorizontal size={14} /> Elegir otra Línea
+            </button>
+            <button
+              type="button"
+              className="horarios-pill"
+              disabled={!puedeCambiarSentido}
+              onClick={() => setSentido((s) => (s === 'ida' ? 'vuelta' : 'ida'))}
+            >
+              <ArrowLeftRight size={14} /> Cambiar Orientación
+            </button>
+          </div>
         </div>
-      )}
+
+        {listaHorarios.length === 0 ? (
+          <p className="horarios-sin-datos">
+            Todavía no tenemos el cronograma cargado para este sentido.
+          </p>
+        ) : (
+          <>
+            <div className="horarios-columnas">
+              <span className="col-recorrido">Recorrido</span>
+              <span className="col-destino">Destino</span>
+              <span className="col-hora">Hora de Salida</span>
+              <span className="col-estado">Estado</span>
+            </div>
+
+            {listaHorarios.map((item, idx) => {
+              const yaPaso = aOrdenDelDia(item.hora) < ordenAhora
+              let opacidad = 1
+              let estado = 'programado'
+              let etiquetaEstado = 'Programado'
+
+              if (yaPaso) {
+                opacidad = 0.4
+                estado = 'paso'
+                etiquetaEstado = 'Ya salió'
+              } else {
+                indiceFuturo += 1
+                const esProxima = indiceFuturo === 0 && !proximo?.esDeManiana
+                if (esProxima) {
+                  estado = 'proximo'
+                  etiquetaEstado = 'Próximo'
+                } else if (indiceFuturo <= 1) {
+                  opacidad = 1
+                } else if (indiceFuturo === 2) {
+                  opacidad = 0.7
+                } else if (indiceFuturo === 3) {
+                  opacidad = 0.5
+                } else {
+                  opacidad = 0.35
+                }
+              }
+
+              return (
+                <div
+                  key={`${item.hora}-${idx}`}
+                  className={`horarios-fila ${estado === 'proximo' ? 'horarios-fila--proxima' : ''}`}
+                  style={{ opacity: opacidad }}
+                >
+                  <div className="col-recorrido" data-label="Recorrido">
+                    <span className="fila-barra" />
+                    <span title={item.recorrido}>{acortarRecorrido(item.recorrido)}</span>
+                  </div>
+                  <span className="col-destino" data-label="Destino">{destino}</span>
+                  <span className="col-hora" data-label="Hora de Salida">{item.hora}</span>
+                  <div className="col-estado" data-label="Estado">
+                    <span className={`estado-dot estado-dot--${estado}`} />
+                    {etiquetaEstado}
+                  </div>
+                </div>
+              )
+            })}
+          </>
+        )}
+      </div>
 
       <button type="button" className="horarios-volver" onClick={() => navigate('/')}>
         <ArrowLeft size={16} /> Volver al inicio
