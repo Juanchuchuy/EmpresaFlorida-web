@@ -5,6 +5,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 40px;
+  padding-top: calc(16px + env(safe-area-inset-top, 0px));
+  padding-right: calc(40px + env(safe-area-inset-right, 0px));
+  padding-bottom: 16px;
+  padding-left: calc(40px + env(safe-area-inset-left, 0px));
   background-color: #fffffffa;
   box-shadow: 4px 0px 10px black;
   font-family: 'Montserrat', sans-serif;
@@ -161,6 +165,10 @@
 @media (max-width: 860px){
   .app-header{
     padding: 14px 20px;
+    padding-top: calc(14px + env(safe-area-inset-top, 0px));
+    padding-right: calc(20px + env(safe-area-inset-right, 0px));
+    padding-bottom: 14px;
+    padding-left: calc(20px + env(safe-area-inset-left, 0px));
   }
   .menu-toggle{
     display: flex;
@@ -175,6 +183,7 @@
     border-bottom: 1px solid #e2e8f0;
     box-shadow: 0 8px 16px rgba(13, 15, 30, 0.08);
     padding: 8px 20px 16px;
+    padding: 8px calc(20px + env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) calc(20px + env(safe-area-inset-left, 0px));
   }
   .main-nav-open{
     display: block;

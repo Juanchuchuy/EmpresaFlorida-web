@@ -10,6 +10,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 35px;
   padding: 32px 20px;
+  padding: 32px calc(20px + env(safe-area-inset-right, 0px)) calc(32px + env(safe-area-inset-bottom, 0px)) calc(20px + env(safe-area-inset-left, 0px));
   max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;

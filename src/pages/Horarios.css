@@ -3,6 +3,7 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 40px 24px 64px;
+  padding: 40px calc(24px + env(safe-area-inset-right, 0px)) calc(64px + env(safe-area-inset-bottom, 0px)) calc(24px + env(safe-area-inset-left, 0px));
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -248,6 +249,7 @@
 @media (max-width: 720px) {
   .horarios-page {
     padding: 24px 16px 48px;
+    padding: 24px calc(16px + env(safe-area-inset-right, 0px)) calc(48px + env(safe-area-inset-bottom, 0px)) calc(16px + env(safe-area-inset-left, 0px));
     gap: 20px;
   }
 
