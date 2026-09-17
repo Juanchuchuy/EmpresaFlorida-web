@@ -1,0 +1,8 @@
+{
+	"appId": "com.empresaflorida.horarios",
+	"appName": "Empresa Florida",
+	"webDir": "dist",
+	"server": {
+		"androidScheme": "https"
+	}
+}
