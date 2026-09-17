@@ -39,7 +39,8 @@ const CardSection = () => {
   }
 
   const handleVerHorarios = (lineaId) => {
-    navigate(`/horarios/${lineaId}`)
+    const sentido = sentidos[lineaId] ?? 'ida'
+    navigate(`/horarios/${lineaId}?sentido=${sentido}`)
   }
 
   return (

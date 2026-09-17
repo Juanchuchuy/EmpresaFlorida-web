@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { lineas } from '../data/lineas'
 import { paradasPorLinea } from '../data/paradas'
 import { aOrdenDelDia, acortarRecorrido, getProximoHorario } from '../utils/horarios'
@@ -8,15 +8,24 @@ import ParadasCarousel from '../components/ParadasCarousel'
 import './Horarios.css'
 
 // Icons
-import { ArrowLeft, ArrowLeftRight, SlidersHorizontal, ArrowRightFromLine } from 'lucide-react'
+import { ArrowLeft, ArrowLeftRight, SlidersHorizontal, ArrowRightFromLine,ArrowBigDownDash } from 'lucide-react'
 
 const Horarios = () => {
   // useParams lee los "segmentos dinámicos" definidos en la Route,
   // en este caso ":lineaId" -> App.jsx define <Route path="/horarios/:lineaId" .../>
   const { lineaId } = useParams()
   const navigate = useNavigate()
+  // Si venimos de la card del inicio, ésta ya nos dice en qué sentido
+  // estaba el usuario (?sentido=vuelta), para no hacerlo perder la
+  // orientación al pasar de una vista a la otra.
+  const [searchParams] = useSearchParams()
+  const sentidoInicial = searchParams.get('sentido') === 'vuelta' ? 'vuelta' : 'ida'
 
-  const [sentido, setSentido] = useState('ida')
+  const [sentido, setSentido] = useState(sentidoInicial)
+
+  // Referencia a la fila marcada como "Próximo" en la tabla, para poder
+  // saltar directo ahí desde el botón de abajo del pill destacado.
+  const filaProximaRef = useRef(null)
 
   // Mismo patrón que en CardSection: fuerza un re-render cada 30s para
   // que "próximo servicio" y las filas ya pasadas se actualicen solas.
@@ -79,12 +88,23 @@ const Horarios = () => {
       </div>
 
       {proximo && (
-        <div className="horarios-proximo-destacado">
-          <span className="proximo-destacado-label">Próximo servicio</span>
-          <strong className="proximo-destacado-hora">
-            {proximo.hora}
-            {proximo.esDeManiana ? ' · mañana' : ''}
-          </strong>
+        <div className="horarios-proximo-destacado-wrap">
+          <div className="horarios-proximo-destacado">
+            <span className="proximo-destacado-label">Próximo servicio</span>
+            <strong className="proximo-destacado-hora">
+              {proximo.hora}
+              {proximo.esDeManiana ? ' · mañana' : ''}
+            </strong>
+          </div>
+          {!proximo.esDeManiana && (
+            <button
+              type="button"
+              className="horarios-ir-al-proximo"
+              onClick={() => filaProximaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+            >
+              <strong>Ver Horario</strong><ArrowBigDownDash size={30}/>
+            </button>
+          )}
         </div>
       )}
 
@@ -159,6 +179,7 @@ const Horarios = () => {
               return (
                 <div
                   key={`${item.hora}-${idx}`}
+                  ref={estado === 'proximo' ? filaProximaRef : null}
                   className={`horarios-fila ${estado === 'proximo' ? 'horarios-fila--proxima' : ''}`}
                   style={{ opacity: opacidad }}
                 >
