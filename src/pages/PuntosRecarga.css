@@ -1,0 +1,311 @@
+.puntos-recarga-page {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.puntos-recarga-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.puntos-recarga-kicker {
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #475569;
+  background-color: #f1f5f9;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.puntos-recarga-titulo {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 32px;
+  color: #0D0F1E;
+}
+
+.puntos-recarga-subtitulo {
+  margin: 0;
+  font-size: 14px;
+  color: #475569;
+  max-width: 520px;
+}
+
+/* Banner de precio: fondo oscuro con acento rojo a la izquierda,
+   calcado del bloque "PRECIO ÚNICO DE LA TARJETA" del Figma. */
+.puntos-recarga-precio-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background-color: #0D0F1E;
+  border-radius: 12px;
+  padding: 18px 24px;
+  border-left: 4px solid #ED1B24;
+}
+
+.precio-banner-izquierda {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.precio-banner-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.precio-banner-monto {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.precio-banner-derecha {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #e2e8f0;
+  font-size: 13px;
+  max-width: 260px;
+}
+.precio-banner-derecha svg {
+  color: #ED1B24;
+  flex-shrink: 0;
+}
+
+/* Carrusel de puntos */
+.puntos-recarga-carrusel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.puntos-recarga-carrusel-flecha {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #0D0F1E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(13, 15, 30, 0.08);
+}
+.puntos-recarga-carrusel-flecha:hover {
+  border-color: #ED1B24;
+  color: #ED1B24;
+}
+
+.puntos-recarga-carrusel-pista {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 2px 8px;
+}
+.puntos-recarga-carrusel-pista::-webkit-scrollbar {
+  height: 6px;
+}
+.puntos-recarga-carrusel-pista::-webkit-scrollbar-thumb {
+  background-color: #e2e8f0;
+  border-radius: 999px;
+}
+
+.punto-card {
+  flex: 0 0 200px;
+  scroll-snap-align: start;
+  text-align: left;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: inherit;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.punto-card:hover {
+  border-color: #ED1B24;
+}
+.punto-card--seleccionada {
+  background-color: #0D0F1E;
+  border-color: #0D0F1E;
+}
+
+.punto-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.punto-card-numero {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #2D308D;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.punto-card--seleccionada .punto-card-numero {
+  background-color: #ED1B24;
+}
+
+.punto-card-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+.punto-card-badge--oficial {
+  background-color: #2D308D1a;
+  color: #2D308D;
+}
+.punto-card-badge--comercio {
+  background-color: #ED1B241a;
+  color: #ED1B24;
+}
+.punto-card--seleccionada .punto-card-badge--oficial,
+.punto-card--seleccionada .punto-card-badge--comercio {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.punto-card-nombre {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  color: #0D0F1E;
+}
+.punto-card--seleccionada .punto-card-nombre {
+  color: #ffffff;
+}
+
+.punto-card-direccion,
+.punto-card-horario {
+  margin: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.4;
+}
+.punto-card-direccion svg,
+.punto-card-horario svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #94a3b8;
+}
+.punto-card--seleccionada .punto-card-direccion,
+.punto-card--seleccionada .punto-card-horario {
+  color: #cbd5e1;
+}
+.punto-card--seleccionada .punto-card-direccion svg,
+.punto-card--seleccionada .punto-card-horario svg {
+  color: #cbd5e1;
+}
+
+/* Mapa */
+.puntos-recarga-mapa-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(13, 15, 30, 0.05);
+}
+
+.puntos-recarga-mapa {
+  width: 100%;
+  height: 420px;
+}
+
+.punto-recarga-icono span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50% 50% 50% 0;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(13, 15, 30, 0.35);
+  transform: rotate(-45deg);
+}
+.punto-recarga-icono--comercio span {
+  background-color: #ED1B24;
+}
+.punto-recarga-icono--oficial span {
+  background-color: #2D308D;
+}
+.punto-recarga-icono--seleccionado span {
+  box-shadow: 0 0 0 4px rgba(13, 15, 30, 0.15), 0 2px 6px rgba(13, 15, 30, 0.35);
+}
+
+/* Footer: nota + leyenda */
+.puntos-recarga-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.puntos-recarga-nota {
+  margin: 0;
+  font-size: 12px;
+  color: #94a3b8;
+}
+.puntos-recarga-leyenda {
+  display: flex;
+  gap: 16px;
+}
+.leyenda-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #475569;
+}
+.leyenda-punto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.leyenda-punto--oficial {
+  background-color: #2D308D;
+}
+.leyenda-punto--comercio {
+  background-color: #ED1B24;
+}
+
+@media (max-width: 720px) {
+  .puntos-recarga-page {
+    padding: 24px 16px 48px;
+  }
+  .puntos-recarga-mapa {
+    height: 320px;
+  }
+  .puntos-recarga-precio-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

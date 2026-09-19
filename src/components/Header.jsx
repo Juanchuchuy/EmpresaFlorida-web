@@ -70,11 +70,11 @@ const Header = () => {
               <NavLink to="/" end onClick={cerrarMenuMovil} className={({ isActive }) => isActive ? 'active' : undefined}>Inicio</NavLink>
               <hr className='menu-item-border'/>
             </li>
-            {/* Abonos, Tarifas y Puntos de recarga todavía no tienen página/Route propia */}
+            {/* Abonos y Tarifas todavía no tienen página/Route propia */}
             <li className='menu-item' ><a onClick={cerrarMenuMovil}>Abonos</a><hr className='menu-item-border'/></li>
             <li className='menu-item' ><a onClick={cerrarMenuMovil}>Tarifas</a><hr className='menu-item-border'/></li>
             <li className='menu-item' >
-              <a onClick={cerrarMenuMovil}>Puntos de recarga</a><hr className='menu-item-border'/></li>
+              <NavLink to="/puntos-recarga" onClick={cerrarMenuMovil} className={({ isActive }) => isActive ? 'active' : undefined}>Puntos de recarga</NavLink><hr className='menu-item-border'/></li>
             <li className='menu-item-button'
                 onMouseEnter={handleMenuEnter}
                 onMouseLeave={handleMenuLeave}

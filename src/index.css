@@ -10,6 +10,9 @@ body{
   --sab: env(safe-area-inset-bottom, 0px);
   --sal: env(safe-area-inset-left, 0px);
   --sar: env(safe-area-inset-right, 0px);
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+}
 }
 
 @import "tailwindcss";
@@ -20,6 +23,11 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   background-color: aliceblue;
+  font-family: var(--font-body);
   -webkit-tap-highlight-color: transparent;
 }
-}
+
+
+
+    
+
