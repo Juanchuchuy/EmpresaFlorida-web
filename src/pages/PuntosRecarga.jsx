@@ -48,13 +48,13 @@ const PuntosRecarga = () => {
 
   return (
     <section className="puntos-recarga-page">
-      <div className="puntos-recarga-hero">
+      {/* <div className="puntos-recarga-hero">
         <span className="puntos-recarga-kicker">Conseguí tu tarjeta Independencia</span>
         <h1 className="puntos-recarga-titulo">Puntos de Venta</h1>
         <p className="puntos-recarga-subtitulo">
           Encontrá el local más cercano a vos y visitanos en el horario que mejor te quede.
         </p>
-      </div>
+      </div> */}
 
       <PriceCard></PriceCard>
 
@@ -79,7 +79,6 @@ const PuntosRecarga = () => {
                 onClick={() => setSeleccionadoId(estaSeleccionado ? null : punto.id)}
               >
                 <div className="punto-card-header">
-                  <span className="punto-card-numero">{punto.numero}</span>
                   <span className={`punto-card-badge punto-card-badge--${punto.tipo}`}>
                     {punto.tipo === 'oficial' ? 'Oficial' : 'Comercio'}
                   </span>
