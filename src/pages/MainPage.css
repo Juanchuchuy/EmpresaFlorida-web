@@ -1,0 +1,140 @@
+.main-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 120px 24px;
+  min-height: 80vh;
+}
+
+.main-page-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 720px;
+  max-width: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  animation: watermark-entrada 1.2s ease-out 0.15s forwards;
+}
+
+.main-page-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  opacity: 0;
+  animation: contenido-entrada 0.7s ease-out 0.2s forwards;
+}
+
+@keyframes watermark-entrada {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+  to {
+    opacity: 0.08;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes contenido-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main-page-watermark,
+  .main-page-content {
+    animation: none;
+    opacity: 0.08;
+  }
+  .main-page-content {
+    opacity: 1;
+  }
+}
+
+.main-page-titulo {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 7em;
+  line-height: 1;
+  text-align: center;
+  color: #2769aa;
+}
+
+.main-page-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.main-page-boton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 236px;
+  height: 64px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ED1B24;
+  box-shadow: 0px 8px 18px 0px rgba(159, 23, 38, 0.2);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.main-page-boton:hover:not(:disabled) {
+  background-color: #c9151d;
+  transform: translateY(-1px);
+}
+
+.main-page-boton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .main-page {
+    padding: 80px 20px;
+  }
+
+  .main-page-titulo {
+    font-size: 52px;
+  }
+
+  .main-page-watermark {
+    width: 480px;
+  }
+}
+
+@media (max-width: 560px) {
+  .main-page-titulo {
+    font-size: 68px; 
+    display: none;
+  }
+
+  .main-page-boton {
+    width: 100%;
+    max-width: 320px;
+  }
+}
