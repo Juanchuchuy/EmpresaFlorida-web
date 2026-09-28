@@ -4,33 +4,52 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 40px;
-  background-color: #fffffffa;
+  padding: 24px 56px;
+  background-color: #2769aa;
   box-shadow: 4px 0px 10px black;
   font-family: var(--font-heading);
+  animation: header-entrada 0.6s ease-out both;
+  z-index: 1;
+}
+
+@keyframes header-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-header {
+    animation: none;
+  }
 }
 .logo{
 
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
 
 
 }
 
 .logo-img {
-  width: 56px;
-  height: 56px;
+  width: 76px;
+  height: 76px;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 10px;
   flex-shrink: 0;
 }
 
 .logo-title {
-  font-size: 22px;
+  font-size: 30px;
   margin: 0;
-  color: #0D0F1E;
+  color: #fffffffa;
 
 }
 .nav-menu{
@@ -38,9 +57,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 24px;
-  color: #475569;
-  font-size: 15px;
+  gap: 32px;
+  color: #fffffffa;
+  font-size: 18px;
 
 }
 .menu-item{
@@ -55,7 +74,7 @@
 
 }
 .menu-item a{
-  color: inherit;
+  color: white;
   text-decoration: none;
 }
 .menu-item a.active{
@@ -81,26 +100,26 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   background: none;
   border: none;
-  color: #475569;
-  font-size: 15px;
+  color: #fffffffa;
+  font-size: 18px;
   font-family: inherit;
 }
 .Arrow-button-normal{
   transition: transform 0.25s;
   transform: rotate(0deg);
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   
 }
 .Arrow-button-down{
   
   transition: transform 0.25s;
   transform: rotate(90deg);
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 
 }
 
@@ -113,25 +132,27 @@
   position: absolute;
   top: 100%;
   right: 0;
-  margin-top: 7px;
+  margin-top: 9px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   z-index: 1;
-  border-radius: 8px;
-  padding: 12px;
-  min-width: 180px;
+  border-radius: 10px;
+  padding: 16px;
+  min-width: 220px;
   background-color: #ffffff;
   border: 1px solid #ED1B24;
   box-shadow: 2px 4px 12px rgba(13, 15, 30, 0.15);
   font-family: var(--font-heading);
   font-weight: 600;
+  font-size: 17px;
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 .dropdown-menu-open{
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+
 }
 .dropdown-menu li{
   list-style: none;
@@ -149,7 +170,7 @@
   justify-content: center;
   background: none;
   border: none;
-  color: #0D0F1E;
+  color: #fcfcfc;
   cursor: pointer;
   padding: 4px;
 }
@@ -160,7 +181,16 @@
    sub-lista dentro del menú apilado, en vez de flotar encima. */
 @media (max-width: 860px){
   .app-header{
-    padding: 14px 20px;
+    padding: 18px 24px;
+    z-index: 1;
+  }
+  .logo-img{
+    width: 60px;
+    height: 60px;
+  }
+  .logo-title{
+    font-size: 24px;
+    text-align: center;
   }
   .menu-toggle{
     display: flex;
@@ -171,7 +201,7 @@
     top: 100%;
     left: 0;
     right: 0;
-    background-color: #ffffff;
+    background-color: #2769aa;
     border-bottom: 1px solid #e2e8f0;
     box-shadow: 0 8px 16px rgba(13, 15, 30, 0.08);
     padding: 8px 20px 16px;
@@ -188,6 +218,7 @@
     align-items: flex-start;
     width: 100%;
     padding: 10px 0;
+    
   }
   .menu-item-border{
     display: none;
@@ -205,8 +236,10 @@
     box-shadow: none;
     border: none;
     background: transparent;
+    background-color: #e2e8f0;
     padding: 0 0 0 16px;
     margin-top: 0;
     min-width: 0;
   }
+  
 }

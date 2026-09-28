@@ -3,6 +3,7 @@ import { useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './Header.css'
 import logo from '../assets/img/Logo.jpg'
+import logoName from '../assets/img/LogoName.jpg'
 import { ChevronRight, Menu, X } from 'lucide-react';
 
 const Header = () => {
@@ -48,11 +49,11 @@ const Header = () => {
       <header className="app-header">
         <div className="logo">
               <img
-                src={logo}
+                src={logoName}
                 alt="Empresa Florida S.R.L. - Desde 1954"
                 className="logo-img"
               />
-              <h1 className="logo-title">Empresa Florida SRL</h1>
+              <h1 className="logo-title">Empresa Florida</h1>
         </div>
 
         <button
