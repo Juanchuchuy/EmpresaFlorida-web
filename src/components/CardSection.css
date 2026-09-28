@@ -8,9 +8,9 @@
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 35px;
-  padding: 32px 20px;
-  max-width: 1200px;
+  gap: 44px;
+  padding: 40px 24px;
+  max-width: 1440px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -18,11 +18,11 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 39px;
-  padding: 16px;
+  gap: 46px;
+  padding: 22px;
   transition: all 0.3s ease;
   border: 1px solid var(--card-border);
-  border-radius: 10px;
+  border-radius: 14px;
   box-sizing: border-box;
   background-color: azure;
   font-family: var(--font-heading);
@@ -39,8 +39,8 @@
 
 .card-image {
   width: 100%;
-  height: 110px;
-  border-radius: 6px;
+  height: 160px;
+  border-radius: 8px;
   display: block;
   background: #000;
   object-fit: contain;
@@ -49,7 +49,7 @@
 
 @media (max-width: 640px) {
   .card-image {
-    height: 140px;
+    height: 180px;
   }
 }
 
@@ -73,43 +73,43 @@
   gap: 4px;
   overflow: hidden;
   margin: 0 0 4px;
-  
+  font-size: 16px;
   line-height: 1.35;
   color: var(--card-text);
 }
 
 .card-hora {
   margin: 0;
-  font-size: 15px;
-  margin-bottom: 8px;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 .card-movil{
 
   color: #94a3b89f;
   font-family: "Geist", sans-serif;
-  font-size: 0.7em;
+  font-size: 0.75em;
   font-weight: 600;
 
 }
 .card-hora strong {
-  font-size: 20px;
+  font-size: 26px;
   outline: none;
   color: red;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   
 }
 
 .card-sin-datos {
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
   font-style: italic;
   color: #8a8a8a;
 }
 
 .card-toggle-slot {
-  min-height: 30px;
+  min-height: 36px;
   display: flex;
   align-items: center;
 }
@@ -118,10 +118,10 @@
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font: inherit;
-  font-size: 15px;
-  padding: 5px 10px 5px 8px;
+  font-size: 17px;
+  padding: 8px 16px 8px 12px;
   border-radius: 999px;
   border: 1px solid var(--card-border);
   color: var(--card-blue);
@@ -137,8 +137,8 @@
 }
 
 .card-toggle-icon {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
 }
 
@@ -161,8 +161,9 @@
   align-self: flex-start;
   width: 100%;
   font: inherit;
-  padding: 8px 16px;
-  border-radius: 6px;
+  font-size: 17px;
+  padding: 12px 20px;
+  border-radius: 8px;
   border: 2px solid transparent;
   color: #fff;
   background: var(--card-blue);
@@ -184,6 +185,87 @@
   outline: 2px solid var(--card-blue);
   outline-offset: 2px;
   
+}
+
+/* --- Selección de línea dentro de Horarios (grilla -> hero) ---
+   Apenas se clickea "Ver horarios completos", la elegida pasa a ser la
+   PRIMERA del array (ver CardSection.jsx) y la sección entera cambia a
+   layout angosto de una columna: por eso la elegida ya "nace" arriba,
+   sin necesidad de animarla viajando de un lado a otro (eso era lo que
+   se sentía como "dos animaciones" antes). Las demás quedan apiladas
+   debajo suyo, desvaneciéndose con .card--saliendo, y cuando terminan
+   de desaparecer el padre las saca del DOM sin que la elegida se mueva
+   ni un pixel (porque ya estaba arriba desde el primer instante). */
+.card--saliendo {
+  opacity: 0;
+  transform: scale(0.94);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.card-section--hero {
+  grid-template-columns: 1fr;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 24px 0;
+  gap: 24px;
+}
+
+/* La elegida queda grande y legible: es lo único que va a quedar en
+   pantalla, así que ocupa bien el espacio en vez de verse como una
+   miniatura. */
+.card-section--hero .card--seleccionada {
+  cursor: default;
+  animation: card-seleccionada-entrada 0.4s ease-out;
+}
+
+@keyframes card-seleccionada-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-section--hero .card--seleccionada:hover {
+  transform: none;
+  filter: none;
+}
+
+.card-section--hero .card--seleccionada .card-image {
+  width: 100%;
+  height: 280px;
+  border-radius: 14px;
+}
+
+.card-section--hero .card--seleccionada .card-info {
+  text-align: center;
+}
+
+.card-section--hero .card--seleccionada .card-recorrido {
+  justify-content: center;
+  font-size: 18px;
+}
+
+.card-section--hero .card--seleccionada .card-hora {
+  font-size: 20px;
+}
+
+.card-section--hero .card--seleccionada .card-hora strong {
+  font-size: 32px;
+}
+
+.card-section--hero .card--seleccionada .card-movil {
+  font-size: 1em;
+}
+
+@media (max-width: 560px) {
+  .card-section--hero .card--seleccionada .card-image {
+    height: 200px;
+  }
 }
 
 @media (max-width: 1024px) {

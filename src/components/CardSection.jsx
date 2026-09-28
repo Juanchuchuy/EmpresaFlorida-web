@@ -1,23 +1,31 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { lineas } from '../data/lineas'
 import { getProximoHorario } from '../utils/horarios'
 import { acortarRecorrido } from '../utils/texto'
 import './CardSection.css'
 
-
 //Icons
-import { ArrowLeftRight, ChevronRight,Clock } from 'lucide-react';
+import { ArrowLeftRight, Clock } from 'lucide-react'
 
-
-const CardSection = () => {
-  // useNavigate nos da una función para cambiar de URL desde código,
-  // a diferencia de NavLink que lo hace por click directo del usuario.
-  const navigate = useNavigate()
-
-  // Guarda, por línea, qué sentido está mostrando la card: 'ida' (hacia Tuc)
-  // o 'vuelta' (desde Tuc). Arranca en 'ida' porque es el caso más común:
-  // alguien en su barrio que quiere saber cuándo sale el próximo hacia capital.
+// CardSection ahora es puramente presentacional: quien la use decide qué
+// pasa al clickear "Ver horarios completos" (antes navegaba sola a
+// /horarios/:id; ahora se lo delega al padre con onVerHorarios).
+//
+// - seleccionadaId: id de la línea elegida (o null si estamos en la grilla)
+// - colapsar: una vez que termina la animación de salida de las demás
+//   cards, el padre pide colapsar=true para sacarlas del DOM y que quede
+//   sola la seleccionada.
+// - sentidoSeleccionada: sentido ('ida' | 'vuelta') que gobierna la card
+//   seleccionada una vez que pasa a la vista de detalle, para que quede
+//   sincronizada con el pill "Cambiar Orientación" de la tabla de horarios.
+const CardSection = ({
+  seleccionadaId = null,
+  colapsar = false,
+  sentidoSeleccionada,
+  onVerHorarios,
+}) => {
+  // Guarda, por línea, qué sentido está mostrando la card mientras se
+  // navega la grilla: 'ida' (hacia Tuc) o 'vuelta' (desde Tuc).
   const [sentidos, setSentidos] = useState({})
 
   // "ahora" solo se recalcula cuando React vuelve a renderizar el
@@ -40,81 +48,99 @@ const CardSection = () => {
 
   const handleVerHorarios = (lineaId) => {
     const sentido = sentidos[lineaId] ?? 'ida'
-    navigate(`/horarios/${lineaId}?sentido=${sentido}`)
+    onVerHorarios?.(lineaId, sentido)
   }
 
+  // Apenas hay una línea elegida, la ponemos PRIMERA en el array: así la
+  // sección (que en ese mismo instante ya pasa a layout de una columna,
+  // ver "card-section--hero" más abajo) la muestra arriba de una, sin
+  // tener que animarla viajando de un lugar a otro. Las demás quedan
+  // apiladas debajo, desvaneciéndose (.card--saliendo); recién cuando
+  // terminan de desaparecer el padre pide colapsar=true y las saca del
+  // DOM, sin que la elegida se mueva.
+  const seleccionada = lineas.find((l) => l.id === seleccionadaId)
+  const resto = lineas.filter((l) => l.id !== seleccionadaId)
+  const lineasAMostrar = !seleccionadaId
+    ? lineas
+    : colapsar
+      ? [seleccionada]
+      : [seleccionada, ...resto]
+
   return (
-    <section className="card-section">
-      {lineas.map((linea) => {
-        const sentido = sentidos[linea.id] ?? 'ida'
+    <section
+      className={`card-section ${seleccionadaId ? 'card-section--hero' : ''}`}
+      id="lineas"
+    >
+      {lineasAMostrar.map((linea) => {
+        const esSeleccionada = linea.id === seleccionadaId
+        const sentido = esSeleccionada && sentidoSeleccionada
+          ? sentidoSeleccionada
+          : sentidos[linea.id] ?? 'ida'
         const datos = sentido === 'ida' ? linea.ida : linea.vuelta
         const proximo = getProximoHorario(datos, ahora)
         const hayDatos = Boolean(linea.ida || linea.vuelta)
 
         return (
-          <article className="card" key={linea.id}>
+          <article
+            className={`card ${esSeleccionada ? 'card--seleccionada' : ''} ${seleccionadaId && !esSeleccionada ? 'card--saliendo' : ''}`}
+            key={linea.id}
+          >
             <img
               src={linea.imagen}
               alt={`Cartel de la línea ${linea.nombre}`}
               className="card-image"
+              onClick={!esSeleccionada ? () => handleVerHorarios(linea.id) : undefined}
             />
-            <button
-              type="button"
-              className="card-button"
-              onClick={() => handleVerHorarios(linea.id)}
-            >
-              Ver horarios completos
-            </button>
+            {!esSeleccionada && (
+              <button
+                type="button"
+                className="card-button"
+                onClick={() => handleVerHorarios(linea.id)}
+              >
+                VER HORARIOS
+              </button>
+            )}
 
-            <div className="card-info">
+            {/* <div className="card-info">
               {proximo ? (
                 <>
-                  
                   <hr />
                   <br/>
                   <span className="card-hora">
                     {proximo.esDeManiana ? (
-
-                        <h3 className='card-movil'>MAÑANA</h3>
-
+                      <h3 className='card-movil'>MAÑANA</h3>
                     ) : (
-                      
-                        <h3 className='card-movil'>PRÓXIMO SERVICIO</h3>
-                       
-
+                      <h3 className='card-movil'>PRÓXIMO SERVICIO</h3>
                     )}
                     <strong><Clock color='red' />{proximo.hora} </strong>
-                    
                   </span>
                   <p className="card-recorrido" title={proximo.recorrido}>
-                    {<>
-                        {acortarRecorrido(proximo.recorrido)}
-                    </>}
+                    {acortarRecorrido(proximo.recorrido)}
                   </p>
                 </>
               ) : (
                 <p className="card-sin-datos">Horario no disponible todavía</p>
               )}
-            </div>
+            </div> */}
 
-            <div className="card-toggle-slot">
-              {hayDatos ? (
-                <button
-                  type="button"
-                  className="card-toggle"
-                  onClick={() => toggleSentido(linea.id)}
-                >
-                  <ArrowLeftRight></ArrowLeftRight>
-                  Cambiar sentido
-                </button>
-              ) : (
-                <span className="card-toggle card-toggle--disabled">
-                  Sin sentido para cambiar
-                </span>
-              )}
-            </div>
-
-            
+            {/* {!esSeleccionada && (
+              <div className="card-toggle-slot">
+                {hayDatos ? (
+                  <button
+                    type="button"
+                    className="card-toggle"
+                    onClick={() => toggleSentido(linea.id)}
+                  >
+                    <ArrowLeftRight></ArrowLeftRight>
+                    Cambiar sentido
+                  </button>
+                ) : (
+                  <span className="card-toggle card-toggle--disabled">
+                    Sin sentido para cambiar
+                  </span>
+                )}
+              </div>
+            )} */}
           </article>
         )
       })}
