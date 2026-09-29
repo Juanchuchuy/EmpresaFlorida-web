@@ -2,7 +2,6 @@ import React from 'react'
 import { useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './Header.css'
-import logo from '../assets/img/Logo.jpg'
 import logoName from '../assets/img/LogoName.jpg'
 import { ChevronRight, Menu, X } from 'lucide-react';
 
