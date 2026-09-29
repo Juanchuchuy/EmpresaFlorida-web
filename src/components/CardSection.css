@@ -10,7 +10,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 44px;
   padding: 40px 24px;
-  max-width: 1440px;
+  max-width: 1400px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -18,13 +18,13 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 46px;
-  padding: 22px;
+  gap: 6px;
   transition: all 0.3s ease;
   border: 1px solid var(--card-border);
   border-radius: 14px;
+  padding: 12px;
   box-sizing: border-box;
-  background-color: azure;
+  background-color: #fcfaf8;
   font-family: var(--font-heading);
 }
 
@@ -54,10 +54,13 @@
 }
 
 .card-info {
-
-  text-align: left;
+  width: 100%;
   min-height: auto;
+  display: flex;
+  flex-direction: column;
+  
   cursor: default;
+
 }
 .card-info strong{
 
@@ -70,29 +73,48 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: start;
   gap: 4px;
   overflow: hidden;
-  margin: 0 0 4px;
-  font-size: 16px;
+  margin: 10px 15px;
+  font-size: 24px;
   line-height: 1.35;
   color: var(--card-text);
 }
+.icons-recorrido{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 50px;
+
+}
+.recorrido-box{
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+}
 
 .card-hora {
-  margin: 0;
-  font-size: 18px;
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: 10px 35px;
 }
 .card-movil{
 
-  color: #94a3b89f;
+  color: rgba(2, 2, 2, 0.658);
   font-family: "Geist", sans-serif;
-  font-size: 0.75em;
+  font-size: 16px;
   font-weight: 600;
 
 }
 .card-hora strong {
-  font-size: 26px;
+  font-size: 56px;
   outline: none;
   color: red;
   display: flex;
@@ -112,20 +134,18 @@
   min-height: 36px;
   display: flex;
   align-items: center;
+  justify-content: end;
+  width: 50%;
 }
 
 .card-toggle {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
+  display: flex;
   gap: 8px;
-  font: inherit;
-  font-size: 17px;
   padding: 8px 16px 8px 12px;
   border-radius: 999px;
   border: 1px solid var(--card-border);
   color: var(--card-blue);
-  background: transparent;
+  background: white;
   cursor: pointer;
   transition: border-color 0.2s, background-color 0.2s;
 }
@@ -144,7 +164,7 @@
 
 .card-toggle:hover {
   border-color: var(--card-blue);
-  background: rgba(30, 58, 110, 0.06);
+  background: rgba(247, 245, 245, 0.952);
 }
 
 .card-toggle--disabled:hover {
@@ -246,16 +266,17 @@
 }
 
 .card-section--hero .card--seleccionada .card-recorrido {
-  justify-content: center;
-  font-size: 18px;
+
+
 }
 
 .card-section--hero .card--seleccionada .card-hora {
   font-size: 20px;
+  width: 240px;
 }
 
 .card-section--hero .card--seleccionada .card-hora strong {
-  font-size: 32px;
+  font-size: 52px;
 }
 
 .card-section--hero .card--seleccionada .card-movil {

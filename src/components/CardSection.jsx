@@ -5,11 +5,10 @@ import { acortarRecorrido } from '../utils/texto'
 import './CardSection.css'
 
 //Icons
-import { ArrowLeftRight, Clock } from 'lucide-react'
+import { ArrowUpDown, Clock,MoveDown, LineDotTopVertical,LineDotBottomVertical} from 'lucide-react'
 
-// CardSection ahora es puramente presentacional: quien la use decide qué
-// pasa al clickear "Ver horarios completos" (antes navegaba sola a
-// /horarios/:id; ahora se lo delega al padre con onVerHorarios).
+
+
 //
 // - seleccionadaId: id de la línea elegida (o null si estamos en la grilla)
 // - colapsar: una vez que termina la animación de salida de las demás
@@ -91,20 +90,11 @@ const CardSection = ({
               className="card-image"
               onClick={!esSeleccionada ? () => handleVerHorarios(linea.id) : undefined}
             />
-            {!esSeleccionada && (
-              <button
-                type="button"
-                className="card-button"
-                onClick={() => handleVerHorarios(linea.id)}
-              >
-                VER HORARIOS
-              </button>
-            )}
+            
 
-            {/* <div className="card-info">
+            <div className="card-info">
               {proximo ? (
                 <>
-                  <hr />
                   <br/>
                   <span className="card-hora">
                     {proximo.esDeManiana ? (
@@ -114,33 +104,45 @@ const CardSection = ({
                     )}
                     <strong><Clock color='red' />{proximo.hora} </strong>
                   </span>
-                  <p className="card-recorrido" title={proximo.recorrido}>
-                    {acortarRecorrido(proximo.recorrido)}
-                  </p>
+                    <hr />
+                  <div className="card-recorrido" title={proximo.recorrido}>
+                          <span className='icons-recorrido'>
+                            <LineDotTopVertical size={40} color='#930101' />
+                            <LineDotBottomVertical size={50} color='blue' />
+                          </span>
+                          <span className='recorrido-box'>
+                              {acortarRecorrido(proximo.recorrido)}
+                            </span> 
+                            {!esSeleccionada && (
+                      <div className="card-toggle-slot">
+                      <button
+                          type="button"
+                          className="card-toggle"
+                          onClick={() => toggleSentido(linea.id)}
+                        >
+                          <ArrowUpDown size={40}/>
+                        </button>
+                    </div>
+                    )}
+                  </div>
+                  
                 </>
               ) : (
                 <p className="card-sin-datos">Horario no disponible todavía</p>
-              )}
-            </div> */}
-
-            {/* {!esSeleccionada && (
-              <div className="card-toggle-slot">
-                {hayDatos ? (
-                  <button
-                    type="button"
-                    className="card-toggle"
-                    onClick={() => toggleSentido(linea.id)}
-                  >
-                    <ArrowLeftRight></ArrowLeftRight>
-                    Cambiar sentido
-                  </button>
-                ) : (
-                  <span className="card-toggle card-toggle--disabled">
-                    Sin sentido para cambiar
-                  </span>
-                )}
-              </div>
-            )} */}
+              )
+              }
+              
+           
+            </div>
+              {!esSeleccionada && (
+              <button
+                type="button"
+                className="card-button"
+                onClick={() => handleVerHorarios(linea.id)}
+              >
+                VER HORARIOS
+              </button>
+            )}
           </article>
         )
       })}
