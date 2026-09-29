@@ -2,7 +2,7 @@
 // achicamos a "primera parada/.../última parada" para que el texto ocupe
 // más o menos lo mismo sin importar si el recorrido real tiene 3 paradas
 // (Bº La Cancha/Florida x Posse/Tuc) o 10 (como Florida x Alderetes).
-import { MoveRight,ArrowRightFromLine } from 'lucide-react';
+import { MoveRight,ChevronsDown } from 'lucide-react';
 export const acortarRecorrido = (recorrido) => {
   const partes = recorrido
     .split('/')
@@ -23,7 +23,9 @@ export const acortarRecorrido = (recorrido) => {
     
   return (
     <>
-      <strong>Desde</strong><ArrowRightFromLine color='red'/> <strong>  {partes[0]}</strong>
+      <strong style={{color : '#8a8a8a5d'}}>Desde</strong><strong>{partes[0]}</strong>
+      <br></br>
+      <strong style={{color : '#8a8a8a5d'}}>Hasta</strong><strong>{partes[partes.length - 1]}</strong> 
     </>
 
   )
