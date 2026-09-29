@@ -83,7 +83,7 @@
   display: flex;
   align-items: baseline;
   gap: 14px;
-  padding: 14px 28px;
+  padding: 34px 28px;
   border-radius: 999px;
   background-color: #ED1B240d;
   border: 1px solid #ED1B2433;
@@ -109,16 +109,19 @@
   align-items: center;
   border: none;
 
-  color: #ED1B24;
-  font-size: 16px;
-  font-weight: 600;
+ 
+  color: #2769aa;
+  font-size: 36px;
+  font-weight: 340;
   cursor: pointer;
   transition: all 0.3s;
 }
 .horarios-ir-al-proximo strong{
 
-  padding: 14px 20px;
-  background-color: #ED1B240d;
+  padding: 24px 30px;
+  color: #0D0F1E;
+  background-color: #fcfaf8;
+  border: 1px solid #dcdcdc;
   border-radius: 6px;
 
 }

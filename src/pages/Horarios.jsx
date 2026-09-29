@@ -137,33 +137,17 @@ const Horarios = () => {
 
       {linea && mostrarDetalle && (
         <div className={`horarios-detalle ${mostrarDetalle ? 'horarios-detalle--visible' : ''}`}>
-          {datos && (
-            <div className="horarios-hero">
-              <p className="horarios-kicker">
-                {datos.sentido[0] === 'T' ? 'Desde Terminal' : 'Hacia Terminal'}
-              </p>
-              <p className="horarios-subtitulo">
-                {datos.sentido} · Actualizado {datos.actualizado}
-              </p>
-            </div>
-          )}
+         
 
           {proximo && (
             <div className="horarios-proximo-destacado-wrap">
-              <div className="horarios-proximo-destacado">
-                <span className="proximo-destacado-label">Próximo servicio</span>
-                <strong className="proximo-destacado-hora">
-                  {proximo.hora}
-                  {proximo.esDeManiana ? ' · mañana' : ''}
-                </strong>
-              </div>
               {!proximo.esDeManiana && (
                 <button
                   type="button"
                   className="horarios-ir-al-proximo"
                   onClick={() => document.querySelector('.horarios-fila--proxima')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
                 >
-                  <strong>Ver Horario</strong><ArrowBigDownDash size={30} />
+                  <strong>Ir al proximo</strong><ArrowBigDownDash size={60} />
                 </button>
               )}
             </div>
