@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { MapPin, Ticket, BadgeDollarSign, Route } from 'lucide-react'
+import { MapPin, Ticket, BadgeDollarSign,  Clock } from 'lucide-react'
 import logoWatermark from '../assets/img/Logo.jpg'
 import './MainPage.css'
 
@@ -9,7 +9,7 @@ const acciones = [
   { icono: MapPin, texto: 'Punto de recarga', ruta: '/puntos-recarga' },
   { icono: Ticket, texto: 'Abonos', ruta: null },
   { icono: BadgeDollarSign, texto: 'Tarifas', ruta: null },
-  { icono: Route, texto: 'Horarios', ruta: '/horarios' },
+  { icono: Clock, texto: 'Horarios', ruta: '/horarios' },
 ]
 
 const MainPage = () => {
