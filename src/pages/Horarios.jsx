@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { lineas } from '../data/lineas'
 import { paradasPorLinea } from '../data/paradas'
@@ -47,6 +47,42 @@ const Horarios = () => {
     const intervalo = setInterval(() => setAhora(new Date()), 30000)
     return () => clearInterval(intervalo)
   }, [])
+
+  // Apenas se termina de mostrar el detalle de la línea, bajamos la vista
+  // para encuadrar el botón "Ir al próximo" (si existe), en vez de dejar
+  // al usuario arriba de todo con la card y tener que scrollear él mismo.
+  const irAlProximoRef = useRef(null)
+ useEffect(() => {
+  if (!mostrarDetalle) return
+  const el = irAlProximoRef.current
+  if (!el) return
+
+  // Respetar accesibilidad
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (prefersReduced) {
+    el.scrollIntoView({ block: 'end' })
+    return
+  }
+
+  // Calcular destino igual que block: 'end'
+  const start = window.scrollY
+  const end = el.getBoundingClientRect().bottom + window.scrollY - window.innerHeight
+  const distance = end - start
+  const duration = 900 // ajusta: 700–1200 se siente bien
+  let startTime = null
+
+  const easeInOutCubic = (t) =>
+    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+
+  const step = (timestamp) => {
+    if (!startTime) startTime = timestamp
+    const progress = Math.min((timestamp - startTime) / duration, 1)
+    window.scrollTo(0, start + distance * easeInOutCubic(progress))
+    if (progress < 1) requestAnimationFrame(step)
+  }
+
+  requestAnimationFrame(step)
+}, [mostrarDetalle])
 
   // Se dispara al clickear "Ver horarios completos" (o la imagen) en una
   // card de la grilla. Solo toca estado local: la URL se sincroniza recién
@@ -124,6 +160,7 @@ const Horarios = () => {
         colapsar={colapsar}
         sentidoSeleccionada={sentido}
         onVerHorarios={handleVerHorarios}
+        onCambiarSentido={() => setSentido((s) => (s === 'ida' ? 'vuelta' : 'ida'))}
       />
 
       {huboSeleccionInvalida && (
@@ -144,6 +181,7 @@ const Horarios = () => {
               {!proximo.esDeManiana && (
                 <button
                   type="button"
+                  ref={irAlProximoRef}
                   className="horarios-ir-al-proximo"
                   onClick={() => document.querySelector('.horarios-fila--proxima')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
                 >

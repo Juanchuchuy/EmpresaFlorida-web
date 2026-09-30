@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { lineas } from '../data/lineas'
-import { getProximoHorario } from '../utils/horarios'
+import { getProximoHorario, getProximosHorarios, formatCountdown } from '../utils/horarios'
 import { acortarRecorrido } from '../utils/texto'
 import './CardSection.css'
 
 //Icons
-import { ArrowUpDown, Clock,MoveDown, LineDotTopVertical,LineDotBottomVertical} from 'lucide-react'
+import { ArrowUpDown, Clock, LineDotTopVertical,LineDotBottomVertical} from 'lucide-react'
 
 
 
@@ -22,6 +22,7 @@ const CardSection = ({
   colapsar = false,
   sentidoSeleccionada,
   onVerHorarios,
+  onCambiarSentido,
 }) => {
   // Guarda, por línea, qué sentido está mostrando la card mientras se
   // navega la grilla: 'ida' (hacia Tuc) o 'vuelta' (desde Tuc).
@@ -77,7 +78,10 @@ const CardSection = ({
           : sentidos[linea.id] ?? 'ida'
         const datos = sentido === 'ida' ? linea.ida : linea.vuelta
         const proximo = getProximoHorario(datos, ahora)
-        const hayDatos = Boolean(linea.ida || linea.vuelta)
+        // Los dos horarios que le siguen al próximo, para el "Después:".
+        const despues = getProximosHorarios(datos, ahora, 3).slice(1).map((h) => h.hora)
+        const countdown = proximo ? formatCountdown(proximo.hora, ahora, proximo.esDeManiana) : null
+        const esInminente = countdown === 'Saliendo' || /^en [0-5] min$/.test(countdown ?? '')
 
         return (
           <article
@@ -92,7 +96,7 @@ const CardSection = ({
             />
             
 
-            <div className="card-info">
+            <div className="card-info" key={sentido}>
               {proximo ? (
                 <>
                   <br/>
@@ -102,7 +106,19 @@ const CardSection = ({
                     ) : (
                       <h3 className='card-movil'>PRÓXIMO SERVICIO</h3>
                     )}
-                    <strong><Clock color='red' />{proximo.hora} </strong>
+                    <div className="card-hora-fila">
+                      <strong><Clock color='red' />{proximo.hora}</strong>
+                      {countdown && (
+                        <span className={`card-countdown${esInminente ? ' card-countdown--inminente' : ''}`}>
+                          {countdown}
+                        </span>
+                      )}
+                    </div>
+                    {despues.length > 0 && (
+                      <p className="card-despues">
+                        Después: <strong>{despues.join(' · ')}</strong>
+                      </p>
+                    )}
                   </span>
                     <hr />
                   <div className="card-recorrido" title={proximo.recorrido}>
@@ -112,18 +128,16 @@ const CardSection = ({
                           </span>
                           <span className='recorrido-box'>
                               {acortarRecorrido(proximo.recorrido)}
-                            </span> 
-                            {!esSeleccionada && (
+                            </span>
                       <div className="card-toggle-slot">
                       <button
                           type="button"
                           className="card-toggle"
-                          onClick={() => toggleSentido(linea.id)}
+                          onClick={() => esSeleccionada ? onCambiarSentido?.() : toggleSentido(linea.id)}
                         >
                           <ArrowUpDown size={40}/>
                         </button>
                     </div>
-                    )}
                   </div>
                   
                 </>
