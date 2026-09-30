@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Empresa Florida</string>
+    <string name="title_activity_main">Empresa Florida</string>
+    <string name="package_name">com.empresaflorida.horarios</string>
+    <string name="custom_url_scheme">com.empresaflorida.horarios</string>
+</resources>
