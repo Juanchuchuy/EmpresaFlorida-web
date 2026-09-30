@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 56px;
+  padding: calc(24px + env(safe-area-inset-top, 0px)) calc(56px + env(safe-area-inset-right, 0px)) 24px calc(56px + env(safe-area-inset-left, 0px));
   background-color: #2769aa;
   box-shadow: 4px 0px 10px black;
   font-family: var(--font-heading);
@@ -181,7 +181,7 @@
    sub-lista dentro del menú apilado, en vez de flotar encima. */
 @media (max-width: 860px){
   .app-header{
-    padding: 18px 24px;
+    padding: calc(18px + env(safe-area-inset-top, 0px)) calc(24px + env(safe-area-inset-right, 0px)) 18px calc(24px + env(safe-area-inset-left, 0px));
     z-index: 1;
   }
   .logo-img{
@@ -204,7 +204,7 @@
     background-color: #2769aa;
     border-bottom: 1px solid #e2e8f0;
     box-shadow: 0 8px 16px rgba(13, 15, 30, 0.08);
-    padding: 8px 20px 16px;
+    padding: 8px calc(20px + env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) calc(20px + env(safe-area-inset-left, 0px));
   }
   .main-nav-open{
     display: block;

@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 44px;
-  padding: 40px 24px;
+  padding: 40px calc(24px + env(safe-area-inset-right, 0px)) calc(40px + env(safe-area-inset-bottom, 0px)) calc(24px + env(safe-area-inset-left, 0px));
   max-width: 1400px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -60,6 +60,7 @@
   flex-direction: column;
   
   cursor: default;
+  animation: card-info-fade 1.5s ease;
 
 }
 .card-info strong{
@@ -67,6 +68,57 @@
   font-family: var(--font-heading);
   font-weight: 600;
 
+}
+
+@keyframes card-info-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-info {
+    animation: none;
+  }
+}
+
+.card-hora-fila {
+  font-size: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.card-countdown {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background-color: rgba(45, 48, 141, 0.1);
+  color: #2D308D;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.card-countdown--inminente {
+  background-color: rgba(237, 27, 36, 0.12);
+  color: #ED1B24;
+}
+
+.card-despues {
+  font-size: 16px;
+  color: var(--card-text);
+}
+
+.card-despues strong {
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--card-text-strong);
 }
 
 .card-recorrido {
@@ -114,7 +166,7 @@
 
 }
 .card-hora strong {
-  font-size: 56px;
+  
   outline: none;
   color: red;
   display: flex;
@@ -207,15 +259,7 @@
   
 }
 
-/* --- Selección de línea dentro de Horarios (grilla -> hero) ---
-   Apenas se clickea "Ver horarios completos", la elegida pasa a ser la
-   PRIMERA del array (ver CardSection.jsx) y la sección entera cambia a
-   layout angosto de una columna: por eso la elegida ya "nace" arriba,
-   sin necesidad de animarla viajando de un lado a otro (eso era lo que
-   se sentía como "dos animaciones" antes). Las demás quedan apiladas
-   debajo suyo, desvaneciéndose con .card--saliendo, y cuando terminan
-   de desaparecer el padre las saca del DOM sin que la elegida se mueva
-   ni un pixel (porque ya estaba arriba desde el primer instante). */
+
 .card--saliendo {
   opacity: 0;
   transform: scale(0.94);
@@ -231,9 +275,7 @@
   gap: 24px;
 }
 
-/* La elegida queda grande y legible: es lo único que va a quedar en
-   pantalla, así que ocupa bien el espacio en vez de verse como una
-   miniatura. */
+
 .card-section--hero .card--seleccionada {
   cursor: default;
   animation: card-seleccionada-entrada 0.4s ease-out;
@@ -261,27 +303,36 @@
   border-radius: 14px;
 }
 
-.card-section--hero .card--seleccionada .card-info {
-  text-align: center;
-}
-
-.card-section--hero .card--seleccionada .card-recorrido {
-
-
-}
-
 .card-section--hero .card--seleccionada .card-hora {
-  font-size: 20px;
-  width: 240px;
+
+  width: 100%;
+
 }
 
-.card-section--hero .card--seleccionada .card-hora strong {
+.card-section--hero .card--seleccionada .card-hora-fila {
+  justify-content: center;
   font-size: 52px;
 }
+
+
 
 .card-section--hero .card--seleccionada .card-movil {
   font-size: 1em;
 }
+
+.card-section--hero .card--seleccionada .card-countdown {
+  font-size: 16px;
+  padding: 8px 18px;
+}
+
+.card-section--hero .card--seleccionada .card-despues {
+  font-size: 16px;
+}
+.card-despues strong {
+  font-size: 28px;
+}
+
+
 
 @media (max-width: 560px) {
   .card-section--hero .card--seleccionada .card-image {

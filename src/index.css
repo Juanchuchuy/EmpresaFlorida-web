@@ -1,6 +1,4 @@
-
-    
-    
+@import "tailwindcss";
 
 :root {
   --sat: env(safe-area-inset-top, 0px);
@@ -11,19 +9,24 @@
   --font-body: 'Montserrat', sans-serif;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-@import "tailwindcss";
-
-body {
+html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   min-height: 100vh;
   min-height: 100dvh;
   font-family: var(--font-body);
   -webkit-tap-highlight-color: transparent;
 }
 
-
-
-    
-
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}

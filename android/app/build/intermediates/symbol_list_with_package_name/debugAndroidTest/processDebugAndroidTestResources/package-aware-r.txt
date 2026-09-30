@@ -1,3 +1,0 @@
-com.empresaflorida.horarios.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme
