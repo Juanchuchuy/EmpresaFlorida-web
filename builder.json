@@ -1,5 +1,5 @@
 {
-  "project": "florida-horarios",
+  "project": "EmpresaFlorida",
   "platform": "ios",
   "github": {
     "owner": "Juanchuchuy",
@@ -9,7 +9,7 @@
   "codemagic": {},
   "bitrise": {},
   "ios": {
-    "path": "ios"
+    "path": "C:\\Users\\ignac\\Desktop\\Projects\\florida-horarios-actualizado\\florida-horarios\\ios"
   },
   "flutter": {
     "watch": {}
