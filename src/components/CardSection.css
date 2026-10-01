@@ -86,7 +86,6 @@
 }
 
 .card-hora-fila {
-  font-size: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -111,13 +110,13 @@
 }
 
 .card-despues {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--card-text);
 }
 
 .card-despues strong {
   font-weight: 700;
-  font-size: 28px;
+  font-size: 16px;
   color: var(--card-text-strong);
 }
 
@@ -129,7 +128,7 @@
   gap: 4px;
   overflow: hidden;
   margin: 10px 15px;
-  font-size: 24px;
+  font-size: 15px;
   line-height: 1.35;
   color: var(--card-text);
 }
@@ -166,7 +165,7 @@
 
 }
 .card-hora strong {
-  
+  font-size: 32px;
   outline: none;
   color: red;
   display: flex;
@@ -314,6 +313,11 @@
   font-size: 52px;
 }
 
+.card-section--hero .card--seleccionada .card-recorrido {
+  justify-content: center;
+  font-size: 18px;
+}
+
 
 
 .card-section--hero .card--seleccionada .card-movil {
@@ -328,8 +332,9 @@
 .card-section--hero .card--seleccionada .card-despues {
   font-size: 16px;
 }
-.card-despues strong {
-  font-size: 28px;
+
+.card-section--hero .card--seleccionada .card-despues strong {
+  font-size: 20px;
 }
 
 
@@ -349,5 +354,13 @@
 @media (max-width: 640px) {
   .card-section {
     grid-template-columns: 1fr;
+  }
+
+  .icons-recorrido {
+    gap: 24px;
+  }
+
+  .card-toggle-slot {
+    width: auto;
   }
 }

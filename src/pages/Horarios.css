@@ -327,6 +327,28 @@
     font-size: 32px;
   }
 
+  .horarios-proximo-destacado {
+    padding: 18px 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .proximo-destacado-label {
+    font-size: 16px;
+  }
+
+  .proximo-destacado-hora {
+    font-size: 20px;
+  }
+
+  .horarios-ir-al-proximo {
+    font-size: 24px;
+  }
+
+  .horarios-ir-al-proximo strong {
+    padding: 14px 18px;
+  }
+
   .horarios-tabla-header {
 
     align-items: center;

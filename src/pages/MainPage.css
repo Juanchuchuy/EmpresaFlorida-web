@@ -128,13 +128,27 @@
 }
 
 @media (max-width: 560px) {
+  .main-page {
+    padding: 56px calc(16px + env(safe-area-inset-right, 0px)) calc(56px + env(safe-area-inset-bottom, 0px)) calc(16px + env(safe-area-inset-left, 0px));
+    min-height: 70vh;
+  }
+
   .main-page-titulo {
-    font-size: 68px; 
-    display: none;
+    font-size: 40px;
+  }
+
+  .main-page-watermark {
+    width: 320px;
   }
 
   .main-page-boton {
     width: 100%;
     max-width: 320px;
+  }
+}
+
+@media (max-width: 380px) {
+  .main-page-titulo {
+    font-size: 34px;
   }
 }
