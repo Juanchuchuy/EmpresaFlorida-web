@@ -1,0 +1,20 @@
+{
+  "project": "florida-horarios",
+  "platform": "ios",
+  "github": {
+    "owner": "Juanchuchuy",
+    "repo": "EmpresaFlorida-web"
+  },
+  "provider": "github",
+  "codemagic": {},
+  "bitrise": {},
+  "ios": {
+    "path": "ios"
+  },
+  "flutter": {
+    "watch": {}
+  },
+  "reactNative": {},
+  "kmp": {},
+  "mobai": {}
+}
