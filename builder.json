@@ -9,7 +9,7 @@
   "codemagic": {},
   "bitrise": {},
   "ios": {
-    "path": "C:\\Users\\ignac\\Desktop\\Projects\\florida-horarios-actualizado\\florida-horarios\\ios"
+    "path": "ios"
   },
   "flutter": {
     "watch": {}
