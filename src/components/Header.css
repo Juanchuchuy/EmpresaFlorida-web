@@ -39,8 +39,8 @@
 }
 
 .logo-img {
-  width: 76px;
-  height: 76px;
+  width: 68px;
+  height: 68px;
   object-fit: contain;
   border-radius: 10px;
   flex-shrink: 0;
@@ -51,6 +51,17 @@
   margin: 0;
   color: #fffffffa;
 
+}
+.logo-texto {
+   display: flex;
+   flex-direction: column;
+   gap: 2px;
+}
+.logo-tagline { 
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255,255,255,.85);
+  font-weight: 500;
 }
 .nav-menu{
 
@@ -175,6 +186,7 @@
   padding: 4px;
 }
 
+
 /* Debajo de este ancho, el nav pasa a menú hamburguesa: se oculta el
    nav-menu horizontal y aparece el botón de toggle. El dropdown de
    Horarios se aplana (position:static) para que quede como una
@@ -243,3 +255,6 @@
   }
   
 }
+
+
+@media (max-width: 860px) { .logo-tagline { font-size: 12px; } }
