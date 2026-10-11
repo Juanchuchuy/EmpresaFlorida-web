@@ -1,154 +1,251 @@
-.main-page {
-  position: relative;
+.home {
+  --azul: #1b5aa8;
+  --rojo: #ed1b24;
+  --navy: #0b2a5b;
+  --header-h: 96px; /* lo mide el JS: alto real del header */
+
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* ocupa justo lo que queda debajo del header → sin scroll */
+  height: calc(100dvh - var(--header-h));
   overflow: hidden;
-  padding: 120px calc(24px + env(safe-area-inset-right, 0px)) calc(120px + env(safe-area-inset-bottom, 0px)) calc(24px + env(safe-area-inset-left, 0px));
-  min-height: 80vh;
+  padding: 0 16px calc(10px + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(180deg, #dcebf9 0%, #f3f8fd 45%, #ffffff 100%);
+  font-family: var(--font-body);
 }
 
-.main-page-watermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 720px;
-  max-width: none;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  pointer-events: none;
-  user-select: none;
-  animation: watermark-entrada 1.2s ease-out 0.15s forwards;
-}
-
-.main-page-content {
+/* La escena (título + colectivo + card) se centra en el espacio libre y el
+   pie queda siempre abajo del todo. */
+.escena {
   position: relative;
+  isolation: isolate;
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+/* ───────── Hero: kicker + título + colectivo ───────── */
+.hero {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex: 0 0 auto;
+  height: clamp(200px, 33dvh, 400px);
+}
+.hero-texto {
+  position: relative;
+  z-index: 2; /* el texto va por encima del colectivo */
+  max-width: 50%;
+
+  padding-top: 24px;
+}
+.hero-kicker {
+  display: block;
+  width: 52px;
+  height: 6px;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  background: var(--rojo);
+}
+.hero-titulo {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 8.5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--navy);
+}
+.hero-sub {
+  margin: 0;
+  color: #5b6b82;
+  font-size: clamp(0.85rem, 3.3vw, 1.05rem);
+  line-height: 1.5;
+  /* halo claro: se lee bien aunque pase por encima del colectivo */
+  max-width: 29ch;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 3px rgba(255, 255, 255, 0.9);
+}
+.hero-img {
+  position: absolute;
+  z-index: 1;
+  right: -4%;
+  bottom: 0;
+  width: 72%;
+  height: auto;
+  max-width: none;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transition: transform 700ms ease-out; /* para el desplazamiento final */
+}
+
+/* ───────── Card de botones (vidrio con blur) ───────── */
+.acciones {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  min-height: 60%;
+  justify-content: center;
+  max-width: 680px;
+  /* se monta sobre la parte baja del hero: el colectivo se ve detrás */
+  margin: calc(-1 * clamp(36px, 6dvh, 80px)) auto 0;
+  padding: 14px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.22));
+  box-shadow:
+    0 22px 50px rgba(11, 42, 91, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(16px) saturate(1.25);
+  backdrop-filter: blur(16px) saturate(1.25);
+}
+.accion {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
   align-items: center;
-  gap: 32px;
+  gap: 16px;
+  height: clamp(52px, 8.2dvh, 72px);
+  padding: 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(13, 15, 30, 0.16);
+  transition: transform 0.2s, filter 0.2s;
+}
+.accion--rojo { background: rgba(237, 27, 36, 0.92); }
+.accion--azul { background: rgba(27, 90, 168, 0.92); }
+.accion--claro {
+  height: clamp(46px, 6.6dvh, 58px);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--navy);
+  font-size: 1rem;
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+.accion--claro svg { color: var(--azul); }
+.accion--pronto { cursor: default; }
+.chip-pronto {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+@media (hover: hover) {
+  .accion:not(.accion--pronto):hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+  }
+}
+
+/* ───────── Pie: abajo del todo, fuera de la card ───────── */
+.pie {
+  flex: 0 0 auto;
+  margin: 0;
+  padding-top: 8px;
+  text-align: center;
+  font-style: italic;
+  font-size: 0.82rem;
+  color: #5b6b82;
+}
+
+/* ───────── Intro: solo el colectivo, el resto oculto ───────── */
+.home[data-fase='intro'] .hero-img { opacity: 0; } /* lo anima JS */
+.home[data-fase='intro'] .hero-texto,
+.home[data-fase='intro'] .acciones,
+.home[data-fase='intro'] .pie {
   opacity: 0;
-  animation: contenido-entrada 0.7s ease-out 0.2s forwards;
+  visibility: hidden;
 }
 
-@keyframes watermark-entrada {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.96);
-  }
-  to {
-    opacity: 0.08;
-    transform: translate(-50%, -50%) scale(1);
-  }
+/* Fase intermedia: el colectivo ya está de fondo pero todavía no se desplazó */
+.home[data-fase='listo'] .hero-img { opacity: var(--bus-opacidad, 0.6); }
+
+/* ───────── Al terminar la pausa: entran textos y card ───────── */
+.home[data-fase='listo'] .hero-texto,
+.home[data-fase='fondo'] .hero-texto {
+  animation: aparecer 0.9s ease-out 0.5s backwards;
+}
+.home[data-fase='listo'] .acciones,
+.home[data-fase='fondo'] .acciones {
+  animation: subir 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.45s backwards;
+}
+.home[data-fase='listo'] .accion,
+.home[data-fase='fondo'] .accion {
+  animation: aparecer 0.6s ease-out backwards;
+  animation-delay: calc(var(--i) * 90ms + 800ms);
+}
+.home[data-fase='listo'] .pie,
+.home[data-fase='fondo'] .pie {
+  animation: aparecer 0.8s ease-out 1.3s backwards;
 }
 
-@keyframes contenido-entrada {
-  from {
-    opacity: 0;
-    transform: translateY(28px);
+/* ───────── Fase final: el colectivo se corre a la derecha ───────── */
+.home[data-fase='fondo'] .hero-img {
+  opacity: var(--bus-opacidad, 0.6);
+  transform: translateX(var(--desplaze-derecha, 60px));
+}
+
+@keyframes subir {
+  from { opacity: 0; transform: translateY(70px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ───────── Tablet (700–1199px): igual que el celular, más contenido ───────── */
+@media (min-width: 700px) {
+  .hero { max-width: 720px; }
+  .hero-titulo { font-size: 3.2rem; }
+  .hero-sub { font-size: 1.05rem; }
+}
+
+/* ───────── Escritorio (≥1200px): colectivo grande y centrado de fondo ───────── */
+@media (min-width: 1200px) {
+  .home { padding-inline: 40px; }
+
+  .escena {
+    align-items: center;
+    justify-content: center;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .hero { display: contents; } /* texto y colectivo se ubican contra la escena */
+
+  .hero-texto {
+    position: absolute;
+    top: 40px;
+    left: max(0px, calc((100% - 1500px) / 2));
+    max-width: clamp(240px, calc((100vw - 480px) / 2 - 56px), 440px);
+    padding: 0;
   }
+  .hero-kicker { width: 64px; height: 7px; margin-bottom: 18px; }
+  .hero-titulo { font-size: clamp(2.8rem, 3.4vw, 4.2rem); white-space: nowrap; }
+  .hero-sub { font-size: 1.2rem; }
+
+  .hero-img {
+    inset: 0;
+    margin: auto;
+    width: min(62%, 980px);
+  }
+
+  .acciones { margin: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .main-page-watermark,
-  .main-page-content {
-    animation: none;
-    opacity: 0.08;
-  }
-  .main-page-content {
-    opacity: 1;
-  }
-}
-
-.main-page-titulo {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 7em;
-  line-height: 1;
-  text-align: center;
-  color: #2769aa;
-}
-
-.main-page-acciones {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-}
-
-.main-page-boton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  width: 236px;
-  height: 64px;
-  padding: 0 24px;
-  border: none;
-  border-radius: 10px;
-  background-color: #ED1B24;
-  box-shadow: 0px 8px 18px 0px rgba(159, 23, 38, 0.2);
-  color: #ffffff;
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 16px;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
-}
-
-.main-page-boton:hover:not(:disabled) {
-  background-color: #c9151d;
-  transform: translateY(-1px);
-}
-
-.main-page-boton:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-@media (max-width: 900px) {
-  .main-page {
-    padding: 80px calc(20px + env(safe-area-inset-right, 0px)) calc(80px + env(safe-area-inset-bottom, 0px)) calc(20px + env(safe-area-inset-left, 0px));
-  }
-
-  .main-page-titulo {
-    font-size: 52px;
-  }
-
-  .main-page-watermark {
-    width: 480px;
-  }
-}
-
-@media (max-width: 560px) {
-  .main-page {
-    padding: 56px calc(16px + env(safe-area-inset-right, 0px)) calc(56px + env(safe-area-inset-bottom, 0px)) calc(16px + env(safe-area-inset-left, 0px));
-    min-height: 70vh;
-  }
-
-  .main-page-titulo {
-    font-size: 40px;
-  }
-
-  .main-page-watermark {
-    width: 320px;
-  }
-
-  .main-page-boton {
-    width: 100%;
-    max-width: 320px;
-  }
-}
-
-@media (max-width: 380px) {
-  .main-page-titulo {
-    font-size: 34px;
-  }
+  .home .hero-texto,
+  .home .acciones,
+  .home .accion,
+  .home .pie { animation: none; }
+  .accion { transition: none; }
 }
