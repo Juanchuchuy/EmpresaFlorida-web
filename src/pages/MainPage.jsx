@@ -9,20 +9,29 @@ import {
   ChevronRight,
 } from 'lucide-react'
 import busHero from '../assets/img/bus-hero.png'
+import rutaHero from '../assets/img/road-hero.webp'
 import './MainPage.css'
 
 // ── Intro (milisegundos) ────────────────────────────────────────────────
 const ENTRADA_MS = 1000 // el colectivo aparece "desde el fondo" hasta el centro
-const PAUSA_MS = 200 // se queda quieto en el centro de la pantalla
-const RETROCESO_MS = 1800 // pasa al fondo (se achica y se vuelve translúcido)
+const PAUSA_MS = 100 // se queda quieto en el centro de la pantalla
+const RETROCESO_MS = 1200 // pasa al fondo (se achica y se vuelve translúcido)
 
 // Cuánto más grande es el colectivo en la intro respecto de su tamaño final
 // (>1 = "retrocede" al achicarse) y qué tan opaco queda ya de fondo.
-const ZOOM_INTRO = 1
-const BUS_OPACIDAD = 0.1
+const ZOOM_INTRO = 1.2
+const BUS_OPACIDAD = 0.6
 
-// Desplazamiento final hacia la derecha cuando el colectivo ya quedó de fondo.
+// Desplazamiento final hacia la derecha (solo desktop), ya con el colectivo
+// de fondo. Se aplica con transition en CSS al pasar a la fase 'fondo'.
 const DESPLAZE_DERECHA = '290px'
+
+// ── Celular (< 700px): el colectivo se aleja por la izquierda y vuelve a
+//    entrar por la izquierda del texto, hasta quedar sobre la ruta ─────────
+const ZOOM_INTRO_MOVIL = 1.7
+const ALEJAR_MS = 1000 // sale de la pantalla hacia la izquierda, achicándose
+const ENTRAR_MS = 1800 // entra desde la izquierda y se desplaza hacia la derecha
+const ESCALA_ALEJADO = 0.5
 
 // La intro se ve una sola vez por sesión: si el usuario vuelve a "/" desde
 // Horarios o Puntos de recarga, la home aparece directo, sin repetir todo.
@@ -38,13 +47,16 @@ const acciones = [
 const prefiereSinMovimiento = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+const esMovil = () => window.matchMedia('(max-width: 699px)').matches
+
 const MainPage = () => {
   const navigate = useNavigate()
   const homeRef = useRef(null)
   const busRef = useRef(null)
 
-  // 'intro' = solo el colectivo en el centro · 'listo' = home completa (aún sin desplazar)
-  // 'fondo' = el colectivo ya se corrió a la derecha
+  // 'intro' = solo el colectivo en el centro
+  // 'listo' = home completa (aún sin desplazar en desktop)
+  // 'fondo' = el colectivo ya se corrió a la derecha (solo desktop)
   const [fase, setFase] = useState(() =>
     introYaVista || prefiereSinMovimiento() ? 'fondo' : 'intro',
   )
@@ -81,52 +93,98 @@ const MainPage = () => {
 
       // Lugar final del colectivo → cuánto moverlo/agrandarlo para dejarlo
       // en el centro de la pantalla (técnica FLIP).
+      const movil = esMovil()
+      const opacidadFinal = movil ? 1 : BUS_OPACIDAD
       const r = bus.getBoundingClientRect()
       const vw = window.innerWidth
       const vh = window.innerHeight
       const aspecto = r.width / r.height
+      const zoom = movil ? ZOOM_INTRO_MOVIL : ZOOM_INTRO
       const anchoCentro = Math.max(
         r.width,
-        Math.min(r.width * ZOOM_INTRO, vw * 0.92, vh * 0.75 * aspecto),
+        Math.min(r.width * zoom, vw * 0.92, vh * 0.75 * aspecto),
       )
       const escala = anchoCentro / r.width
       const dx = vw / 2 - (r.left + r.width / 2)
       const dy = vh / 2 - (r.top + r.height / 2)
       const centro = `translate(${dx}px, ${dy}px)`
 
+      const animar = (frames, opciones) => {
+        const a = bus.animate(frames, { fill: 'forwards', ...opciones })
+        animaciones.push(a)
+        return a
+      }
+
+      // Limpia las animaciones y deja que el CSS tome el control (fase).
+      const asentar = () => {
+        introYaVista = true
+        animaciones.forEach((x) => x.cancel())
+      }
+
       // 1) Aparece desde el fondo: chico, borroso y transparente → centro.
-      const entrada = bus.animate(
+      const entrada = animar(
         [
           { transform: `${centro} scale(${escala * 0.4})`, opacity: 0, filter: 'blur(12px)' },
           { transform: `${centro} scale(${escala})`, opacity: 1, filter: 'blur(0px)' },
         ],
-        { duration: ENTRADA_MS, easing: 'cubic-bezier(.16, .84, .3, 1)', fill: 'forwards' },
+        { duration: ENTRADA_MS, easing: 'cubic-bezier(.16, .84, .3, 1)' },
       )
-      animaciones.push(entrada)
 
       entrada.finished
         .then(() => {
           // 2) Pausa con el colectivo en el centro.
           pausa = setTimeout(() => {
             if (cancelado) return
-            setFase('listo') // entran el título y la card de botones (CSS)
+            setFase('listo') // entran el título, la ruta y la card (CSS)
 
-            // 3) Pasa al fondo: se achica y se vuelve translúcido, todo en
-            //    un solo movimiento continuo que arranca de inmediato y
-            //    frena suave (sin tramo "congelado" al principio).
-            const atras = bus.animate(
+            if (!movil) {
+              // 3) Desktop/tablet: retroceso (se achica y queda translúcido).
+              const atras = animar(
+                [
+                  { transform: `${centro} scale(${escala})`, opacity: 1 },
+                  { transform: 'translate(0, 0) scale(1)', opacity: opacidadFinal },
+                ],
+                { duration: RETROCESO_MS, easing: 'cubic-bezier(.22, .61, .36, 1)' },
+              )
+              atras.finished
+                .then(() => {
+                  asentar()
+                  setFase('fondo') // 4) dispara el desplazamiento (CSS transition)
+                })
+                .catch(() => {})
+              return
+            }
+
+            // 3) Celular: se aleja hacia la izquierda (achicándose) hasta
+            //    salir de la pantalla...
+            const xFinal = r.left + r.width / 2 // centro X en su lugar final
+            const txAfuera = -(r.width * ESCALA_ALEJADO) / 2 - 24 - xFinal
+            const txEntra = -r.width / 2 - 24 - xFinal
+            const alejar = animar(
               [
-                { transform: `${centro} scale(${escala})`, opacity: 1 },
-                { transform: 'translate(0, 0) scale(1)', opacity: BUS_OPACIDAD },
+                { transform: `${centro} scale(${escala})` },
+                { transform: `translate(${txAfuera}px, 0px) scale(${ESCALA_ALEJADO})` },
               ],
-              { duration: RETROCESO_MS, easing: 'cubic-bezier(.22, .61, .36, 1)', fill: 'forwards' },
+              { duration: ALEJAR_MS, easing: 'cubic-bezier(.4, 0, .6, 1)' },
             )
-            animaciones.push(atras)
-            atras.finished
+            alejar.finished
               .then(() => {
-                introYaVista = true
-                animaciones.forEach((a) => a.cancel()) // queda el estilo del CSS
-                setFase('fondo') // 4) dispara el desplazamiento hacia la derecha (CSS)
+                if (cancelado) return
+                // 4) ...y vuelve a entrar por la izquierda del texto,
+                //    desplazándose hacia la derecha hasta la ruta.
+                const entrar = animar(
+                  [
+                    { transform: `translate(${txEntra}px, 0px) scale(1)` },
+                    { transform: 'translate(0px, 0px) scale(1)' },
+                  ],
+                  { duration: ENTRAR_MS, easing: 'cubic-bezier(.22, .61, .36, 1)' },
+                )
+                entrar.finished
+                  .then(() => {
+                    asentar()
+                    setFase('fondo') // en mobile el CSS anula el translateX
+                  })
+                  .catch(() => {})
               })
               .catch(() => {})
           }, PAUSA_MS)
@@ -140,7 +198,7 @@ const MainPage = () => {
     // Seguro: pase lo que pase, los botones aparecen.
     const seguro = setTimeout(
       () => setFase('fondo'),
-      ENTRADA_MS + PAUSA_MS + RETROCESO_MS + 2500,
+      ENTRADA_MS + PAUSA_MS + RETROCESO_MS + ALEJAR_MS + ENTRAR_MS + 2500,
     )
 
     return () => {
@@ -167,6 +225,7 @@ const MainPage = () => {
     >
       <div className="escena">
         <section className="hero">
+          <img src={rutaHero} alt="" className="hero-ruta" draggable="false" />
           <div className="hero-texto">
             <span className="hero-kicker" aria-hidden="true" />
             <h2 className="hero-titulo">
