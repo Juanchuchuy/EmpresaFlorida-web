@@ -68,11 +68,11 @@ export const formatCountdown = (hora, ahora, esDeManiana = false) => {
 
   const minutos = Math.round((objetivo.getTime() - ahora.getTime()) / 60000)
   if (minutos <= 0) return 'Saliendo'
-  if (minutos < 60) return `en ${minutos} min`
+  if (minutos < 60) return `${minutos} min`
 
   const horas = Math.floor(minutos / 60)
   const resto = minutos % 60
-  return resto ? `en ${horas} h ${resto} min` : `en ${horas} h`
+  return resto ? `${horas} h ${resto} min` : `${horas} h`
 }
 
 // Acorta un recorrido largo a "Origen/Segunda parada/.../Destino final",
