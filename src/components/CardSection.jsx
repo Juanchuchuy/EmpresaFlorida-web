@@ -114,14 +114,15 @@ const CardSection = ({
                         </span>
                       )}
                     </div>
+                   
                     {despues.length > 0 && (
                       <div className="card-despues">
-                        Después:
+                        Después
                         {despues.map((h, i) => {
                           const cd = formatCountdown(h.hora, ahora, h.esDeManiana)
                           return (
                             <div key={i} className="card-hora-fila">
-                              <strong>{h.hora}</strong>
+                              <strong><Clock color='red' />{h.hora}</strong>
                               {cd && <span className="card-countdown">{cd}</span>}
                             </div>
                           )
@@ -130,7 +131,8 @@ const CardSection = ({
                     )}
                   </span>
                     <hr />
-                  <div className="card-recorrido" title={proximo.recorrido}>
+                  <div className="card-recorrido-container" title={proximo.recorrido}>
+                      <div className='card-recorrido'>
                           <span className='icons-recorrido'>
                             <LineDotTopVertical size={40} color='#930101' />
                             <LineDotBottomVertical size={50} color='blue' />
@@ -138,6 +140,7 @@ const CardSection = ({
                           <span className='recorrido-box'>
                               {acortarRecorrido(proximo.recorrido)}
                             </span>
+                      </div>      
                       <div className="card-toggle-slot">
                       <button
                           type="button"

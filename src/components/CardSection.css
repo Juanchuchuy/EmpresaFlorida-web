@@ -87,10 +87,18 @@
 
 .card-hora-fila {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   gap: 12px;
-  flex-wrap: wrap;
+  
+}
+.card-hora-fila strong{
+
+  font-size: 32px;
+
+
 }
 
 .card-countdown {
@@ -99,7 +107,7 @@
   border-radius: 999px;
   background-color: rgba(45, 48, 141, 0.1);
   color: #2D308D;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -112,29 +120,38 @@
 .card-despues {
   display: flex;
   flex-direction: column;
-  font-size: 14px;
-  color: var(--card-text);
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(138, 138, 138, 0.365);
+  border-top: 1px solid rgba(138, 138, 138, 0.365);
+  width: 100%;
 }
 
 .card-despues strong {
   font-weight: 700;
-  font-size: 16px;
-    white-space: pre-line;
-
+  font-size:24px;
+  white-space: pre-line;
   color: var(--card-text-strong);
 }
 
-.card-recorrido {
+.card-recorrido-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: start;
-  gap: 4px;
   overflow: hidden;
-  margin: 10px 15px;
+  margin: 10px 10px;
   font-size: 20px;
   line-height: 1.35;
   color: var(--card-text);
+  justify-content: space-between;
+}
+.card-recorrido{
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
 }
 .icons-recorrido{
 
@@ -158,18 +175,19 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin: 10px 35px;
+  justify-content: start;
+  gap: 2px;
+  margin: 10px 10px;
 }
 .card-movil{
 
   color: rgba(2, 2, 2, 0.658);
-  font-family: "Geist", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
 
 }
 .card-hora strong {
-  font-size: 32px;
   outline: none;
   color: red;
   display: flex;
@@ -306,19 +324,15 @@
   border-radius: 14px;
 }
 
-.card-section--hero .card--seleccionada .card-hora {
 
-  width: 100%;
-
-}
 
 .card-section--hero .card--seleccionada .card-hora-fila {
-  justify-content: center;
+  justify-content: space-between;
   font-size: 52px;
 }
 
-.card-section--hero .card--seleccionada .card-recorrido {
-  justify-content: center;
+.card-section--hero .card--seleccionada .card-recorrido-container {
+  justify-content: space-between;
   font-size: 18px;
 }
 
