@@ -47,7 +47,7 @@ const Header = () => {
   return (
       <header className="app-header">
         <div className="logo">
-          <img src={logoName} alt="Empresa Florida S.R.L. - Desde 1954" className="logo-img" />
+          <NavLink to="/" ><img src={logoName} alt="Empresa Florida S.R.L. - Desde 1954" className="logo-img" /></NavLink>
           <div className="logo-texto">
             <h1 className="logo-title">Empresa Florida</h1>
             <p className="logo-tagline">Tu destino, nuestra ruta</p>
