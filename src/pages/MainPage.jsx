@@ -35,7 +35,6 @@ const ESCALA_ALEJADO = 0.5
 
 // La intro se ve una sola vez por sesión: si el usuario vuelve a "/" desde
 // Horarios o Puntos de recarga, la home aparece directo, sin repetir todo.
-let introYaVista = false
 
 const acciones = [
   { icono: Clock, texto: 'Horarios', ruta: '/horarios', color: 'rojo' },
@@ -58,7 +57,7 @@ const MainPage = () => {
   // 'listo' = home completa (aún sin desplazar en desktop)
   // 'fondo' = el colectivo ya se corrió a la derecha (solo desktop)
   const [fase, setFase] = useState(() =>
-    introYaVista || prefiereSinMovimiento() ? 'fondo' : 'intro',
+    prefiereSinMovimiento() ? 'fondo' : 'intro',
   )
 
   // La home ocupa exactamente lo que queda de pantalla debajo del header
@@ -117,7 +116,6 @@ const MainPage = () => {
 
       // Limpia las animaciones y deja que el CSS tome el control (fase).
       const asentar = () => {
-        introYaVista = true
         animaciones.forEach((x) => x.cancel())
       }
 

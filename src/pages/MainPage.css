@@ -327,7 +327,7 @@
   .hero-texto {
     max-width: 58%;
     align-self: stretch;
-    border-radius: 0 90px 90px 0;
+    border-radius: 0 60px 60px 0;
     min-height: 100%;
     background: rgba(255, 255, 255, 0.35);
     -webkit-backdrop-filter: blur(8px) saturate(1.2);
@@ -366,7 +366,7 @@
     min-height: 0;
     max-height: 460px;
     gap: 15px;
-    margin: 25% auto 0;
+    margin: 15% auto 0;
   }
   .accion {
     flex: 1 1 60px;
