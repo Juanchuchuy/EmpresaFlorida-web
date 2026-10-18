@@ -3,13 +3,19 @@
 // "0:30", aparecen al FINAL de la planilla, no al principio). Por eso el
 // corte del día lo ponemos a las 3 AM: todo lo que sea antes de esa hora
 // se considera parte de la noche anterior, no del día que recién empieza.
-const INICIO_DIA_SERVICIO = 3 * 60 // 3:00 en minutos
+const HORA_CORTE = 3
+const MINUTOS_POR_DIA = 24 * 60
+
+// Minutos transcurridos desde el inicio del día de servicio (3:00).
+// Las horas de madrugada (< 3) cuentan como el final del día anterior.
+const minutosDeServicio = (horas, minutos) => {
+  const total = horas * 60 + minutos
+  return (horas < HORA_CORTE ? total + MINUTOS_POR_DIA : total) - HORA_CORTE * 60
+}
 
 export const aOrdenDelDia = (hora) => {
   const [h, m] = hora.split(':').map(Number)
-  let minutos = h * 60 + m
-  if (h < 3) minutos += 24 * 60 // "madruga" -> va al final del día anterior
-  return minutos - INICIO_DIA_SERVICIO
+  return minutosDeServicio(h, m)
 }
 
 // Devuelve el próximo horario (>= ahora) de la lista, o el primero del día
@@ -57,17 +63,28 @@ export const getProximosHorarios = (horarios, ahora = new Date(), cantidad = 3) 
   return resultado
 }
 
-// "Saliendo" / "en 12 min" / "en 1 h 20 min": compara la hora del horario
-// contra el momento actual. Si es de madrugada del día siguiente
-// ("esDeManiana"), suma un día antes de calcular la diferencia.
-export const formatCountdown = (hora, ahora, esDeManiana = false) => {
-  const [h, m] = hora.split(':').map(Number)
-  const objetivo = new Date(ahora)
-  objetivo.setHours(h, m, 0, 0)
-  if (esDeManiana) objetivo.setDate(objetivo.getDate() + 1)
+// Para cada fila de la planilla: -1 si ya salió, o su posición entre las que
+// todavía faltan (0 = la próxima, 1 = la siguiente...). Función pura: la usa
+// la tabla de Horarios para ir apagando la opacidad sin variables mutables.
+export const getPosicionesFuturas = (horarios, ahora = new Date()) => {
+  const lista = horarios?.horarios ?? []
+  const ordenAhora = minutosDeServicio(ahora.getHours(), ahora.getMinutes())
+  let futuras = 0
+  return lista.map((item) => (aOrdenDelDia(item.hora) < ordenAhora ? -1 : futuras++))
+}
 
-  const minutos = Math.round((objetivo.getTime() - ahora.getTime()) / 60000)
-  if (minutos <= 0) return 'Saliendo'
+// "Saliendo" / "en 12 min" / "en 1 h 20 min": cuánto falta para la hora dada.
+// Se calcula sobre el día de servicio (ver minutosDeServicio): así un
+// "0:30" visto a las 23:40 son 50 min, y no un horario "ya pasado". Si el
+// horario quedó atrás en el orden del día, es el del día siguiente (el
+// "Después:" de la card y el primer servicio cuando ya no quedan más hoy).
+export const formatCountdown = (hora, ahora = new Date()) => {
+  const [h, m] = hora.split(':').map(Number)
+  let minutos =
+    minutosDeServicio(h, m) - minutosDeServicio(ahora.getHours(), ahora.getMinutes())
+  if (minutos < 0) minutos += MINUTOS_POR_DIA
+
+  if (minutos === 0) return 'Saliendo'
   if (minutos < 60) return `${minutos} min`
 
   const horas = Math.floor(minutos / 60)
