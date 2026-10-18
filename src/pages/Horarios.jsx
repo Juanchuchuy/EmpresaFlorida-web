@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { lineas } from '../data/lineas'
 import { paradasPorLinea } from '../data/paradas'
-import { aOrdenDelDia, acortarRecorrido, getProximoHorario } from '../utils/horarios'
+import { acortarRecorrido, getPosicionesFuturas, getProximoHorario } from '../utils/horarios'
 import ParadasCarousel from '../components/ParadasCarousel'
 import CardSection from '../components/CardSection'
 
@@ -134,7 +134,6 @@ const Horarios = () => {
   const proximo = linea ? getProximoHorario(datos, ahora) : null
   const listaHorarios = datos?.horarios ?? []
   const puedeCambiarSentido = Boolean(linea?.ida && linea?.vuelta)
-  const ordenAhora = aOrdenDelDia(`${ahora.getHours()}:${ahora.getMinutes()}`)
   // El campo "sentido" viene como "Florida x Posse → Terminal": el destino
   // real de este viaje es lo que queda después de la flecha.
   const destino = datos?.sentido?.split('→')[1]?.trim() ?? linea?.nombre
@@ -146,10 +145,10 @@ const Horarios = () => {
       ? proximo.recorrido.split('/').map((p) => ({ nombre: p.trim() }))
       : []
 
-  // Recorremos la lista una sola vez llevando la cuenta de cuántas filas
-  // "futuras" ya vimos, para ir apagando la opacidad a medida que nos
+  // Posición de cada fila entre las que todavía no salieron (-1 = ya salió,
+  // 0 = la próxima...), para ir apagando la opacidad a medida que nos
   // alejamos del próximo servicio.
-  let indiceFuturo = -1
+  const posiciones = getPosicionesFuturas(datos, ahora)
 
   const huboSeleccionInvalida = Boolean(seleccionadaId) && colapsar && !linea
 
@@ -233,7 +232,8 @@ const Horarios = () => {
                 </div>
 
                 {listaHorarios.map((item, idx) => {
-                  const yaPaso = aOrdenDelDia(item.hora) < ordenAhora
+                  const posicion = posiciones[idx]
+                  const yaPaso = posicion === -1
                   let opacidad = 1
                   let estado = 'programado'
                   let etiquetaEstado = 'Programado'
@@ -243,16 +243,15 @@ const Horarios = () => {
                     estado = 'paso'
                     etiquetaEstado = 'Ya salió'
                   } else {
-                    indiceFuturo += 1
-                    const esProxima = indiceFuturo === 0 && !proximo?.esDeManiana
+                    const esProxima = posicion === 0 && !proximo?.esDeManiana
                     if (esProxima) {
                       estado = 'proximo'
                       etiquetaEstado = 'Próximo'
-                    } else if (indiceFuturo <= 1) {
+                    } else if (posicion <= 1) {
                       opacidad = 1
-                    } else if (indiceFuturo === 2) {
+                    } else if (posicion === 2) {
                       opacidad = 0.7
-                    } else if (indiceFuturo === 3) {
+                    } else if (posicion === 3) {
                       opacidad = 0.5
                     } else {
                       opacidad = 0.35

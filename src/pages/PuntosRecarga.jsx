@@ -7,7 +7,7 @@ import { puntosDeRecarga } from '../data/PuntosRecarga'
 import './PuntosRecarga.css'
 
 // Icons
-import { ChevronLeft, ChevronRight, Clock, CreditCard, MapPin } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Clock, MapPin } from 'lucide-react'
 
 // Centrado a ojo entre los 7 puntos reales (de Tucumán capital hasta
 // Las Cejas), con zoom bajo para que entren todos de arranque.
