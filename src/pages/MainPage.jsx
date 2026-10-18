@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import busHero from '../assets/img/bus-hero.png'
 import rutaHero from '../assets/img/road-hero.webp'
+import EstadoServicio from '../components/EstadoServicio'
 import './MainPage.css'
 
 // ── Intro (milisegundos) ────────────────────────────────────────────────
@@ -42,6 +43,10 @@ const acciones = [
   { icono: MapPin, texto: 'Punto de recarga', ruta: '/puntos-recarga', color: 'rojo' },
   { icono: Ticket, texto: 'Abonos', ruta: null, color: 'azul' },
 ]
+
+// Estado del servicio de los móviles: 'normal' | 'reducido' | 'suspendido'.
+// Por ahora es fijo; después se alimentará con datos reales.
+const ESTADO_SERVICIO = 'normal'
 
 const prefiereSinMovimiento = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -245,6 +250,8 @@ const MainPage = () => {
             draggable="false"
           />
         </section>
+
+        <EstadoServicio estado={ESTADO_SERVICIO} />
 
         <nav className="acciones" aria-label="Accesos principales">
           {acciones.map(({ icono: Icono, texto, ruta, color }, i) => (

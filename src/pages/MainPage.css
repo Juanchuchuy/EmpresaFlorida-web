@@ -178,6 +178,15 @@
   }
 }
 
+/* ── Estado del servicio: entre el hero y la card de acciones. Toma el lugar
+   del solape que antes tenía la card (queda montado sobre el borde del hero)
+   y la card de acciones continúa justo debajo. ── */
+.escena > .estado-servicio {
+  flex: 0 0 auto;
+  margin: calc(-1 * clamp(20px, 3dvh, 44px)) auto 10px;
+}
+.escena > .estado-servicio + .acciones { margin-top: 0; }
+
 /* ══════════════════════════════════════════════════════════════════════════
    4. PIE
    ══════════════════════════════════════════════════════════════════════════ */
@@ -200,6 +209,7 @@
 .home[data-fase='intro'] .hero-img { opacity: 0; }
 .home[data-fase='intro'] .hero-texto,
 .home[data-fase='intro'] .hero-ruta,
+.home[data-fase='intro'] .estado-servicio,
 .home[data-fase='intro'] .acciones,
 .home[data-fase='intro'] .pie {
   opacity: 0;
@@ -223,6 +233,10 @@
 .home[data-fase='listo'] .hero-ruta,
 .home[data-fase='fondo'] .hero-ruta {
   animation: fundir 1.2s ease-out 0.3s backwards;
+}
+.home[data-fase='listo'] .estado-servicio,
+.home[data-fase='fondo'] .estado-servicio {
+  animation: aparecer 0.7s ease-out 0.6s backwards;
 }
 .home[data-fase='listo'] .acciones,
 .home[data-fase='fondo'] .acciones {
@@ -386,6 +400,10 @@
     padding-block: 10px;
   }
 
+  /* El estado del servicio ocupa el hueco que dejaba el margen superior
+     de la card (ahora lo manejan sus propios márgenes). */
+  .escena > .estado-servicio { margin: 12px auto; }
+
   /* Pie: no crece ni se corta; si no entra en una línea, se reparte parejo */
   .pie {
     display: block;
@@ -442,7 +460,8 @@
     padding-top: 10px;
     padding-bottom: 12px;
   }
-  .acciones { margin-top: 10px; padding: 10px; gap: 8px; }
+  .acciones { padding: 10px; gap: 8px; }
+  .escena > .estado-servicio { margin: 8px auto; }
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -494,6 +513,7 @@
   }
 
   .acciones { margin: 0; }
+  .escena > .estado-servicio { margin: 0 auto 14px; }
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -501,6 +521,7 @@
    ────────────────────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .home .hero-texto,
+  .home .estado-servicio,
   .home .acciones,
   .home .accion,
   .home .pie { animation: none; }
