@@ -34,7 +34,6 @@ const ParadasCarousel = ({ paradas, indiceActual = 0, titulo = 'Recorrido del pr
       <div className="paradas-carrusel-pista" ref={pistaRef}>
         {paradas.map((parada, idx) => {
           const esActual = idx === indiceActual
-          const esFinal = idx === paradas.length - 1
           const tieneFoto = Boolean(parada.imagen)
 
           return (

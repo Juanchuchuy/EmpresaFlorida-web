@@ -80,7 +80,7 @@ const CardSection = ({
         const proximo = getProximoHorario(datos, ahora)
         // Los dos horarios que le siguen al próximo, para el "Después:".
         const despues = getProximosHorarios(datos, ahora, 3).slice(1)
-        const countdown = proximo ? formatCountdown(proximo.hora, ahora, proximo.esDeManiana) : null
+        const countdown = proximo ? formatCountdown(proximo.hora, ahora) : null
         const esInminente = countdown === 'Saliendo' || /^en [0-5] min$/.test(countdown ?? '')
 
         return (
@@ -119,7 +119,7 @@ const CardSection = ({
                       <div className="card-despues">
                         Después
                         {despues.map((h, i) => {
-                          const cd = formatCountdown(h.hora, ahora, h.esDeManiana)
+                          const cd = formatCountdown(h.hora, ahora)
                           return (
                             <div key={i} className="card-hora-fila">
                               <strong><Clock color='red' />{h.hora}</strong>
