@@ -1,8 +1,6 @@
-import floridaAlternativa from '../assets/img/florida_x_alternativa.png'
 import floridaPosse from '../assets/img/florida_x_posse.png'
 import wPosse from '../assets/img/w_posse.png'
 import lasCejas from '../assets/img/las_cejas.png'
-import cuatroDeMayo from '../assets/img/4_de_mayo.png'
 import losRalos from '../assets/img/los_ralos.png'
 import floridaAlderetes from '../assets/img/florida_x_alderetes.png'
 
@@ -18,8 +16,9 @@ import floridaAlderetesIda from './horarios/floridaXalderetes_Tuc.json'
 import floridaAlderetesVuelta from './horarios/floridaXalderetes.json'
 
 // "ida" = viaja HACIA Tuc (capital). "vuelta" = sale DESDE Tuc.
-// Las líneas sin JSON todavía (Florida x Alternativa, 4 de Mayo) quedan en null
-// y la card lo va a mostrar como "horario no disponible".
+// Florida x Alternativa y 4 de Mayo todavía no se listan porque les falta el
+// JSON de horarios (sus imágenes ya están en assets/img). Una línea con ida o
+// vuelta en null se muestra como "horario no disponible".
 export const lineas = [
   
   {
