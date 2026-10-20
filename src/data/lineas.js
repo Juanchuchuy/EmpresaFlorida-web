@@ -1,8 +1,8 @@
-import floridaPosse from '../assets/img/florida_x_posse.png'
-import wPosse from '../assets/img/w_posse.png'
-import lasCejas from '../assets/img/las_cejas.png'
-import losRalos from '../assets/img/los_ralos.png'
-import floridaAlderetes from '../assets/img/florida_x_alderetes.png'
+import floridaPosse from '../assets/img/florida_x_posse.webp'
+import wPosse from '../assets/img/w_posse.webp'
+import lasCejas from '../assets/img/las_cejas.webp'
+import losRalos from '../assets/img/los_ralos.webp'
+import floridaAlderetes from '../assets/img/florida_x_alderetes.webp'
 
 import floridaPosseIda from './horarios/floridaXposse_Tuc.json'
 import floridaPosseVuelta from './horarios/floridaXposse.json'
