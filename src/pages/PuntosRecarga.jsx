@@ -4,6 +4,8 @@ import PriceCard from '../components/PriceCard';
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { puntosDeRecarga } from '../data/PuntosRecarga'
+import { TILES_ATRIBUCION, TILES_URL } from '../config/Mapa'
+import { useConexion } from '../hooks/useConexion'
 import './PuntosRecarga.css'
 
 // Icons
@@ -39,6 +41,7 @@ const CentrarEnPunto = ({ punto }) => {
 const PuntosRecarga = () => {
   const [seleccionadoId, setSeleccionadoId] = useState(null)
   const pistaRef = useRef(null)
+  const enLinea = useConexion()
 
   const puntoSeleccionado = puntosDeRecarga.find((p) => p.id === seleccionadoId) ?? null
 
@@ -108,10 +111,16 @@ const PuntosRecarga = () => {
       </div>
 
       <div className="puntos-recarga-mapa-wrap">
+        {!enLinea && (
+          <p className="puntos-recarga-sin-conexion" role="status">
+            Sin conexión: el mapa puede no cargarse. Los puntos de recarga siguen
+            disponibles en la lista de arriba.
+          </p>
+        )}
         <MapContainer center={CENTRO_TUCUMAN} zoom={10} scrollWheelZoom className="puntos-recarga-mapa">
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution={TILES_ATRIBUCION}
+            url={TILES_URL}
           />
           <CentrarEnPunto punto={puntoSeleccionado} />
           {puntosDeRecarga.map((punto) => {
