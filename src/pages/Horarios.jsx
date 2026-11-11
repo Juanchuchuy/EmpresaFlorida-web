@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { lineas } from '../data/lineas'
+import { lineas, getHorarios, circulaEn } from '../data/lineas'
+import { useEstadoServicio } from '../hooks/useEstadoServicio'
+import { mensajeSinHorarios } from '../data/EstadoServicio'
 import { paradasPorLinea } from '../data/paradas'
 import { acortarRecorrido, getPosicionesFuturas, getProximoHorario } from '../utils/horarios'
 import ParadasCarousel from '../components/ParadasCarousel'
@@ -128,12 +130,17 @@ const Horarios = () => {
     }, DURACION_SALIDA_DETALLE)
   }
 
+  // Tipo de día vigente (lunes a viernes, sábado, domingo/feriado; null si hay paro).
+  const { tipoDia } = useEstadoServicio()
+
   const linea = lineas.find((l) => l.id === seleccionadaId)
 
-  const datos = linea ? (sentido === 'ida' ? linea.ida : linea.vuelta) : null
+  const datos = linea ? getHorarios(linea, sentido, tipoDia) : null
   const proximo = linea ? getProximoHorario(datos, ahora) : null
   const listaHorarios = datos?.horarios ?? []
-  const puedeCambiarSentido = Boolean(linea?.ida && linea?.vuelta)
+  const puedeCambiarSentido = Boolean(
+    linea && getHorarios(linea, 'ida', tipoDia) && getHorarios(linea, 'vuelta', tipoDia),
+  )
   // El campo "sentido" viene como "Florida x Posse → Terminal": el destino
   // real de este viaje es lo que queda después de la flecha.
   const destino = datos?.sentido?.split('→')[1]?.trim() ?? linea?.nombre
@@ -220,7 +227,7 @@ const Horarios = () => {
 
             {listaHorarios.length === 0 ? (
               <p className="horarios-sin-datos">
-                Todavía no tenemos el cronograma cargado para este sentido.
+                {mensajeSinHorarios({ tipoDia, circula: circulaEn(linea, tipoDia) })}
               </p>
             ) : (
               <>
