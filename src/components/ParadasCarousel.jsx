@@ -56,7 +56,7 @@ const ParadasCarousel = ({ paradas, indiceActual = 0, titulo = 'Recorrido del pr
                   </div>
                 )}
                 <span className="parada-card-badge">
-                  {esActual ? 'Aproximándose' : ''}
+                  {esActual ? '' : ''}
                 </span>
                 
                 <p className="parada-card-nombre">{parada.nombre}</p>
