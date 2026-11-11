@@ -14,6 +14,7 @@ export const puntosDeRecarga = [
     horario: 'Lun–Vie, 8:00 a 15:00 h',
     lat: -26.8241,
     lng: -65.2226,
+    urlMaps: 'https://maps.app.goo.gl/AtyvmXcQTRCogY4s9',
   },
   {
     id: 'eliezer-tecno',
@@ -25,6 +26,7 @@ export const puntosDeRecarga = [
     horario: null,
     lat: -26.8919,
     lng: -64.7224,
+    urlMaps: 'https://maps.app.goo.gl/739wtJzpnrfKmydZA',
   },
   {
     id: 'quincho-el-amanecer',
@@ -36,6 +38,7 @@ export const puntosDeRecarga = [
     horario: null,
     lat: -26.9334,
     lng: -64.9683,
+    urlMaps: 'https://maps.app.goo.gl/61Cvsbeopd2htaJs5',
   },
   {
     id: 'despensa-santa-rita',
@@ -47,6 +50,7 @@ export const puntosDeRecarga = [
     horario: null,
     lat: -26.8667,
     lng: -64.8167,
+    urlMaps: 'https://maps.app.goo.gl/hwhniEVHWAB73NuS7',
   },
   {
     id: 'jandar-daniela-gisela',
@@ -56,8 +60,10 @@ export const puntosDeRecarga = [
     direccion: 'Mz. 3, Lote 3, Barrio El Bosque',
     ciudad: 'Delfín Gallo',
     horario: null,
-    lat: -26.941,
-    lng: -64.975,
+    lat: -26.844030,
+    lng: -65.094046,
+    urlMaps: 'https://maps.app.goo.gl/txUmoxwq4a958dgj9',
+    
   },
   {
     id: 'camacho-alicia',
@@ -69,6 +75,7 @@ export const puntosDeRecarga = [
     horario: null,
     lat: -26.95,
     lng: -65.005,
+    urlMaps: 'https://maps.app.goo.gl/f1JJaEUG64mtGNJB8',
   },
   {
     id: 'carniceria-buena-carne',
@@ -80,5 +87,6 @@ export const puntosDeRecarga = [
     horario: null,
     lat: -27.0167,
     lng: -65.0167,
+    urlMaps: 'https://maps.app.goo.gl/JQmrfNAC3yLpEGXp7',
   },
 ]
