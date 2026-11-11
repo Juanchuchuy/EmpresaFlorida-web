@@ -1,0 +1,285 @@
+.app-header {
+  position: relative;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(24px + env(safe-area-inset-top, 0px)) calc(56px + env(safe-area-inset-right, 0px)) 24px calc(56px + env(safe-area-inset-left, 0px));
+  background-color: #2769aa;
+  box-shadow: 4px 0px 10px black;
+  font-family: var(--font-heading);
+  animation: header-entrada 0.6s ease-out both;
+  z-index: 1;
+}
+
+@keyframes header-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-header {
+    animation: none;
+  }
+}
+.logo{
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+
+}
+
+.logo-img {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.logo-title {
+  font-size: 30px;
+  margin: 0;
+  color: #fffffffa;
+
+}
+.logo-texto {
+   display: flex;
+   flex-direction: column;
+   gap: 2px;
+}
+.logo-tagline { 
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255,255,255,.85);
+  font-weight: 500;
+}
+.logo-estado {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 1px 10px 1px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #0b2a5b;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.logo-estado-punto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--estado-color, #12a15b);
+  flex-shrink: 0;
+  transition: background 0.25s ease;
+}
+.nav-menu{
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  color: #fffffffa;
+  font-size: 18px;
+
+}
+.menu-item{
+  position: relative;
+
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.menu-item a{
+  color: white;
+  text-decoration: none;
+}
+.menu-item a.active{
+  color: #ED1B24;
+}
+.menu-item-border{
+  border: none;
+  height: 2px;
+  width: 0;
+  background-color: #ED1B24;
+  transition: all 0.25s;
+}
+.menu-item:hover .menu-item-border{
+
+  width: 100%;
+
+}
+.menu-item-button{
+  position: relative;
+}
+.menu-button{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #fffffffa;
+  font-size: 18px;
+  font-family: inherit;
+}
+.Arrow-button-normal{
+  transition: transform 0.25s;
+  transform: rotate(0deg);
+  width: 20px;
+  height: 20px;
+  
+}
+.Arrow-button-down{
+  
+  transition: transform 0.25s;
+  transform: rotate(90deg);
+  width: 20px;
+  height: 20px;
+
+}
+
+/* Dropdown de líneas: siempre position:absolute, se anima con
+   opacity/visibility en vez de display:none para que la transición
+   sea suave y no salte entre "fixed" y "absolute". pointer-events:none
+   evita clickear items invisibles mientras está cerrado. */
+   
+.dropdown-menu{
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 9px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 10px;
+  padding: 16px;
+  min-width: 220px;
+  background-color: #ffffff;
+  border: 1px solid #ED1B24;
+  box-shadow: 2px 4px 12px rgba(13, 15, 30, 0.15);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 17px;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+.dropdown-menu-open{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+}
+.dropdown-menu li{
+  list-style: none;
+  padding: 6px 4px;
+  cursor: pointer;
+  color: #0D0F1E;
+}
+.dropdown-menu li:hover{
+  color: #ED1B24;
+}
+
+.menu-toggle{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: #fcfcfc;
+  cursor: pointer;
+  padding: 4px;
+}
+
+
+/* Debajo de este ancho, el nav pasa a menú hamburguesa: se oculta el
+   nav-menu horizontal y aparece el botón de toggle. El dropdown de
+   Horarios se aplana (position:static) para que quede como una
+   sub-lista dentro del menú apilado, en vez de flotar encima. */
+@media (max-width: 860px){
+  .app-header{
+    padding: calc(18px + env(safe-area-inset-top, 0px)) calc(24px + env(safe-area-inset-right, 0px)) 18px calc(24px + env(safe-area-inset-left, 0px));
+    z-index: 1;
+  }
+  .logo-img{
+    width: 60px;
+    height: 60px;
+  }
+  .logo-title{
+    font-size: 24px;
+    text-align: center;
+  }
+  .menu-toggle{
+    display: flex;
+  }
+  .main-nav{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #2769aa;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 8px 16px rgba(13, 15, 30, 0.08);
+    padding: 8px calc(20px + env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) calc(20px + env(safe-area-inset-left, 0px));
+  }
+  .main-nav-open{
+    display: block;
+  }
+  .nav-menu{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .menu-item{
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px 0;
+    
+  }
+  .menu-item-border{
+    display: none;
+  }
+  .menu-item-button{
+    width: 100%;
+  }
+  .menu-button{
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  .dropdown-menu{
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    background-color: #e2e8f0;
+    padding: 0 0 0 16px;
+    margin-top: 0;
+    min-width: 0;
+  }
+  
+}
+
+
+@media (max-width: 860px) {
+  .logo-tagline { font-size: 12px; }
+  .logo-estado { font-size: 11px; }
+}
