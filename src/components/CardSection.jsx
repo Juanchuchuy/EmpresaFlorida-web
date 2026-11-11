@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
-import { lineas } from '../data/lineas'
+import { lineas, getHorarios, circulaEn } from '../data/lineas'
+import { useEstadoServicio } from '../hooks/useEstadoServicio'
+import { ESTADOS_SERVICIO, mensajeSinHorarios, variablesEstado } from '../data/EstadoServicio'
+import AvisoServicio from './AvisoServicio'
 import { getProximoHorario, getProximosHorarios, formatCountdown } from '../utils/horarios'
 import { acortarRecorrido } from '../utils/texto'
 import './CardSection.css'
@@ -17,6 +20,8 @@ import { ArrowUpDown, Clock, LineDotTopVertical,LineDotBottomVertical} from 'luc
 // - sentidoSeleccionada: sentido ('ida' | 'vuelta') que gobierna la card
 //   seleccionada una vez que pasa a la vista de detalle, para que quede
 //   sincronizada con el pill "Cambiar Orientación" de la tabla de horarios.
+
+
 const CardSection = ({
   seleccionadaId = null,
   colapsar = false,
@@ -38,6 +43,11 @@ const CardSection = ({
     const intervalo = setInterval(() => setAhora(new Date()), 30000)
     return () => clearInterval(intervalo)
   }, [])
+
+  // Estado del servicio (lunes a viernes, sábado, domingo/feriado o paro): decide
+  // qué cronograma se muestra y qué dice el badge de cada card.
+  const { estado, tipoDia } = useEstadoServicio()
+  const metaEstado = ESTADOS_SERVICIO[estado]
 
   const toggleSentido = (lineaId) => {
     setSentidos((prev) => ({
@@ -71,12 +81,14 @@ const CardSection = ({
       className={`card-section ${seleccionadaId ? 'card-section--hero' : ''}`}
       id="lineas"
     >
+      <AvisoServicio />
+
       {lineasAMostrar.map((linea) => {
         const esSeleccionada = linea.id === seleccionadaId
         const sentido = esSeleccionada && sentidoSeleccionada
           ? sentidoSeleccionada
           : sentidos[linea.id] ?? 'ida'
-        const datos = sentido === 'ida' ? linea.ida : linea.vuelta
+        const datos = getHorarios(linea, sentido, tipoDia)
         const proximo = getProximoHorario(datos, ahora)
         // Los dos horarios que le siguen al próximo, para el "Después:".
         const despues = getProximosHorarios(datos, ahora, 3).slice(1)
@@ -88,6 +100,11 @@ const CardSection = ({
             className={`card ${esSeleccionada ? 'card--seleccionada' : ''} ${seleccionadaId && !esSeleccionada ? 'card--saliendo' : ''}`}
             key={linea.id}
           >
+            <span className="card-estado" style={variablesEstado(estado)}>
+              <span className="card-estado-punto" aria-hidden="true" />
+              {metaEstado.titulo}
+            </span>
+
             <img
               src={linea.imagen}
               alt={`Cartel de la línea ${linea.nombre}`}
@@ -154,7 +171,9 @@ const CardSection = ({
                   
                 </>
               ) : (
-                <p className="card-sin-datos">Horario no disponible todavía</p>
+                <p className="card-sin-datos">
+                  {mensajeSinHorarios({ tipoDia, circula: circulaEn(linea, tipoDia) })}
+                </p>
               )
               }
               
