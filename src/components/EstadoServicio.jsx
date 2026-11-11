@@ -1,38 +1,50 @@
+import { RefreshCw } from 'lucide-react'
+import { ESTADOS_SERVICIO, variablesEstado } from '../data/EstadoServicio'
 import './EstadoServicio.css'
 
-// Variantes del estado del servicio. Por ahora el estado se elige por prop
-// ('normal' | 'reducido' | 'suspendido'); más adelante vendrá de datos reales.
-const ESTADOS = {
-  normal: {
-    titulo: 'Servicio normal',
-    detalle: 'Todas las líneas operativas',
-  },
-  reducido: {
-    titulo: 'Servicio reducido',
-    detalle: 'Frecuencia reducida',
-  },
-  suspendido: {
-    titulo: 'Servicio suspendido',
-    detalle: 'Sin servicio temporalmente',
-  },
-}
+// Si recibe `onClick` (solo en la versión demo) la tarjeta se vuelve un botón que
+// cambia de estado con un toque. Sin `onClick` es una tarjeta informativa común.
+const EstadoServicio = ({ estado = 'normal', onClick }) => {
+  const clave = ESTADOS_SERVICIO[estado] ? estado : 'normal'
+  const { titulo, cuando } = ESTADOS_SERVICIO[clave]
+  const interactivo = typeof onClick === 'function'
+  const clases = `estado-servicio${interactivo ? ' estado-servicio--interactivo' : ''}`
 
-const EstadoServicio = ({ estado = 'normal' }) => {
-  const clave = ESTADOS[estado] ? estado : 'normal'
-  const { titulo, detalle } = ESTADOS[clave]
+  const contenido = (
+    <>
+      <span className="estado-punto" aria-hidden="true" />
+      <div className="estado-textos">
+        <strong className="estado-titulo">{titulo}</strong>
+        <span className="estado-detalle">{cuando}</span>
+      </div>
+      {interactivo && <RefreshCw className="estado-cambiar" size={18} aria-hidden="true" />}
+    </>
+  )
+
+  if (interactivo) {
+    return (
+      <button
+        type="button"
+        className={clases}
+        style={variablesEstado(clave)}
+        onClick={onClick}
+        aria-live="polite"
+        aria-label={`Estado del servicio: ${titulo}. ${cuando}. Tocar para cambiar (demo).`}
+      >
+        {contenido}
+      </button>
+    )
+  }
 
   return (
     <section
-      className={`estado-servicio estado-servicio--${clave}`}
+      className={clases}
+      style={variablesEstado(clave)}
       role="status"
       aria-live="polite"
       aria-label="Estado del servicio"
     >
-      <span className="estado-punto" aria-hidden="true" />
-      <div className="estado-textos">
-        <strong className="estado-titulo">{titulo}</strong>
-        <span className="estado-detalle">{detalle}</span>
-      </div>
+      {contenido}
     </section>
   )
 }

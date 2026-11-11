@@ -3,9 +3,6 @@
    --navy y --rojo las define .home; los fallbacks cubren otros contextos. */
 
 .estado-servicio {
-  --estado-color: #12a15b;
-  --estado-halo: rgba(18, 161, 91, 0.18);
-
   position: relative;
   z-index: 3;
   display: flex;
@@ -26,23 +23,43 @@
   font-weight: 600;
 }
 
-.estado-servicio--reducido {
-  --estado-color: #f0951f;
-  --estado-halo: rgba(240, 149, 31, 0.2);
-}
-
-.estado-servicio--suspendido {
-  --estado-color: #dc3545;
-  --estado-halo: rgba(220, 53, 69, 0.18);
-}
-
 .estado-punto {
   flex: 0 0 auto;
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: var(--estado-color);
-  box-shadow: 0 0 0 5px var(--estado-halo);
+  background: var(--estado-color, #12a15b);
+  box-shadow: 0 0 0 5px var(--estado-halo, rgba(18, 161, 91, 0.18));
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Versión demo: la tarjeta es un botón que cambia de estado al tocarla. */
+button.estado-servicio {
+  appearance: none;
+  -webkit-appearance: none;
+  text-align: left;
+  color: inherit;
+}
+
+.estado-servicio--interactivo {
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+.estado-servicio--interactivo:active {
+  transform: scale(0.985);
+}
+
+.estado-servicio--interactivo:focus-visible {
+  outline: 3px solid rgba(45, 48, 141, 0.5);
+  outline-offset: 2px;
+}
+
+.estado-cambiar {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: #5b6b82;
+  opacity: 0.65;
 }
 
 .estado-textos {
