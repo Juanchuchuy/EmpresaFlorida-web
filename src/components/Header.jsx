@@ -1,10 +1,15 @@
 import { useRef, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import './Header.css'
 import logoName from '../assets/img/LogoName.jpg'
 import { ChevronRight, Menu, X } from 'lucide-react';
+import { useEstadoServicio } from '../hooks/useEstadoServicio'
+import { ESTADOS_SERVICIO, variablesEstado } from '../data/EstadoServicio'
 
 const Header = () => {
+  // En la home el estado ya se ve en su tarjeta: el badge va en las demás páginas.
+  const enInicio = useLocation().pathname === '/'
+  const { estado } = useEstadoServicio()
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [arrow, setArrow] = useState('normal')
@@ -49,7 +54,14 @@ const Header = () => {
           <NavLink to="/" ><img src={logoName} alt="Empresa Florida S.R.L. - Desde 1954" className="logo-img" /></NavLink>
           <div className="logo-texto">
             <h1 className="logo-title">Empresa Florida</h1>
-            <p className="logo-tagline">Tu destino, nuestra ruta</p>
+            {enInicio ? (
+              <p className="logo-tagline">Tu destino, nuestra ruta</p>
+            ) : (
+              <p className="logo-estado" style={variablesEstado(estado)} role="status" aria-live="polite">
+                <span className="logo-estado-punto" aria-hidden="true" />
+                {ESTADOS_SERVICIO[estado].titulo}
+              </p>
+            )}
           </div>
         </div>
 
