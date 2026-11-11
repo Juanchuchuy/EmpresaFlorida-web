@@ -1,14 +1,14 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Header from './components/Header'
-import Cargando from './components/Cargando'
-import MainPage from './pages/MainPage'
+import Header from './components/layout/Header'
+import Cargando from './components/ui/Cargando'
+import MainPage from './pages/MainPage/MainPage'
 import './App.css'
 
 // La home se carga de entrada; el resto de las páginas (y con ellas Leaflet y
 // los JSON de horarios) se descargan recién cuando el usuario las abre.
-const Horarios = lazy(() => import('./pages/Horarios'))
-const PuntosRecarga = lazy(() => import('./pages/PuntosRecarga'))
+const Horarios = lazy(() => import('./pages/Horarios/Horarios'))
+const PuntosRecarga = lazy(() => import('./pages/PuntosRecarga/PuntosRecarga'))
 
 function App() {
   return (
