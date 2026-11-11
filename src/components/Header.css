@@ -63,6 +63,28 @@
   color: rgba(255,255,255,.85);
   font-weight: 500;
 }
+.logo-estado {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 1px 10px 1px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #0b2a5b;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.logo-estado-punto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--estado-color, #12a15b);
+  flex-shrink: 0;
+  transition: background 0.25s ease;
+}
 .nav-menu{
 
   display: flex;
@@ -257,4 +279,7 @@
 }
 
 
-@media (max-width: 860px) { .logo-tagline { font-size: 12px; } }
+@media (max-width: 860px) {
+  .logo-tagline { font-size: 12px; }
+  .logo-estado { font-size: 11px; }
+}
