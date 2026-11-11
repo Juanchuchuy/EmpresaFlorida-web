@@ -1,0 +1,87 @@
+{
+  "linea": "Florida x Posse",
+  "sentido": "Florida x Posse → Terminal",
+  "dias": "Domingo y feriados",
+  "horarios": [
+    {
+      "hora": "4:50",
+      "recorrido": "Bº La Cancha/Posse/Terminal"
+    },
+    {
+      "hora": "5:50",
+      "recorrido": "Bº La Cancha/Posse/Terminal"
+    },
+    {
+      "hora": "6:50",
+      "recorrido": "Fortín/Posse/Terminal"
+    },
+    {
+      "hora": "7:50",
+      "recorrido": "Fortín/Posse/Terminal"
+    },
+    {
+      "hora": "8:50",
+      "recorrido": "Fortín/Posse/Terminal"
+    },
+    {
+      "hora": "9:50",
+      "recorrido": "Bº La Cancha/Posse/Terminal"
+    },
+    {
+      "hora": "10:50",
+      "recorrido": "Bº La Cancha/Posse/Terminal"
+    },
+    {
+      "hora": "11:50",
+      "recorrido": "Bº La Cancha/Posse/Terminal"
+    },
+    {
+      "hora": "13:00",
+      "recorrido": "Dumix/Posse/Terminal"
+    },
+    {
+      "hora": "13:50",
+      "recorrido": "Bº La Cancha/Posse/Terminal"
+    },
+    {
+      "hora": "15:00",
+      "recorrido": "Dumix/Posse/Terminal"
+    },
+    {
+      "hora": "15:55",
+      "recorrido": "Fortín/Posse/Terminal"
+    },
+    {
+      "hora": "16:50",
+      "recorrido": "Bº La Cancha/Posse/Terminal"
+    },
+    {
+      "hora": "17:50",
+      "recorrido": "Bº La Cancha/Posse/Terminal"
+    },
+    {
+      "hora": "18:50",
+      "recorrido": "Bº La Cancha/Posse/Terminal"
+    },
+    {
+      "hora": "19:25",
+      "recorrido": "Fortín/Posse/Terminal"
+    },
+    {
+      "hora": "20:20",
+      "recorrido": "Bº La Cancha/Posse/Terminal"
+    },
+    {
+      "hora": "20:50",
+      "recorrido": "Bº La Cancha/Posse/Terminal"
+    },
+    {
+      "hora": "21:20",
+      "recorrido": "Bº La Cancha/Posse/Terminal"
+    },
+    {
+      "hora": "22:20",
+      "recorrido": "Bº La Cancha/Posse/Terminal"
+    }
+  ]
+}

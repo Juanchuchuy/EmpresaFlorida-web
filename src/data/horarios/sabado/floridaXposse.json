@@ -1,0 +1,119 @@
+{
+  "linea": "Florida x Posse",
+  "sentido": "Terminal → Florida x Posse",
+  "dias": "Sábado",
+  "horarios": [
+    {
+      "hora": "6:00",
+      "recorrido": "Terminal/Posse/Florida/Colonia 4 Luisiana"
+    },
+    {
+      "hora": "6:40",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "7:00",
+      "recorrido": "Terminal/Florida/Posse/Fortín"
+    },
+    {
+      "hora": "7:30",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "8:15",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "9:00",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "9:30",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "10:00",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "10:30",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "11:00",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "11:45",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "12:30",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "13:00",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "13:45",
+      "recorrido": "Terminal/Florida/Posse/Fortín"
+    },
+    {
+      "hora": "14:15",
+      "recorrido": "Terminal/Florida/Posse/Dumix"
+    },
+    {
+      "hora": "15:00",
+      "recorrido": "Terminal/Florida/Posse/Fortín"
+    },
+    {
+      "hora": "16:00",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "17:00",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "18:00",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "18:30",
+      "recorrido": "Terminal/Florida/Posse/Fortín"
+    },
+    {
+      "hora": "19:30",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "20:00",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "20:30",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "21:00",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "21:30",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "22:00",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "22:30",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    },
+    {
+      "hora": "23:30",
+      "recorrido": "Terminal/Florida/Posse/Bº La Cancha"
+    }
+  ]
+}

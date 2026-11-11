@@ -1,0 +1,87 @@
+{
+  "linea": "Florida x Posse",
+  "sentido": "Terminal → Florida x Posse",
+  "dias": "Domingo y feriados",
+  "horarios": [
+    {
+      "hora": "6:00",
+      "recorrido": "Terminal/Florida/W Posse/Fortín"
+    },
+    {
+      "hora": "7:00",
+      "recorrido": "Terminal/Florida/W Posse/Fortín"
+    },
+    {
+      "hora": "8:00",
+      "recorrido": "Terminal/Florida/W Posse/Fortín"
+    },
+    {
+      "hora": "9:00",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
+    },
+    {
+      "hora": "10:00",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
+    },
+    {
+      "hora": "11:00",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
+    },
+    {
+      "hora": "12:00",
+      "recorrido": "Terminal/Florida/W Posse/Dumix"
+    },
+    {
+      "hora": "13:00",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
+    },
+    {
+      "hora": "14:15",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha/Dumix"
+    },
+    {
+      "hora": "15:00",
+      "recorrido": "Terminal/Florida/W Posse/Fortín"
+    },
+    {
+      "hora": "16:00",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
+    },
+    {
+      "hora": "17:00",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
+    },
+    {
+      "hora": "18:00",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
+    },
+    {
+      "hora": "18:30",
+      "recorrido": "Terminal/Florida/W Posse/Fortín"
+    },
+    {
+      "hora": "19:30",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
+    },
+    {
+      "hora": "20:00",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
+    },
+    {
+      "hora": "20:30",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
+    },
+    {
+      "hora": "21:30",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
+    },
+    {
+      "hora": "22:30",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
+    },
+    {
+      "hora": "23:30",
+      "recorrido": "Terminal/Florida/W Posse/Bº La Cancha"
+    }
+  ]
+}

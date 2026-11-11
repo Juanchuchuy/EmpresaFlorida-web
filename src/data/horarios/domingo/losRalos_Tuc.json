@@ -1,0 +1,83 @@
+{
+  "linea": "Los Ralos",
+  "sentido": "Los Ralos → Terminal",
+  "dias": "Domingo y feriados",
+  "horarios": [
+    {
+      "hora": "5:00",
+      "recorrido": "Ralos/Terminal"
+    },
+    {
+      "hora": "5:30",
+      "recorrido": "Villa Tercera/Ralos/Terminal"
+    },
+    {
+      "hora": "7:00",
+      "recorrido": "Ralos/Terminal"
+    },
+    {
+      "hora": "8:10",
+      "recorrido": "Alabama/Mayo/Ralos/Terminal"
+    },
+    {
+      "hora": "9:30",
+      "recorrido": "Ralos/Terminal"
+    },
+    {
+      "hora": "10:30",
+      "recorrido": "Ralos/Terminal"
+    },
+    {
+      "hora": "11:10",
+      "recorrido": "Alabama/Mayo/Ralos/Terminal"
+    },
+    {
+      "hora": "12:15",
+      "recorrido": "Mayo/Ralos"
+    },
+    {
+      "hora": "13:10",
+      "recorrido": "Alabama/Mayo/Ralos/Terminal"
+    },
+    {
+      "hora": "14:10",
+      "recorrido": "Ralos/Villa Tercera/Terminal"
+    },
+    {
+      "hora": "15:30",
+      "recorrido": "Ralos/Villa Tercera/Terminal"
+    },
+    {
+      "hora": "16:25",
+      "recorrido": "Ralos/Villa Tercera/Terminal"
+    },
+    {
+      "hora": "17:15",
+      "recorrido": "Alabama/Mayo/Ralos/Terminal"
+    },
+    {
+      "hora": "18:10",
+      "recorrido": "Ralos/Villa Tercera/Terminal"
+    },
+    {
+      "hora": "19:00",
+      "recorrido": "Alabama/Mayo/Ralos/Terminal"
+    },
+    {
+      "hora": "20:00",
+      "recorrido": "Lolita/Ralos/Terminal"
+    },
+    {
+      "hora": "21:10",
+      "recorrido": "Ralos/Terminal"
+    },
+    {
+      "hora": "21:30",
+      "recorrido": "Mayo/Ralos/Terminal"
+    },
+    {
+      "hora": "22:30",
+      "recorrido": "Ralos/Terminal"
+    }
+  ]
+}

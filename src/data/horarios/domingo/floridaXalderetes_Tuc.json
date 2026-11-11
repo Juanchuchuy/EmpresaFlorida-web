@@ -1,0 +1,43 @@
+{
+  "linea": "Florida x Alderetes",
+  "sentido": "Florida x Alderetes → Terminal",
+  "dias": "Domingo y feriados",
+  "horarios": [
+    {
+      "hora": "7:40",
+      "recorrido": "Mayo/Florida/Fortín/Alderetes/Banda/Terminal"
+    },
+    {
+      "hora": "10:30",
+      "recorrido": "Col 2/Florida/Fortín/Alderetes/Banda/Terminal"
+    },
+    {
+      "hora": "12:40",
+      "recorrido": "Mayo/Fortín/Alderetes/Banda/Terminal"
+    },
+    {
+      "hora": "14:45",
+      "recorrido": "Col 4L/Bº La Cancha/Alderetes/Banda/Terminal"
+    },
+    {
+      "hora": "15:50",
+      "recorrido": "Col 4L/Bº La Cancha/Alderetes/Banda/Terminal"
+    },
+    {
+      "hora": "16:50",
+      "recorrido": "Col 4/Florida/Fortín/Alderetes/Banda/Terminal"
+    },
+    {
+      "hora": "17:50",
+      "recorrido": "Bº La Cancha/Alderetes/Banda/Terminal"
+    },
+    {
+      "hora": "19:00",
+      "recorrido": "Mayo/Alderetes/Banda/Terminal"
+    },
+    {
+      "hora": "20:55",
+      "recorrido": "Mayo (20:55)/Col 4L (21:05)/Bº La Cancha/Alderetes/Banda/Terminal"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "linea": "Florida x Alderetes",
+  "sentido": "Terminal → Florida x Alderetes",
+  "dias": "Sábado",
+  "horarios": [
+    {
+      "hora": "5:20",
+      "recorrido": "Terminal/Catalina/Autopista/Alderetes/Bº La Cancha"
+    },
+    {
+      "hora": "6:25",
+      "recorrido": "Terminal/Banda/Alderetes/Florida/Fortín/Mayo"
+    },
+    {
+      "hora": "7:15",
+      "recorrido": "Terminal/Banda/Alderetes/Col 4L/Bº La Cancha"
+    },
+    {
+      "hora": "8:35",
+      "recorrido": "Terminal/Banda/Alderetes/Florida/Fortín"
+    },
+    {
+      "hora": "9:45",
+      "recorrido": "Terminal/Banda/Alderetes/Florida/Fortín"
+    },
+    {
+      "hora": "10:45",
+      "recorrido": "Terminal/Banda/Alderetes/Fortín"
+    },
+    {
+      "hora": "11:40",
+      "recorrido": "Terminal/Banda/Alderetes/Cochunchal/Florida/Fortín/Mayo"
+    },
+    {
+      "hora": "12:20",
+      "recorrido": "Terminal/Catalina/Autopista/Alderetes/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "13:30",
+      "recorrido": "Terminal/Banda/Alderetes/Bº La Cancha/Col 4L/Mayo"
+    },
+    {
+      "hora": "14:00",
+      "recorrido": "Terminal/Banda/Alderetes/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "14:50",
+      "recorrido": "Terminal/Banda/Alderetes/Florida/Fortín/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "16:00",
+      "recorrido": "Terminal/Banda/Alderetes/Florida/Fortín/Col 4L F"
+    },
+    {
+      "hora": "16:50",
+      "recorrido": "Terminal/Banda/Alderetes/Florida/Col 4/Bº La Cancha/Fortín"
+    },
+    {
+      "hora": "17:45",
+      "recorrido": "Terminal/Banda/Alderetes/Florida/Bº La Cancha/Col 4L/Mayo/La Marta"
+    },
+    {
+      "hora": "19:00",
+      "recorrido": "Terminal/Banda/Alderetes/Florida/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "19:45",
+      "recorrido": "Terminal/Banda/Alderetes/Florida/Fortín/Mayo"
+    },
+    {
+      "hora": "20:30",
+      "recorrido": "Terminal/Banda/Alderetes/Florida/Fortín"
+    },
+    {
+      "hora": "21:00",
+      "recorrido": "Terminal/Autopista/Alderetes/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "21:30",
+      "recorrido": "Terminal/Autopista/Alderetes/Fortín/Bº La Cancha/Col 4L"
+    },
+    {
+      "hora": "22:30",
+      "recorrido": "Terminal/Autopista/Alderetes/Fortín/Bº La Cancha/Col 4L"
+    }
+  ]
+}

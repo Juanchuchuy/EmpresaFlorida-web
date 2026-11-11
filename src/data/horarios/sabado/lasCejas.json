@@ -1,0 +1,31 @@
+{
+  "linea": "Las Cejas",
+  "sentido": "Terminal → Las Cejas",
+  "dias": "Sábado",
+  "horarios": [
+    {
+      "hora": "6:30",
+      "recorrido": "Terminal/Ralos/Cejas"
+    },
+    {
+      "hora": "10:40",
+      "recorrido": "Terminal/Ralos/Lolita/Cejas"
+    },
+    {
+      "hora": "14:30",
+      "recorrido": "Terminal/Ralos/Cejas"
+    },
+    {
+      "hora": "15:45",
+      "recorrido": "Terminal/Cejas/7 de Abril"
+    },
+    {
+      "hora": "18:30",
+      "recorrido": "Terminal/Ralos/Cejas"
+    },
+    {
+      "hora": "20:00",
+      "recorrido": "Terminal/Ralos/Cejas"
+    }
+  ]
+}
