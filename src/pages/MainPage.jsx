@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   Clock,
@@ -11,8 +11,11 @@ import {
 import busHero from '../assets/img/bus-hero.webp'
 import rutaHero from '../assets/img/road-hero.webp'
 import EstadoServicio from '../components/EstadoServicio'
+import RedesModal from '../components/RedesModal'
 import { useAlturaHeader } from '../hooks/useAlturaHeader'
+import { useEstadoServicio } from '../hooks/useEstadoServicio'
 import { useIntroBus } from '../hooks/useIntroBus'
+import { ORDEN_ESTADOS } from '../data/EstadoServicio'
 import './MainPage.css'
 
 const acciones = [
@@ -21,10 +24,6 @@ const acciones = [
   { icono: MapPin, texto: 'Punto de recarga', ruta: '/puntos-recarga', color: 'rojo' },
   { icono: Ticket, texto: 'Abonos', ruta: null, color: 'azul' },
 ]
-
-// Estado del servicio de los móviles: 'normal' | 'reducido' | 'suspendido'.
-// Por ahora es fijo; después se alimentará con datos reales.
-const ESTADO_SERVICIO = 'normal'
 
 const MainPage = () => {
   const navigate = useNavigate()
@@ -35,6 +34,16 @@ const MainPage = () => {
 
   // Intro animada del colectivo (ver hooks/useIntroBus.js).
   const { fase, busRef, variablesCss } = useIntroBus()
+
+  // Versión demo: cada toque en la tarjeta simula el siguiente estado (normal →
+  // reducido → muy reducido → sin servicio). Cambia también los horarios, el aviso
+  // y los badges de toda la app; vive en memoria y se reinicia al recargar.
+  const { estado, forzarEstado } = useEstadoServicio()
+  const siguienteEstado = () =>
+    forzarEstado(ORDEN_ESTADOS[(ORDEN_ESTADOS.indexOf(estado) + 1) % ORDEN_ESTADOS.length])
+
+  // Popup con las redes sociales de la empresa (botón "Novedades").
+  const [redesAbiertas, setRedesAbiertas] = useState(false)
 
   const ir = (ruta) => {
     if (ruta) navigate(ruta)
@@ -72,7 +81,7 @@ const MainPage = () => {
           />
         </section>
 
-        <EstadoServicio estado={ESTADO_SERVICIO} />
+        <EstadoServicio estado={estado} onClick={siguienteEstado} />
 
         <nav className="acciones" aria-label="Accesos principales">
           {acciones.map(({ icono: Icono, texto, ruta, color }, i) => (
@@ -94,7 +103,8 @@ const MainPage = () => {
             type="button"
             className="accion accion--claro"
             style={{ '--i': acciones.length }}
-            aria-disabled="true"
+            aria-haspopup="dialog"
+            onClick={() => setRedesAbiertas(true)}
           >
             <Megaphone size={26} />
             <span className="accion-texto">Novedades</span>
@@ -106,6 +116,8 @@ const MainPage = () => {
       <p className="pie">
         Empresa Florida S.R.L. · Desde 1954, junto a vos.
       </p>
+
+      <RedesModal abierto={redesAbiertas} onCerrar={() => setRedesAbiertas(false)} />
     </main>
   )
 }
