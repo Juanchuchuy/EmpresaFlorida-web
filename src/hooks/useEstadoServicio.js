@@ -1,5 +1,5 @@
 import { useEffect, useState, useSyncExternalStore } from 'react'
-import { ESTADOS_SERVICIO } from '../data/EstadoServicio'
+import { ESTADOS_SERVICIO } from '../data/estadoServicio'
 import { getEstadoDelDia } from '../utils/tipoDeDia'
 
 // Estado del servicio compartido por toda la app. Normalmente sale solo del día
