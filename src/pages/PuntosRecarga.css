@@ -84,91 +84,45 @@
   flex-shrink: 0;
 }
 
-/* Carrusel de puntos */
-.puntos-recarga-carrusel {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
 
-.puntos-recarga-carrusel-flecha {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid #e2e8f0;
-  background-color: #ffffff;
-  color: #0D0F1E;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(13, 15, 30, 0.08);
-}
-.puntos-recarga-carrusel-flecha:hover {
-  border-color: #ED1B24;
-  color: #ED1B24;
-}
-
-.puntos-recarga-carrusel-pista {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 4px 2px 8px;
-}
-.puntos-recarga-carrusel-pista::-webkit-scrollbar {
-  height: 6px;
-}
-.puntos-recarga-carrusel-pista::-webkit-scrollbar-thumb {
-  background-color: #e2e8f0;
-  border-radius: 999px;
+/* Lista de puntos: cada card es un link a Google Maps */
+.puntos-recarga-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
 }
 
 .punto-card {
-  flex: 0 0 240px;
-  scroll-snap-align: start;
-  text-align: left;
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 34px 12px;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  padding: 18px 16px;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
   font-family: inherit;
-  transition: background-color 0.15s, border-color 0.15s;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
 }
 .punto-card:hover {
   border-color: #ED1B24;
+  box-shadow: 0 6px 18px rgba(13, 15, 30, 0.08);
 }
-.punto-card--seleccionada {
-  background-color: #0D0F1E;
-  border-color: #0D0F1E;
+.punto-card:active {
+  transform: scale(0.99);
+}
+.punto-card:focus-visible {
+  outline: 3px solid rgba(45, 48, 141, 0.5);
+  outline-offset: 2px;
 }
 
 .punto-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.punto-card-numero {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background-color: #2D308D;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.punto-card--seleccionada .punto-card-numero {
-  background-color: #ED1B24;
 }
 
 .punto-card-badge {
@@ -186,11 +140,6 @@
   background-color: #ED1B241a;
   color: #ED1B24;
 }
-.punto-card--seleccionada .punto-card-badge--oficial,
-.punto-card--seleccionada .punto-card-badge--comercio {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-}
 
 .punto-card-nombre {
   margin: 0;
@@ -198,9 +147,6 @@
   font-weight: 700;
   font-size: 24px;
   color: #0D0F1E;
-}
-.punto-card--seleccionada .punto-card-nombre {
-  color: #ffffff;
 }
 
 .punto-card-direccion,
@@ -219,65 +165,16 @@
   margin-top: 2px;
   color: #94a3b8;
 }
-.punto-card--seleccionada .punto-card-direccion,
-.punto-card--seleccionada .punto-card-horario {
-  color: #cbd5e1;
-}
-.punto-card--seleccionada .punto-card-direccion svg,
-.punto-card--seleccionada .punto-card-horario svg {
-  color: #cbd5e1;
-}
 
-/* Mapa */
-.puntos-recarga-mapa-wrap {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 16px rgba(13, 15, 30, 0.05);
-}
-
-.puntos-recarga-mapa {
-  width: 100%;
-  height: 620px;
-}
-
-/* Aviso cuando el dispositivo no tiene internet (los tiles del mapa lo necesitan). */
-.puntos-recarga-sin-conexion {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  z-index: 1000; /* por encima de los paneles de Leaflet */
-  margin: 0;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid #f0951f;
-  color: #0b2a5b;
+.punto-card-maps {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
   font-weight: 600;
-  font-size: 0.85rem;
-  line-height: 1.35;
-  box-shadow: 0 4px 14px rgba(13, 15, 30, 0.12);
-}
-
-.punto-recarga-icono span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 50% 50% 50% 0;
-  border: 2px solid #ffffff;
-  box-shadow: 0 2px 6px rgba(13, 15, 30, 0.35);
-  transform: rotate(-45deg);
-}
-.punto-recarga-icono--comercio span {
-  background-color: #ED1B24;
-}
-.punto-recarga-icono--oficial span {
-  background-color: #2D308D;
-}
-.punto-recarga-icono--seleccionado span {
-  box-shadow: 0 0 0 4px rgba(13, 15, 30, 0.15), 0 2px 6px rgba(13, 15, 30, 0.35);
+  color: #2D308D;
 }
 
 /* Footer: nota + leyenda */
@@ -316,12 +213,13 @@
   background-color: #ED1B24;
 }
 
+
 @media (max-width: 720px) {
   .puntos-recarga-page {
     padding: 24px calc(16px + env(safe-area-inset-right, 0px)) calc(48px + env(safe-area-inset-bottom, 0px)) calc(16px + env(safe-area-inset-left, 0px));
   }
-  .puntos-recarga-mapa {
-    height: 320px;
+  .puntos-recarga-lista {
+    grid-template-columns: 1fr;
   }
   .puntos-recarga-precio-banner {
     flex-direction: column;
