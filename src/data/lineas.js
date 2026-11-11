@@ -4,16 +4,20 @@ import lasCejas from '../assets/img/las_cejas.webp'
 import losRalos from '../assets/img/los_ralos.webp'
 import floridaAlderetes from '../assets/img/florida_x_alderetes.webp'
 
-import floridaPosseIda from './horarios/floridaXposse_Tuc.json'
-import floridaPosseVuelta from './horarios/floridaXposse.json'
-import wPosseIda from './horarios/wPosse_Tuc.json'
-import wPosseVuelta from './horarios/wPosse.json'
-import lasCejasIda from './horarios/lasCejas_Tuc.json'
-import lasCejasVuelta from './horarios/lasCejas.json'
-import losRalosIda from './horarios/losRalos_Tuc.json'
-import losRalosVuelta from './horarios/losRalos.json'
-import floridaAlderetesIda from './horarios/floridaXalderetes_Tuc.json'
-import floridaAlderetesVuelta from './horarios/floridaXalderetes.json'
+// Cronogramas: lunes a viernes en ./horarios, sábados en ./horarios/sabado y
+// domingos/feriados en ./horarios/domingo. Cada línea tiene dos archivos por día:
+// "<nombre>_Tuc.json" (ida) y "<nombre>.json" (vuelta).
+const archivos = import.meta.glob('./horarios/**/*.json', { eager: true, import: 'default' })
+const CARPETA = { habil: '', sabado: 'sabado/', domingo: 'domingo/' }
+const leer = (tipoDia, nombre) => archivos[`./horarios/${CARPETA[tipoDia]}${nombre}.json`] ?? null
+const cronograma = (tipoDia, base) => ({ ida: leer(tipoDia, `${base}_Tuc`), vuelta: leer(tipoDia, base) })
+
+// Si la línea no circula un día (ej. W Posse los sábados), ese día queda en null.
+const horariosDe = (base, { sabado = true, domingo = true } = {}) => ({
+  habil: cronograma('habil', base),
+  sabado: sabado ? cronograma('sabado', base) : null,
+  domingo: domingo ? cronograma('domingo', base) : null,
+})
 
 // "ida" = viaja HACIA Tuc (capital). "vuelta" = sale DESDE Tuc.
 // Florida x Alternativa y 4 de Mayo todavía no se listan porque les falta el
@@ -25,36 +29,57 @@ export const lineas = [
     id: 'florida-posse',
     nombre: 'Florida x Posse',
     imagen: floridaPosse,
-    ida: floridaPosseIda,
-    vuelta: floridaPosseVuelta,
+    horarios: horariosDe('floridaXposse'),
   },
   {
     id: 'w-posse',
     nombre: 'W Posse',
     imagen: wPosse,
-    ida: wPosseIda,
-    vuelta: wPosseVuelta,
+    horarios: horariosDe('wPosse', { sabado: false, domingo: false }),
   },
   {
     id: 'las-cejas',
     nombre: 'Las Cejas',
     imagen: lasCejas,
-    ida: lasCejasIda,
-    vuelta: lasCejasVuelta,
+    horarios: horariosDe('lasCejas'),
   },
   
   {
     id: 'los-ralos',
     nombre: 'Los Ralos',
     imagen: losRalos,
-    ida: losRalosIda,
-    vuelta: losRalosVuelta,
+    horarios: horariosDe('losRalos'),
   },
   {
     id: 'florida-alderetes',
     nombre: 'Florida x Alderetes',
     imagen: floridaAlderetes,
-    ida: floridaAlderetesIda,
-    vuelta: floridaAlderetesVuelta,
+    horarios: horariosDe('floridaXalderetes'),
   },
 ]
+
+/** Cronograma de una línea para un sentido ('ida' | 'vuelta') y tipo de día; null si no hay. */
+export const getHorarios = (linea, sentido, tipoDia) => linea?.horarios?.[tipoDia]?.[sentido] ?? null
+
+/** ¿La línea sale ese tipo de día? (false con paro o si ese día no circula) */
+export const circulaEn = (linea, tipoDia) => Boolean(linea?.horarios?.[tipoDia])
+
+// Solo en desarrollo: avisa en la consola del navegador qué cronogramas no se
+// encontraron (carpeta o nombre de archivo mal puesto) y qué archivos sí encontró.
+if (import.meta.env.DEV) {
+  const faltan = []
+  for (const linea of lineas) {
+    for (const tipoDia of ['habil', 'sabado', 'domingo']) {
+      const dia = linea.horarios[tipoDia]
+      if (!dia) continue
+      for (const sentido of ['ida', 'vuelta']) {
+        if (!dia[sentido]) faltan.push(`${linea.nombre} · ${tipoDia} · ${sentido}`)
+      }
+    }
+  }
+  if (faltan.length) {
+    console.warn(
+      `[horarios] Faltan cronogramas:\n- ${faltan.join('\n- ')}\n\nArchivos de horarios encontrados:\n${Object.keys(archivos).sort().join('\n')}`,
+    )
+  }
+}
